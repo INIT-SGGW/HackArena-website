@@ -1,0 +1,8 @@
+@import '@repo/tailwind-config/theme.css';
+@source "./";
+
+@layer utilities {
+  .cut-corner {
+    clip-path: polygon(100% 0, 100% 100%, 60 100%, 0% 0);
+  }
+}
