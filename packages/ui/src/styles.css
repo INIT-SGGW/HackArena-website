@@ -5,11 +5,9 @@
   .cut-corner {
     clip-path: polygon(100% 0, 100% 100%, 60px 100%, 0% 0);
   }
-  .large-container {
+  .container {
     clip-path: polygon(95% 0, 100% 18%, 100% 50%, 100% 100%, 5% 100%, 0 82%, 0 0);
   }
-  .small-container {
-    clip-path: polygon(90% 0, 100% 18%, 100% 50%, 100% 100%, 10% 100%, 0 82%, 0 0);
-  }
+
 
 }
