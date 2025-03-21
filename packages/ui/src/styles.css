@@ -5,4 +5,17 @@
   .cut-corner {
     clip-path: polygon(100% 0, 100% 100%, 60 100%, 0% 0);
   }
+
+  .button-clip {
+    --cut-size: 14px;
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--cut-size)) 0,
+      100% var(--cut-size),
+      100% 100%,
+      var(--cut-size) 100%,
+      0 calc(100% - var(--cut-size)),
+      0% 100%
+    );
+  }
 }
