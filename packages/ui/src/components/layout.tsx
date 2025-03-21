@@ -20,7 +20,7 @@ const Footer = ({ navItems }: FooterProps) => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="flex flex-col items-center justify-center gap-16 md:gap-30 pt-4 pb-2 md:pb-6 bg-secondary-300 w-full">
+    <footer className="flex flex-col items-center justify-center gap-16 md:gap-30 pt-4 pb-2 md:pb-6 bg-secondary-300 w-full z-30">
       <div className="flex flex-col-reverse md:grid grid-cols-[50%_1fr] gap-10 md:gap-16 w-full">
         <nav>
           <ul className="flex flex-col md:flex-row justify-end gap-8 items-center h-full">
@@ -79,7 +79,7 @@ export const Layout = ({ children, navItems }: RootLayoutProps) => {
     <html lang="pl">
       <body className="flex flex-col items-center min-h-screen bg-background text-text jet-brains">
         <TopBar navItems={navItems} />
-        <main className="flex-grow px-4 p-8 w-full max-w-[1000px]">
+        <main className="flex-grow w-full">
           {children}
         </main>
         <Footer navItems={navItems} />
