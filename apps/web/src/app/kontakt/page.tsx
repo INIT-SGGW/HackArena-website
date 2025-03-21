@@ -6,7 +6,7 @@ import Image from "next/image";
 // import LinkedinLogo from "apps/web/public/linkedin-logo.svg"
 export default function Page() {
   return (
-    <div className={"font-jet-brains md:scale-75 md:absolute md:top-5  "}>
+    <div className={"md:min-w-[800px] font-jet-brains md:scale-70 md:absolute md:top-5  "}>
       <h1 className="text-4xl  pl-5 pb-10 font-black text-primary md:pl-10 md:text-6xl ">
         Kontakt
       </h1>
@@ -76,15 +76,15 @@ export default function Page() {
           </div>
         </div>
         <div
-          className={"container bg-secondary-300  col-span-1 row-span-1 "}>
+          className={"container bg-secondary-300  col-span-1 row-span-1 md:min-w-[366px] md:min-h-[290px]"}>
           <div className={"p-5 md:py-5 md:px-8"}>
-            <h1 className={" text-3xl font-black text-primary  md:text-4xl md:min-w-[366px] "}>
+            <h1 className={"text-3xl font-black text-primary  md:text-4xl md:min-w-[366px] "}>
               Kontakt ogólny
             </h1>
             <p className={"text-xl text-black  text-secondary-100 md:text-2xl pt-5  "}>
               Jeśli masz pytania ogólne lub problem z rejestracją, napisz na adres:
             </p>
-            <div className={"flex flex-row py-5 md:pt-5 md:pb-0 "}>
+            <div className={"flex flex-row py-5 md:py-5 md:pb-0 "}>
               <Image
                 src={"mail.svg"}
                 alt="mail"
@@ -92,12 +92,12 @@ export default function Page() {
                 height="22"
                 className={"mr-5"}
               />
-              <a className={"   text-xl  md:text-2xl "} href={"mailto:kontakt@hackrena.pl"}>kontakt@hackarena.pl</a>
+              <a className={"   text-xl  md:text-2xl break-all"} href={"mailto:kontakt@hackrena.pl"}>kontakt@hackarena.pl</a>
             </div>
           </div>
         </div>
         <div
-          className={"container bg-secondary-300  col-span-1 row-span-1 md:min-w-[366px]"}>
+          className={"container bg-secondary-300  col-span-1 row-span-1 md:min-h-[290px] md:min-w-[366px]"}>
           <div className={"p-5 md:py-5 md:px-8"}>
             <h1 className={" text-3xl font-black text-primary  md:text-4xl "}>
               Współpraca
@@ -105,7 +105,7 @@ export default function Page() {
             <p className={"text-lg text-black  text-secondary-100 md:text-2xl pt-5 "}>
               Jeśli jesteś zainteresowany współpracą z nami, napisz na adres:
             </p>
-            <div className={"flex flex-row py-5 md:pt-5 md:pb-0"}>
+            <div className={"flex flex-row py-4 md:py-5 md:pb-0 break-all"}>
               <Image
                 src={"mail.svg"}
                 alt="mail"
