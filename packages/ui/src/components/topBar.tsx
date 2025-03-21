@@ -79,7 +79,7 @@ const SideMenu = ({
 }: HeaderProps) => {
   return (
     <div
-      className={`absolute top-0 right-0 h-full w-full flex flex-col items-center justify-between bg-background z-10 pb-4 
+      className={`fixed top-0 right-0 h-full w-full flex flex-col items-center justify-between bg-background z-10 pb-4 
         ${isMenuOpen ? '' : 'translate-x-full'} transform transition-transform duration-250 ease-in-out bg-[url('/side-menu-bg.svg')] bg-right bg-cover`}
     >
       <div className="w-full flex flex-col items-center gap-10">
