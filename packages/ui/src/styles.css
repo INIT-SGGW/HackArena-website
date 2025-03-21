@@ -18,4 +18,43 @@
       0% 100%
     );
   }
+
+  .ribbon {
+    @apply relative after:bg-primary after:absolute after:inset-0;
+  }
+
+  .ribbon::after {
+    --cut-size: 20px;
+    --ribbon-width: 35px;
+    clip-path: polygon(
+      calc(100% - var(--ribbon-width) - var(--cut-size)) 0,
+      calc(100% - var(--cut-size)) 0,
+      100% var(--cut-size),
+      100% calc(var(--ribbon-width) + var(--cut-size)),
+      calc(100% - var(--ribbon-width) - var(--cut-size)) 0,
+
+      0 calc(100% - var(--ribbon-width) - var(--cut-size)),
+      0 calc(100% - var(--cut-size)),
+      var(--cut-size) 100%,
+      calc(var(--ribbon-width) + var(--cut-size)) 100%,
+      0 calc(100% - var(--ribbon-width) - var(--cut-size))
+    );
+  }
+
+  .ribbon-photo-clip {
+    --cut-size: 20px;
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--cut-size)) 0,
+      100% var(--cut-size),
+      100% 100%,
+      var(--cut-size) 100%,
+      0 calc(100% - var(--cut-size)),
+      0% 100%
+    );
+  }
+
+  .page-width {
+    @apply max-w-[1200px];
+  }
 }
