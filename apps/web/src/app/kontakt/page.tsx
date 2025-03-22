@@ -6,25 +6,13 @@ import Image from 'next/image';
 // import LinkedinLogo from "apps/web/public/linkedin-logo.svg"
 export default function Contact() {
   return (
-    <div
-      className={
-        'md:min-w-[800px] font-jet-brains md:scale-70 md:absolute md:top-5  '
-      }
-    >
+    <div className={'md:min-w-[800px] justify-self-center font-jet-brains md:scale-70 md:absolute md:top-5  '}>
       <h1 className="text-4xl  pl-5 pb-10 font-black text-primary md:pl-10 md:text-6xl ">
         Kontakt
       </h1>
       <div className="grid grid-cols-1 grid-rows-3 gap-10 md:gap-15 max-w-[450px]   md:max-w-[1000px] md:max-h-[550px] md:grid md:grid-cols-2 md:grid-rows-2  md:justify-self-center   ">
-        <div
-          className={
-            'content-card-clip bg-primary col-span-1 row-span-1   md:col-span-2 md:row-span-1'
-          }
-        >
-          <div
-            className={
-              'p-5 text-secondary-300  flex flex-col justify-between  md:pt-8 md:pl-8 shrink-0'
-            }
-          >
+        <div className={'content-card-clip bg-primary col-span-1 row-span-1   md:col-span-2 md:row-span-1'}>
+          <div className={'p-5 text-secondary-300  flex flex-col justify-between  md:pt-8 md:pl-8 shrink-0'}>
             <div className={'flex flex-row justify-between '}>
               <h1 className={'text-3xl font-black md:text-4xl '}>
                 Portale społecznościowe
@@ -87,24 +75,12 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <div
-          className={
-            'content-card-clip bg-secondary-300  col-span-1 row-span-1 md:min-w-[366px] md:min-h-[290px]'
-          }
-        >
+        <div className={'content-card-clip bg-secondary-300  col-span-1 row-span-1 md:min-w-[366px] md:min-h-[290px]'}>
           <div className={'p-5 md:py-5 md:px-8'}>
-            <h1
-              className={
-                'text-3xl font-black text-primary  md:text-4xl md:min-w-[366px] '
-              }
-            >
+            <h1 className={'text-3xl font-black text-primary  md:text-4xl md:min-w-[366px] '}>
               Kontakt ogólny
             </h1>
-            <p
-              className={
-                'text-xl text-black  text-secondary-100 md:text-2xl pt-5  '
-              }
-            >
+            <p className={'text-xl text-black  text-secondary-100 md:text-2xl pt-5  '}>
               Jeśli masz pytania ogólne lub problem z rejestracją, napisz na
               adres:
             </p>
@@ -116,29 +92,18 @@ export default function Contact() {
                 height="22"
                 className={'mr-5'}
               />
-              <a
-                className={'   text-xl  md:text-2xl break-all'}
-                href={'mailto:kontakt@hackrena.pl'}
-              >
+              <a className={'   text-xl  md:text-2xl break-all'} href={'mailto:kontakt@hackrena.pl'}>
                 kontakt@hackarena.pl
               </a>
             </div>
           </div>
         </div>
-        <div
-          className={
-            'content-card-clip bg-secondary-300  col-span-1  md:min-h-[290px] md:min-w-[366px]'
-          }
-        >
+        <div className={'content-card-clip bg-secondary-300  col-span-1  md:min-h-[290px] md:min-w-[366px]'}>
           <div className={'p-5 md:py-5 md:px-8'}>
             <h1 className={' text-3xl font-black text-primary  md:text-4xl '}>
               Współpraca
             </h1>
-            <p
-              className={
-                'text-lg text-black  text-secondary-100 md:text-2xl pt-5 '
-              }
-            >
+            <p className={'text-lg text-black  text-secondary-100 md:text-2xl pt-5 '}>
               Jeśli jesteś zainteresowany współpracą z nami, napisz na adres:
             </p>
             <div className={'flex flex-row py-4 md:py-5 md:pb-0 break-all'}>
@@ -149,10 +114,7 @@ export default function Contact() {
                 height="22"
                 className={'mr-5'}
               />
-              <a
-                className={'   text-lg  md:text-2xl '}
-                href={'mailto:wspolpraca@hackrena.pl'}
-              >
+              <a className={'   text-lg  md:text-2xl '} href={'mailto:wspolpraca@hackrena.pl'}>
                 wspolpraca@hackarena.pl
               </a>
             </div>
