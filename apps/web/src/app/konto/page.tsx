@@ -11,7 +11,7 @@ export default function LoginForm() {
           <div className={'p-1'}>Email</div>
           <div className={'content-card-clip  bg-text text-secondary-300 min-h-[35px]'} style={{ '--clip-size': '14px' }}>
             <input
-              className={'pl-4 pt-1 text-start  outline-none'}
+              className={'pl-4 pt-1 text-start  outline-none w-full '}
               type={'text'}
               placeholder={'Email'}
             />
@@ -20,14 +20,14 @@ export default function LoginForm() {
           <div className={'p-1'}>Hasło</div>
           <div className={'content-card-clip bg-text text-secondary-300 min-h-[35px] '} style={{ '--clip-size': '14px' }}>
             <input
-              className={'pl-4 pt-1 text-start outline-none'}
+              className={'pl-4 pt-1 text-start outline-none w-full '}
               type={'password'}
               placeholder={'Hasło'}
             />
           </div>
 
           <div className={'p-1 text-secondary-300'}>żeby było równo :)</div>
-          <div className={'content-card-clip bg-primary text-secondary-300 text-black flex items-center justify-center min-h-[35px]'} style={{ '--clip-size': '14px' }}>
+          <div className={'button-clip bg-primary text-secondary-300 text-black flex items-center justify-center min-h-[35px]'}>
             <button className={'cursor-pointer '}>Zaloguj się</button>
           </div>
           <div className={'flex flex-row p-3 justify-self-center'}>
