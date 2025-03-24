@@ -4,6 +4,7 @@
 
 @layer utilities {
 
+
     .cut-corner {
         clip-path: polygon(100% 0, 100% 100%, 60px 100%, 0% 0);
     }
@@ -22,6 +23,7 @@
 
     }
 
+
     .content-card-clip {
         --clip-size: 50px;
         clip-path: polygon(
@@ -33,6 +35,7 @@
                 0 calc(100% - var(--clip-size))
         );
     }
+
 
 }
 
