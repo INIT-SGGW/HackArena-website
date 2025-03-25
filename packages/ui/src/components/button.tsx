@@ -1,6 +1,6 @@
-import { ComponentProps } from 'react';
-import LightningIcon from '../assets/lightning.svg';
-import Image from 'next/image';
+import { ComponentProps } from "react";
+import LightningIcon from "../assets/lightning-outline.svg";
+import Image from "next/image";
 
 type ButtonProps = ComponentProps<'button'> & {
   secondary?: boolean;
