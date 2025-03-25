@@ -4,7 +4,14 @@
 
 @layer utilities {
   .cut-corner {
-    clip-path: polygon(100% 0, 100% 100%, 60 100%, 0% 0);
+    --cut-size: 60px;
+    --cut-displacement: 10px;
+    clip-path: polygon(
+      100% 0,
+      100% 100%,
+      calc(var(--cut-size) + var(--cut-displacement)) 100%,
+      var(--cut-displacement) 0
+    );
   }
 
   .button-clip {
@@ -19,18 +26,18 @@
       0% 100%
     );
   }
-  
+
   .content-card-clip {
-        --clip-size: 50px;
-        clip-path: polygon(
-                0 0,
-                calc(100% - var(--clip-size)) 0,
-                100% var(--clip-size),
-                100% 100%,
-                var(--clip-size) 100%,
-                0 calc(100% - var(--clip-size))
-        );
-    }
+    --clip-size: 25px;
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--clip-size)) 0,
+      100% var(--clip-size),
+      100% 100%,
+      var(--clip-size) 100%,
+      0 calc(100% - var(--clip-size))
+    );
+  }
 
   .ribbon {
     @apply relative after:bg-primary after:absolute after:inset-0;
@@ -71,5 +78,3 @@
     @apply max-w-[1200px];
   }
 }
-
-
