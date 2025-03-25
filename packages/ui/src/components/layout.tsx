@@ -77,7 +77,7 @@ type RootLayoutProps = NavProps & {
 export const Layout = ({ children, navItems }: RootLayoutProps) => {
   return (
     <html lang="pl">
-      <body className="flex flex-col items-center min-h-screen bg-background text-text jet-brains">
+      <body className="flex flex-col items-center min-h-screen bg-background text-text jet-brains overflow-x-hidden">
         <TopBar navItems={navItems} />
         <main className="flex-grow w-full">
           {children}
