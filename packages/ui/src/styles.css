@@ -19,18 +19,18 @@
       0% 100%
     );
   }
-  
+
   .content-card-clip {
-        --clip-size: 50px;
-        clip-path: polygon(
-                0 0,
-                calc(100% - var(--clip-size)) 0,
-                100% var(--clip-size),
-                100% 100%,
-                var(--clip-size) 100%,
-                0 calc(100% - var(--clip-size))
-        );
-    }
+    --clip-size: 25px;
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--clip-size)) 0,
+      100% var(--clip-size),
+      100% 100%,
+      var(--clip-size) 100%,
+      0 calc(100% - var(--clip-size))
+    );
+  }
 
   .ribbon {
     @apply relative after:bg-primary after:absolute after:inset-0;
@@ -71,5 +71,3 @@
     @apply max-w-[1200px];
   }
 }
-
-

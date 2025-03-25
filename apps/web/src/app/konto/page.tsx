@@ -1,8 +1,9 @@
+import { Page } from '@repo/ui';
 import Image from 'next/image';
 
 export default function LoginForm() {
   return (
-    <div className={' font-jet-brains font-bold '}>
+    <Page>
       <h1 className={'justify-self-center text-primary mb-10 text-5xl'}>
         Logowanie
       </h1>
@@ -62,6 +63,6 @@ export default function LoginForm() {
           </div>
         </div>
       </div>
-    </div>
+    </Page>
   );
 }
