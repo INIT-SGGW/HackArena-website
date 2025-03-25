@@ -30,7 +30,7 @@ export default function LoginForm() {
           <div className={'p-1'}>Hasło</div>
           <div
             className={
-              'content-card-clip bg-text text-secondary-300 min-h-[35px] '
+              'content-card-clip v:erb bg-text text-secondary-300 min-h-[35px] '
             }
             style={{ '--clip-size': '14px' }}
           >
@@ -51,7 +51,7 @@ export default function LoginForm() {
           </div>
           <div className={'flex flex-row p-3 justify-self-center'}>
             <Image
-              src={'two-arrows.svg'}
+              src={'two-arrows-white.svg'}
               alt={'two arrows'}
               width={30}
               height={30}
