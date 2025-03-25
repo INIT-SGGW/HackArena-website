@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Layout } from '@repo/ui';
+import React from 'react';
 
 export const metadata: Metadata = {
   title: 'Hackarena',
