@@ -154,7 +154,7 @@ export const TopBar = ({ navItems }: TopBarProps) => {
   }, []);
 
   return (
-    <div className="w-full z-30 flex justify-center">
+    <div className="w-full z-30 flex justify-center fixed top-0">
       <Header
         isMobile={isMobile}
         navItems={navItems}
