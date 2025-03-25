@@ -1,2 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Russo+One&display=swap');
+
 @import '@repo/tailwind-config/theme.css';
 @import '@repo/ui/styles.css';
+
+@layer utilities {
+  .jet-brains {
+    font-family: 'JetBrains Mono', monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    letter-spacing: 1px;
+  }
+
+  .russo-one {
+    font-family: 'Russo one', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    letter-spacing: 3px;
+  }
+}

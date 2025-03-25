@@ -17,14 +17,14 @@ function ContactBlock({ title, text, mail, highlight = false, ...props }: Contac
         <h1 className={`russo-one text-3xl font-bold md:text-nowrap ${highlight ? "text-background" : "text-primary"}`}>{title}</h1>
         {!mail && <Image src="/bolt.svg" alt="bolt" width="25" height="25" />}
       </div>
-      <p className={`text-xl ${highlight ? "text-background" : "text-secondary-100"}`}>
+      <p className={`text-lg ${highlight ? "text-background" : "text-secondary-100"}`}>
         {text}
       </p>
       {
         mail ? (
           <div className="flex flex-row gap-4">
             <Image src={'mail.svg'} alt="mail" width="22" height="22" />
-            <a className="text-xl" href={`mailto:${mail}`}>
+            <a className="text-lg" href={`mailto:${mail}`}>
               {mail}
             </a>
           </div>
@@ -49,7 +49,7 @@ function ContactBlock({ title, text, mail, highlight = false, ...props }: Contac
 export default function Contact() {
   return (
     <Page className='flex flex-col gap-10 max-w-[800px] mx-auto'>
-      <h1 className='text-5xl text-primary russo-one font-bold pl-4'>Kontakt</h1>
+      <h1 className='text-5xl text-primary russo-one pl-4'>Kontakt</h1>
       <div className='flex flex-col gap-8'>
         <ContactBlock
           title="Portale społecznościowe"
