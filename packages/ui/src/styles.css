@@ -4,7 +4,14 @@
 
 @layer utilities {
   .cut-corner {
-    clip-path: polygon(100% 0, 100% 100%, 60 100%, 0% 0);
+    --cut-size: 60px;
+    --cut-displacement: 10px;
+    clip-path: polygon(
+      100% 0,
+      100% 100%,
+      calc(var(--cut-size) + var(--cut-displacement)) 100%,
+      var(--cut-displacement) 0
+    );
   }
 
   .button-clip {
