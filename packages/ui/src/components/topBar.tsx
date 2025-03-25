@@ -42,12 +42,13 @@ const Header = ({
   return (
     <header className={`flex flex-row justify-between items-center p-8 max-w-[1920px] w-full transition-colors duration-150 border-secondary-300 border-b-0 ${scrolledToTop ? '' : 'bg-background border-b-1'}`}>
       <div className="flex flex-row items-center gap-4">
-        <Link href="/">
+        <Link href="/" onClick={() => setIsMenuOpen(false)}>
           <Image src={HackarenaLogo} alt="Hackarena" height="25" />
         </Link>
         <div className="bg-secondary-100 w-[1px] h-[28px]" />
         <Link
           href="https://sggw.edu.pl/"
+          onClick={() => setIsMenuOpen(false)}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -109,6 +110,7 @@ const SideMenu = ({
               <li key={item.href}>
                 <Link
                   href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
                   className={`${item.highlight ? 'text-primary' : ''} text-xl font-bold`}
                 >
                   {item.label}
