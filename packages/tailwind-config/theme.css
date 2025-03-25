@@ -6,5 +6,19 @@
   --color-secondary-100: #757c9f;
   --color-secondary-200: #4b5068;
   --color-secondary-300: #111527;
-  --color-text: #ffffff;
+  --color-secondary-400: #26B9DB;
+  --color-text: #FFFFFF;
+
+  --font-jet-brains: 'JetBrains Mono', monospace;
+  --font-russo-one: 'Russo One', sans-serif;
+}
+
+@layer utilities {
+  .jet-brains {
+    @apply font-jet-brains tracking-wider;
+  }
+
+  .russo-one {
+    @apply font-russo-one;
+  }
 }
