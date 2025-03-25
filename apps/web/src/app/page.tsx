@@ -9,9 +9,13 @@ const Section = ({ children, ...props }: ComponentProps<"section">) => (
 
 export default function Home() {
   return (
-    <div className="w-full flex flex-col overflow-hidden">
-      <Section className="relative py-40">
-        <Image src="/home-bg.svg" width={100} height={100} className="absolute top-[40%] right-0 -translate-y-1/2 w-[70%] max-h-[700px] pointer-events-none" alt="Tło" />
+    <div className="w-full flex flex-col">
+      <Section className="relative py-40 pt-80 md:pt-70">
+        <Image src="/home-bg.svg" width={100} height={100} className="absolute 
+        top-0 right-[50%] translate-x-1/2 translate-y-[-10%] w-[100%] max-h-[450px] min-w-[400px]
+        md:right-0 md:top-[50%] md:translate-x-0 md:translate-y-[-50%] md:w-[70%] 
+        lg:right-0 lg:top-0 lg:translate-y-0 lg:max-h-[700px] 
+        pointer-events-none" alt="Tło" />
         <div className="w-full flex flex-col items-start page-width z-2">
           <div className="flex flex-col gap-2">
             <h1 className="text-5xl russo-one font-bold">
@@ -21,7 +25,7 @@ export default function Home() {
             </h1>
             <p className="text-2xl">Zbierz zespół i zdobywaj nagrody!</p>
           </div>
-          <div className="flex flex-row gap-6 mt-22">
+          <div className="flex flex-row gap-6 mt-22 flex-wrap">
             <LinkButton href="/wydarzenia">Wydarzenia</LinkButton>
             <LinkButton href="/o-nas" secondary icon>O nas</LinkButton>
           </div>
@@ -51,6 +55,20 @@ export default function Home() {
               <h4 className="text-primary text-2xl">HackArena 2.0</h4>
               <p className="text-secondary-100 text-xl">HackArena 2.0 to druga edycja hackathonu organizowanego przez Koło Naukowe "init" z SGGW...</p>
               <Link href="/wydarzenia/hackarena-2">
+                <Image src="/arrow-pointer.svg" className="inline" width={30} height={30} alt="Czytaj więcej" />
+                &nbsp;Dowiedz się więcej
+              </Link>
+            </div>
+          </div>
+          <div className="grid grid-rows-auto md:grid-cols-[.4fr_1fr] gap-6">
+            <div className="p-2 ribbon relative min-w-[250px]">
+              <Image src="/hackarena-2-thumb.jpg" className="ribbon-photo-clip w-full" width={400} height={200} alt="HackArena 2" />
+              <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color" />
+            </div>
+            <div className="flex flex-col justify-around ">
+              <h4 className="text-primary text-2xl">HackArena 1.0</h4>
+              <p className="text-secondary-100 text-xl">HackArena 1.0 to pierwsza edycja hackathonu organizowanego przez Koło Naukowe "init" z SGGW...</p>
+              <Link href="/wydarzenia/hackarena-1">
                 <Image src="/arrow-pointer.svg" className="inline" width={30} height={30} alt="Czytaj więcej" />
                 &nbsp;Dowiedz się więcej
               </Link>
