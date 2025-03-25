@@ -7,7 +7,7 @@ type Props = ComponentProps<"div"> & {
 
 export function Page({ children, paddingTop = "var(--spacing) * 16", ...props }: Props) {
     return (
-        <div {...props} style={{ paddingTop: `calc(96px${" + " + paddingTop})` }} className={`px-8 py-16 ${props.className}`} >
+        <div {...props} style={{ paddingTop: `calc(96px${" + " + paddingTop})` }} className={`px-4 py-16 ${props.className}`} >
             {children}
         </div>
     )
