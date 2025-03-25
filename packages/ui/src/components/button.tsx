@@ -3,18 +3,20 @@ import LightningIcon from "../assets/lightning-outline.svg";
 import Image from "next/image";
 
 type ButtonProps = ComponentProps<'button'> & {
+  fullWidth?: boolean;
   secondary?: boolean;
   icon?: boolean;
 };
 
 export const Button = ({
   children,
+  fullWidth = false,
   secondary = false,
   icon = false,
   ...props
 }: ButtonProps) => {
   return (
-    <div className="relative w-min">
+    <div className={`relative ${fullWidth ? 'w-full' : 'w-min'}`}>
       {icon && (
         <Image
           src={LightningIcon}
@@ -25,10 +27,10 @@ export const Button = ({
       )}
       <button
         {...props}
-        className={`w-min bg-primary p-[2px] cursor-pointer button-clip ${props.className}`}
+        className={`${fullWidth ? "w-full" : "w-min"} box bg-primary p-[2px] cursor-pointer button-clip ${props.className}`}
       >
         <div
-          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} px-6 p-[2px] font-bold button-clip w-full h-full text-nowrap`}
+          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} py-[calc(var(--spacing)*1.5-2px)] font-bold button-clip w-full h-full text-nowrap`}
         >
           {children}
         </div>
