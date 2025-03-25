@@ -36,6 +36,7 @@
     @apply relative after:bg-primary after:absolute after:inset-0;
   }
 
+
   .ribbon::after {
     --cut-size: 20px;
     --ribbon-width: 35px;
