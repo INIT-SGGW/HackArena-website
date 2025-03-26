@@ -1,42 +1,41 @@
-import React, { ComponentProps } from "react";
+import React, { ComponentProps } from 'react';
 import Image from 'next/image';
 
 type ImageContainerProps = ComponentProps<'div'> & {
-  tittle:string,
-  color: string,
-  src: string,
-  href: string,
-  hrefTittle:string
-
-}
-export  const ImageContainer = ({
-  color,
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  color: string;
+  isIcon: boolean;
+};
+export const ImageContainer = ({
   src,
-  href,
-  hrefTittle
-}: ImageContainerProps) =>{
+  alt,
+  width = 400,
+  height = 200,
+  color,
+  isIcon = false,
+  ...props
+}: ImageContainerProps) => {
   return (
-    <div>
-      <div className={"w-[200px] h-[110px] relative"}>
-        <Image src={src} alt={src} layout={"fill"}></Image>
+    <div
+      className={`p-2 ribbon ribbon-${color} w-full min-h-[200] h-[${height}] relative z-30 ${isIcon ? 'w-[300px] h-[200px]' : ''}`}
+    >
+      <div
+        className={`w-full h-full flex h-[${height}] min-h-[200] justify-center  `}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          className={`ribbon-photo-clip  ${props.className} ${isIcon ? 'z-10 ' : ''}`}
+          width={width}
+          height={height}
+        />
       </div>
-      {/*<div className={"relative w-[200px] h-[110px] bg-secondary-300 relative"}>*/}
-
-      {/*  <div className={`clip-trapeze  shrink-0 absolute top-0 left-0 rotate-180 w-full h-full  bg-${color} z-20`}></div>*/}
-
-      {/*  <div className={"flex w-full h-full border-solid border-4 border-background z-10  justify-center"}>*/}
-      {/*    <Image src={`${src}`} alt={`${src}`}layout={"fill"} className={""}></Image>*/}
-      {/*  </div>*/}
-
-      {/*  <div className={`clip-trapeze shrink-0 absolute top-0 left-0  bg-${color} w-full h-full z-20`}></div>*/}
-
-      {/*</div>*/}
-
-      <div className={"flex flex-row mt-4"}>
-        <Image src={"two-arrows-white.svg"} alt={"two arrows white"} width={30} height={30}></Image>
-        <a className={"pl-3"} href={`${href}`}>{hrefTittle}</a>
-      </div>
-
+      <div
+        className={`ribbon-photo-clip absolute inset-0 flex flex-col  justify-center items-center ${!isIcon ? 'bg-background  mix-blend-color w-full min-h-[200] h-[${height}]' : `bg-secondary-500 scale-97  w-[300px] h-[200px]`}`}
+      />
     </div>
   );
-}
+};

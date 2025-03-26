@@ -1,14 +1,21 @@
-import { ComponentProps } from "react";
+import { ComponentProps } from 'react';
 
+type Props = ComponentProps<'div'> & {
+  paddingTop?: string;
+};
 
-type Props = ComponentProps<"div"> & {
-    paddingTop?: string;
-}
-
-export function Page({ children, paddingTop = "var(--spacing) * 16", ...props }: Props) {
-    return (
-        <div {...props} style={{ paddingTop: `calc(96px${" + " + paddingTop})` }} className={`px-4 py-16 ${props.className}`} >
-            {children}
-        </div>
-    )
+export function Page({
+  children,
+  paddingTop = 'var(--spacing) * 16',
+  ...props
+}: Props) {
+  return (
+    <div
+      {...props}
+      style={{ paddingTop: `calc(96px${' + ' + paddingTop})` }}
+      className={`px-4 py-16 ${props.className}`}
+    >
+      {children}
+    </div>
+  );
 }
