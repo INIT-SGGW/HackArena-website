@@ -42,7 +42,12 @@
   .ribbon {
     @apply relative after:bg-primary after:absolute after:inset-0;
   }
-
+.ribbon-secondary-300 {
+  @apply after:bg-secondary-300 after:border-secondary-300;
+}
+.ribbon-secondary-400 {
+  @apply after:bg-secondary-400 after:border-secondary-400;
+}
 
   .ribbon::after {
     --cut-size: 20px;

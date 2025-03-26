@@ -1,7 +1,8 @@
-import { Page } from "@repo/ui"
-import { Buttons } from "../Views/NotFound/Buttons";
+import { Page } from '@repo/ui';
+import { Buttons } from '../Views/NotFound/Buttons';
 
 export default function NotFound() {
+<<<<<<< HEAD
     return (
         <Page className="flex flex-col items-center justify-center gap-8 text-center min-h-[600px]" paddingTop="0px">
             <div className="flex flex-col items-center gap-2">
@@ -12,3 +13,18 @@ export default function NotFound() {
         </Page>
     )
 }
+=======
+  return (
+    <Page
+      className="flex flex-col items-center justify-center gap-8 text-center min-h-[600px]"
+      paddingTop="0px"
+    >
+      <div className="flex flex-col items-center gap-2">
+        <h1 className="russo-one text-primary text-4xl font-bold">Bład 404</h1>
+        <p>Strona, którą próbujesz otworzyć, nie istnieje.</p>
+      </div>
+      <Buttons />
+    </Page>
+  );
+}
+>>>>>>> aa75d3d (made events page for mobile)
