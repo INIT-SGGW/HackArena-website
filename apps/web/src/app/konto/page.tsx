@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function LoginForm() {
   return (
-    <div className={' font-jet-brains font-bold '}>
+    <div className={' font-jet-brains font-bold mt-20 '}>
       <h1 className={'justify-self-center text-primary mb-10 text-5xl'}>
         Logowanie
       </h1>

@@ -4,10 +4,10 @@ import Image from 'next/image';
 export default function Contact() {
   return (
     <div
-      className={'  md:relative justify-center  font-jet-brains md:scale-65 '}
+      className={' justify-self-center md:relative md:w-full md:h-full   font-jet-brains md:scale-85 mt-10'}
     >
-      <div className=" justify-self-center max-w-[450px]   md:max-w-[1000px] md:max-h-[600px] flex flex-col gap-y-10   md:absolute top-0  ">
-        <h1 className="text-4xl  pl-5  font-black text-primary :pl-10 md:text-6xl ">
+      <div className="  max-w-[450px]    flex flex-col gap-y-10    md:max-w-[1000px] md:max-h-[600px] md:place-self-center ">
+        <h1 className="text-4xl  pl-5  font-black text-primary :pl-10  ">
           Kontakt
         </h1>
         <div
