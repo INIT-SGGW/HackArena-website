@@ -5,6 +5,7 @@ export default function LoginForm() {
   return (
     <Page>
       <h1 className={'russo-one justify-self-center text-primary mb-10 text-5xl'}>
+
         Logowanie
       </h1>
       <form
