@@ -85,7 +85,6 @@
     @apply max-w-[1200px];
   }
 
-  @layer utilities {
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
@@ -95,5 +94,25 @@
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
     }
+
+  @keyframes scroll-animation {
+    from {
+      opacity: 0;
+      clip-path: inset(50% 50% 0 0);
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .animated {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.5s linear, transform 0.5s ease-out;
+  }
+  .animated.show {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
