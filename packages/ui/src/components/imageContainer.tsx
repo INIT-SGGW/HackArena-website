@@ -19,8 +19,8 @@ export const ImageContainer = ({
   ...props
 }: ImageContainerProps) => {
   return (
-    <div className={`p-2 ribbon ribbon-${color} w-full min-w-[300px] relative z-10 `}>
-      <div className={`w-full h-full flex  min-h-[200] justify-center  `}>
+    <div className={`${isIcon ? "md:w-full md:h-full min-w-[280px]" : `w-${width } h-${height} max-w-[400px]`} p-2 ribbon ribbon-${color}   relative z-10  self-center`}>
+      <div className={`w-full h-full flex  min-h-[200] justify-center `}>
         <Image
           src={src}
           alt={alt}
@@ -28,10 +28,10 @@ export const ImageContainer = ({
           width={width}
           height={height}
         />
-        {isIcon ? (<div className={`w-full h-full  max-w-[290px] max-h-[205px] bg-secondary-500  self-center  absolute ribbon-photo-clip z-0`}></div>) : null}
+        {isIcon ? (<div className={`w-full h-full   max-w-[270px] max-h-[210px] bg-secondary-500  self-center  absolute ribbon-photo-clip z-0`}></div>) : null}
       </div>
       <div className={`ribbon-photo-clip absolute inset-0 flex flex-col  justify-center items-center 
-      ${!isIcon ? `bg-background  mix-blend-color w-full min-h-[200] ` : null}`} />
+      ${isIcon ? null: `bg-background  mix-blend-color w-full  `}`} />
     </div>
     );
 };
