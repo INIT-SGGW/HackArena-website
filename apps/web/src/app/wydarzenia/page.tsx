@@ -1,104 +1,98 @@
 import Image from "next/image";
-import { ImageContainer } from "@repo/ui";
-import {  ComponentProps } from "react";
+import { ImageContainer, Page } from "@repo/ui";
+import { ComponentProps } from "react";
 
-const Current = ({ children, ...props }: ComponentProps<"div">) => (
-  <div className={` flex flex-col  ${props.className}`}>
-    <h1 className={"text-primary text-4xl pb-8 pl-5 font-black"}>
-      Wydarzenia
-    </h1>
-    <div className={"content-card-clip bg-primary flex-grow  w-full h-ful max-w-[343px] md:max-w-[900px] "} style={{ "--clip-size": "20px" }}>
-      <div className={"px-5 py-5 "}>
-        <div className={"flex flex-row justify-between pb-2"}>
-          <h2 className={"text-secondary-300 text-2xl font-black md:text-4xl"}>
-            W trakcie
-          </h2>
-          <Image src={"bolt.svg"} alt={"bolt"} width={15} height={15} className={"md:w-7 md:h-7"}></Image>
-        </div>
+type ContainerNameProps = ComponentProps<"div"> & {
+  name: string;
+};
 
-        <div className={"md:flex md:flex-row"}>
-
-          <div className={"w-full relative md:mb-2 "}>
-            <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} color={"secondary-300"} width={350} height={200}></ImageContainer>
-          </div>
-
-          <div className={"flex flex-col md:pl-10"}>
-            <div className={"text-secondary-300 pt-5"}>
-              <h1 className={"pb-3 text-2xl font-extrabold md:text-4xl"}>
-                HackArena 2.5
-              </h1>
-              <p className={"font-medium text-lg md:text-2xl"}>
-                HackArena 2.5 to trzecia edycja hackathonu organizowanego
-                przez Koło Naukowe "init" z SGGW...
-              </p>
-            </div>
-
-            <div className={"flex flex-row text-secondary-300 pt-3 md:pt-6"}>
-              <Image src={"two-arrows-black.svg"} alt={"two arrows"} width={30} height={30}></Image>
-              <a className={"pl-2 font-extrabold text-lg md:text-2xl "} href={"wydarzenia/hackArena_2.5"}>
-                Dowiedz się więcej
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+function ContainerName({ name }: ContainerNameProps) {
+  return (
+    <div className={"flex flex-row justify-between md:pb-2 "}>
+      <h1 className={" text-2xl font-black md:text-4xl"}>
+        {name}
+      </h1>
+      <Image src={"bolt.svg"} alt={"bolt"} width={15} height={15} className={"md:w-7 md:h-7"}></Image>
     </div>
-  </div>
-);
-const Coming = ({children,...props}: ComponentProps<"div">) => (
-  <div className={`mt-15 max-w-[300px] ${props.className}`}>
-    <h1 className={"text-2xl text-primary font-black pb-3 left-0 justify-self-center"}>
-      Nadchodzące
-    </h1>
-    <ImageContainer src={"question-mark.svg"} alt={"hackarena 2.5"} width={50} height={50} color={"secondary-400"} isIcon={true}></ImageContainer>
+  );
+};
 
-    <div className={"flex flex-row text-white pt-3"}>
-      <Image src={"two-arrows-white.svg"} alt={"two arrows"} width={30} height={30}></Image>
-      <a className={"pl-2 font-extrabold text-lg md:text-xl"} href={"wydarzenia/???"}>
-        ???
+type ForwardingProps = ComponentProps<"div"> & {
+  title: string;
+  href: string;
+  isContainer?: boolean;
+};
+
+function Forwarding({ tittle, href, isContainer = true }: ForwardingProps) {
+  return (
+    <div className={"flex flex-row  pt-3 md:pt-6"}>
+      <Image src={`${isContainer ? "two-arrows-black.svg" : "two-arrows-white.svg"}`} alt={"two arrows"} width={30} height={30}></Image>
+      <a className={"pl-2 font-extrabold text-lg md:text-2xl "} href={href}>
+        {tittle}
       </a>
     </div>
+  );
+}
+
+const Current = ({ children, ...props }: ComponentProps<"div">) => (
+  <div className={`text-secondary-300  justify-items-center  ${props.className}`}>
+
+    <h1 className={"text-primary text-4xl font-black  md:mr-150  pb-10"}>Wydarzenia</h1>
+
+    <div
+      className={"  content-card-clip bg-primary flex-grow  w-full max-w-[343px] md:max-w-[900px] p-5 justify-between"} style={{ "--clip-size": "20px" }}>
+      <ContainerName name={"W trakcie"} />
+      <div className={"md:flex md:flex-row"}>
+
+        <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} color={"secondary-300"} width={350} height={200}></ImageContainer>
+
+        <div className={"flex flex-col md:pl-10 pt-5 md:pt-2"}>
+
+          <h1 className={"pb-3 text-2xl font-extrabold md:text-4xl"}>
+            HackArena 2.5
+          </h1>
+          <p className={"font-medium text-lg md:text-2xl"}>
+            HackArena 2.5 to trzecia edycja hackathonu organizowanego przez Koło Naukowe "init" z SGGW...
+          </p>
+          <Forwarding tittle={"Dowiedz się więcej"} href={"/wydarzenia/hackArena_2.5"} />
+
+        </div>
+      </div>
+    </div>
   </div>
 );
 
-const PassedRoller = ({children, ...props}: ComponentProps<'div'>)   => (
-  <div className={`mt-15 ${props.className}`}>
-    <h1 className={"text-2xl text-primary font-black pb-3 left-0 justify-self-center"}>
-      Zakończone
-    </h1>
+const BottomImages = ({ ...props }: ComponentProps<"div">) => (
+  <div className={`flex flex-row shrink mt-15 justify-center   ${props.className}`}>
 
-    <div className={"flex flex-row overflow-x-scroll snap-x snap-mandatory no-scrollbar"}>
+    <div className={` mr-20 max-w-[300px] ${props.className} `}>
+      <h1 className={"text-2xl text-primary font-black pb-3  justify-self-center"}>
+        Nadchodzące
+      </h1>
+      <ImageContainer src={"question-mark.svg"} alt={"hackarena 2.5"} width={50} height={50} color={"secondary-400"}  isIcon={true}></ImageContainer>
+      <Forwarding tittle={"???"} href={"/wydarzenia/???"} isContainer={false} />
+    </div>
 
-      <div className={"shrink-0 mr-5 snap-center snap-always "}>
-        <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={300} height={200}></ImageContainer>
+    <div className={"pl-20 border-solid border-l-2 border-secondary-300"}>
+      <h1 className={"text-2xl text-primary font-black pb-3 justify-self-center"}>
+        Zakończone
+      </h1>
+      <div className={"flex flex-row overflow-x-scroll snap-x snap-mandatory no-scrollbar md:max-w-[350px]"}>
 
-        <div className={"flex flex-row text-white pt-3"}>
-          <Image src={"two-arrows-white.svg"} alt={"two arrows"} width={30} height={30}></Image>
-          <a className={"pl-2 font-extrabold text-lg md:text-xl"} href={"wydarzenia/hackArena_2.0"}>
-            HackArena 2.0
-          </a>
+        <div className={" mr-5 snap-center snap-always "}>
+          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={300} height={200}></ImageContainer>
+          <Forwarding tittle={"HackArena 2.0"} href={"/wydarzenia/hackArena_2.0"} isContainer={false} />
         </div>
-      </div>
-      <div className={"shrink-0 mr-5 snap-center snap-always"}>
-        <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={300} height={200}></ImageContainer>
-
-        <div className={"flex flex-row text-white pt-3"}>
-          <Image src={"two-arrows-white.svg"} alt={"two arrows"} width={30} height={30}></Image>
-          <a className={"pl-2 font-extrabold text-lg md:text-xl"} href={"wydarzenia/hackArena_2.0"}>
-            HackArena 2.0
-          </a>
+        <div className={" mr-5 snap-center snap-always"}>
+          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={300} height={200}></ImageContainer>
+          <Forwarding tittle={"HackArena 2.0"} href={"/wydarzenia/hackArena_2.0"} isContainer={false} />
         </div>
-      </div>
 
-      <div className={"shrink-0 mr-5 snap-center snap-always"}>
-        <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={300} height={200}></ImageContainer>
-
-        <div className={"flex flex-row text-white pt-3"}>
-          <Image src={"two-arrows-white.svg"} alt={"two arrows"} width={30} height={30}></Image>
-          <a className={"pl-2 font-extrabold text-lg md:text-xl"} href={"wydarzenia/hackArena_1.0"}>
-            HackArena 1.0
-          </a>
+        <div className={" mr-5 snap-center snap-always"}>
+          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={300} height={200}></ImageContainer>
+          <Forwarding tittle={"HackArena 1.0"} href={"/wydarzenia/hackArena_1.0"} isContainer={false} />
         </div>
+
       </div>
     </div>
   </div>
@@ -106,12 +100,11 @@ const PassedRoller = ({children, ...props}: ComponentProps<'div'>)   => (
 
 export default function Events() {
   return (
-    <div className={"flex flex-col m-5 scale-85 "}>
-      <Current className={"self-center "}></Current>
-      <div className={"w-full h-full md:flex md:flex-row md:place-content-center "}>
-        <Coming className={"justify-self-center md:mr-20"}></Coming>
-        <PassedRoller className={"md:max-w-[500px] md:pl-20 md:border-solid md:border-l-2 md:border-secondary-300 "}></PassedRoller>
+    <Page className={""}>
+      <div className={"w-full"}>
+        <Current className={" "}></Current>
+        <BottomImages className={" "} />
       </div>
-    </div>
+    </Page>
   );
 }

@@ -19,7 +19,7 @@ export const ImageContainer = ({
   ...props
 }: ImageContainerProps) => {
   return (
-    <div className={`p-2 ribbon ribbon-${color} w-full min-w-[300px] min-h-[200]   relative z-10 `}>
+    <div className={`p-2 ribbon ribbon-${color} w-full min-w-[300px] relative z-10 `}>
       <div className={`w-full h-full flex  min-h-[200] justify-center  `}>
         <Image
           src={src}
