@@ -11,11 +11,11 @@ type ContainerNameProps = ComponentProps<"div"> & {
 
 function ContainerName({ name,isContainer = false,color, ...props }: ContainerNameProps) {
   return (
-      <div className={`w-full flex flex-row ${isContainer ? "justify-between" : "justify-center"}   pb-2 text-${color}  ${props.className}`}>
+      <div className={`w-full flex flex-row ${isContainer ? "justify-between" : "justify-center"} pb-2 text-${color}  ${props.className}`}>
       <h1 className={"russo-one font-bold text-3xl  md:mb-0 "}>
         {name}
       </h1>
-      {isContainer ?<Image src={"bolt.svg"} alt={"bolt"} width={15} height={15} className={"md:w-7 md:h-7"}/> : null}
+      {isContainer ?<Image src={"bolt.svg"} alt={"bolt"} width={25} height={25} className={"md:w-7 md:h-7"}/> : null}
     </div>
   );
 };
@@ -71,7 +71,7 @@ const BottomImages = ({ ...props }: ComponentProps<"div">) => (
       <Forwarding tittle={"???"} href={"/wydarzenia/???"} isContainer={false}  className={"pt-3"} />
     </div>
 
-    <div className={"md:pl-20  md:border-solid md:border-l-2 md:border-secondary-300 min-w-0  scroll-container  shrink"}>
+    <div className={"  md:border-solid md:border-l-2 md:border-secondary-300 min-w-0  scroll-container  shrink"}>
       <ContainerName name={"Zakończone"} color={"primary"} className={"pb-5"} />
       <div className={"flex flex-row overflow-x-scroll snap-x snap-mandatory no-scrollbar w-full md:max-w-[450px]    "}>
 
