@@ -18,7 +18,7 @@ export function Sponsors({ data }: Props) {
     <div className="flex flex-col gap-8 overflow-hidden">
       <h3 className="w-full text-center text-2xl px-4">{data.text}</h3>
       <div
-        className="w-max flex gap-8 p-4 pb-6 bg-secondary-300 animate-scroll"
+        className="w-max flex gap-8 p-4 pb-6 bg-secondary-300 animate-sponsor-scroll"
         style={{ animationDuration: `${allSponsors * 2.5}s` }}
       >
         {data.sponsors.length > 0 && (
