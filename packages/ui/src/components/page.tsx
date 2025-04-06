@@ -12,8 +12,8 @@ export function Page({
   return (
     <div
       {...props}
-      style={{ paddingTop: `calc(96px${' + ' + paddingTop})` }}
-      className={`px-4 py-16 ${props.className}`}
+      style={{ paddingTop: `calc(96px + (${paddingTop}))` }}
+      className={`px-4 py-16 min-h-[500px] ${props.className}`}
     >
       {children}
     </div>

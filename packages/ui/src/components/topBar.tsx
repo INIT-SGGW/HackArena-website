@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react';
 
 import HackarenaLogo from '../assets/hackarena-logo.svg';
 import SGGWLogo from '../assets/sggw-logo.svg';
-import MenuIcon from '../assets/menu-icon.svg';
-import CrossIcon from '../assets/cross-yellow.svg';
 import FacebookLogo from '../assets/facebook-logo.svg';
 import InstagramLogo from '../assets/instagram-logo.svg';
 import LinkedinLogo from '../assets/linkedin-logo.svg';
@@ -39,11 +37,37 @@ const Header = ({
     return () => window.removeEventListener('scroll', handleBackgroundChange);
   }, []);
 
+  useEffect(() => {
+    const handleColorChange = () => {
+      const primaryColor = getComputedStyle(
+        document.documentElement,
+      ).getPropertyValue('--color-primary');
+      const crossIcon = document.querySelectorAll<SVGElement>('#cross-icon');
+      const menuIcon = document.querySelectorAll<SVGElement>('#menu-icon');
+
+      crossIcon.forEach((icon) => {
+        icon.setAttribute('fill', primaryColor);
+      });
+
+      menuIcon.forEach((icon) => {
+        icon.setAttribute('fill', primaryColor);
+      });
+    };
+
+    document.addEventListener('primary-color-change', handleColorChange);
+
+    return () => {
+      document.removeEventListener('primary-color-change', handleColorChange);
+    };
+  }, []);
+
   return (
-    <header className={`flex flex-row justify-between items-center p-8 max-w-[1920px] w-full transition-colors duration-150 border-secondary-300 border-b-0 ${scrolledToTop ? '' : 'bg-background border-b-1'}`}>
+    <header
+      className={`flex flex-row justify-between items-center p-8 max-w-[1920px] w-full transition-colors duration-150 border-secondary-300 border-b-0 ${scrolledToTop ? '' : 'bg-background border-b-1'}`}
+    >
       <div className="flex flex-row items-center gap-4">
         <Link href="/" onClick={() => setIsMenuOpen(false)}>
-          <Image src={HackarenaLogo} alt="Hackarena" height="25" />
+          <Image id="logo" src={HackarenaLogo} alt="Hackarena" height="25" />
         </Link>
         <div className="bg-secondary-100 w-[1px] h-[28px]" />
         <Link
@@ -60,11 +84,31 @@ const Header = ({
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="cursor-pointer"
         >
-          {isMenuOpen ? (
-            <Image src={CrossIcon} alt="Menu" height="25" />
-          ) : (
-            <Image src={MenuIcon} alt="Menu" height="25" />
-          )}
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 40 39"
+            fill="#FFD200"
+            id="cross-icon"
+            className={`${isMenuOpen ? 'visible' : 'hidden'}`}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M39.4456 3.59035L4.09022 38.9457L0.554688 35.4102L32.3745 3.59035L39.4456 3.59035Z" />
+            <path d="M35.9096 38.9456L4.08984 7.12576V0.0546875L39.4452 35.41L35.9096 38.9456Z" />
+          </svg>
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 50 43"
+            id="menu-icon"
+            fill="#FFD200"
+            className={`${isMenuOpen ? 'hidden' : 'visible'}`}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M50 5H0L0 0L45 0L50 5Z" />
+            <path d="M50 24H0V19H50V24Z" />
+            <path d="M50 43H5L0 38H50V43Z" />
+          </svg>
         </button>
       ) : (
         <nav>
@@ -92,12 +136,24 @@ const SideMenu = ({
   navItems,
   setIsMenuOpen,
 }: HeaderProps) => {
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
+
   return (
     <div
       className={`fixed top-0 right-0 h-full w-full flex flex-col items-center justify-between bg-background z-40 pb-4 
         ${isMenuOpen ? '' : 'translate-x-full'} transform transition-transform duration-250 ease-in-out bg-[url('/side-menu-bg.svg')] bg-right bg-cover`}
     >
-      <div className="w-full flex flex-col items-center gap-10">
+      <div className="w-full flex flex-col items-center gap-20">
         <Header
           isMobile={isMobile}
           navItems={navItems}
@@ -105,13 +161,13 @@ const SideMenu = ({
           setIsMenuOpen={setIsMenuOpen}
         />
         <nav>
-          <ul className="flex flex-col gap-10 items-center">
+          <ul className="flex flex-col gap-12 items-center">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`${item.highlight ? 'text-primary' : ''} text-xl font-bold`}
+                  className={`${item.highlight ? 'text-primary' : ''} text-3xl font-bold`}
                 >
                   {item.label}
                 </Link>

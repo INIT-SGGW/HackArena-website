@@ -5,24 +5,37 @@
   --color-primary: #ffd200;
   --color-secondary-100: #757c9f;
   --color-secondary-200: #4b5068;
-  --color-secondary-300: #111527;
-  --color-secondary-400: #26B9DB;
-  --color-secondary-500: #263246;
-
-  --color-text: #FFFFFF;
-
-  --font-jet-brains: 'JetBrains Mono', monospace;
-  --font-russo-one: 'Russo One', sans-serif;
+  --color-secondary-300: #22263c;
+  --color-text: #ffffff;
 }
 
-@layer utilities {
-  .jet-brains {
-    @apply font-jet-brains tracking-wider;
+@layer base {
+  html {
+    font-size: 12px;
   }
 
-  .russo-one {
-    @apply font-russo-one;
+  html::-webkit-scrollbar-thumb {
+    background-color: var(--color-secondary-300);
+    border-radius: 2px;
+  }
+  html::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  html {
+    -ms-overflow-style: none;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-secondary-300) transparent;
   }
 
+  @media screen and (min-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
 
+  @media screen and (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
+  }
 }
