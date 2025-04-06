@@ -32,7 +32,7 @@ export function Results({ data }: Props) {
           {data.teams.map((team, index) => (
             <li
               key={index}
-              className="text-xl font-bold bg-primary text-background text-center p-2 button-clip"
+              className="text-xl font-bold bg-primary text-background text-center p-2 both-corners-clip"
             >
               {team}
             </li>

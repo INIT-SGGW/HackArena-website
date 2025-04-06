@@ -27,10 +27,10 @@ export const Button = ({
       )}
       <button
         {...props}
-        className={`${fullWidth ? 'w-full' : 'w-min'} box bg-primary p-[2px] cursor-pointer button-clip ${props.className}`}
+        className={`${fullWidth ? 'w-full' : 'w-min'} box bg-primary p-[2px] cursor-pointer both-corners-clip ${props.className}`}
       >
         <div
-          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} px-6 py-[calc(var(--spacing)*1.5-2px)] font-bold button-clip w-full h-full text-nowrap`}
+          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} px-6 py-[calc(var(--spacing)*1.5-2px)] font-bold both-corners-clip w-full h-full text-nowrap`}
         >
           {children}
         </div>

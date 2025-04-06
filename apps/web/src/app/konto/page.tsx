@@ -11,8 +11,9 @@ export default function LoginForm() {
       </h1>
       <form
         className={
-          'content-card-clip bg-secondary-300 flex flex-col w-full max-w-[410px] justify-self-center p-5 gap-1'
+          'both-corners-clip bg-secondary-300 flex flex-col w-full max-w-[410px] justify-self-center p-5 gap-1'
         }
+        style={{ '--clip-size': '25px' } as React.CSSProperties}
       >
         <Input placeholder="Email" label="Email" />
         <Input type="password" placeholder="Hasło" label="Hasło" />

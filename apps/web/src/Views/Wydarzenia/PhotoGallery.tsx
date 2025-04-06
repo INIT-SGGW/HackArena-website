@@ -41,8 +41,8 @@ export function PhotoGallery({ data }: Props) {
                 setCurrentPhoto(index);
                 setShowCarousel(true);
               }}
-              className="bg-secondary-300 gallery-photo-clip p-2 cursor-pointer"
-              style={{ '--cut-size': '15px' } as React.CSSProperties}
+              className="bg-secondary-300 both-corners-clip p-2 cursor-pointer"
+              style={{ '--clip-size': '15px' } as React.CSSProperties}
             >
               <Image
                 src={photo}
@@ -51,8 +51,8 @@ export function PhotoGallery({ data }: Props) {
                 loading="lazy"
                 alt={`Photo ${index + 1}`}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                style={{ '--cut-size': '33px' } as React.CSSProperties}
-                className="w-full h-auto m-auto gallery-photo-clip"
+                style={{ '--clip-size': '33px' } as React.CSSProperties}
+                className="w-full h-auto m-auto both-corners-clip"
               />
             </div>
           ))}

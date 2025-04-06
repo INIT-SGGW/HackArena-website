@@ -20,7 +20,8 @@ function ContactBlock({
   return (
     <div
       {...props}
-      className={`content-card-clip flex flex-col items-start justify-between ${highlight ? 'bg-primary' : 'bg-secondary-300'} px-6 py-4 pb-6 gap-3 ${props.className}`}
+      className={`both-corners-clip flex flex-col items-start justify-between ${highlight ? 'bg-primary' : 'bg-secondary-300'} px-6 py-4 pb-6 gap-3 ${props.className}`}
+      style={{ '--clip-size': '25px' } as React.CSSProperties}
     >
       <div className="w-full flex items-center justify-between">
         <h1

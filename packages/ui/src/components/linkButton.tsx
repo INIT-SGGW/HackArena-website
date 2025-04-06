@@ -27,10 +27,10 @@ export const LinkButton = ({
       )}
       <a
         {...props}
-        className={`${fullWidth ? 'w-full' : 'w-min'} block bg-primary p-[2px] cursor-pointer button-clip ${props.className}`}
+        className={`${fullWidth ? 'w-full' : 'w-min'} block bg-primary p-[2px] cursor-pointer both-corners-clip ${props.className}`}
       >
         <div
-          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} py-[calc(var(--spacing)*1.5-2px)] px-6 text-center font-bold button-clip w-full h-full text-nowrap`}
+          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} py-[calc(var(--spacing)*1.5-2px)] px-6 text-center font-bold both-corners-clip w-full h-full text-nowrap`}
         >
           {children}
         </div>

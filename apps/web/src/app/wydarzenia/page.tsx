@@ -5,17 +5,17 @@ import { ComponentProps, useEffect } from "react";
 
 type ContainerNameProps = ComponentProps<"div"> & {
   name: string;
-  isContainer?:boolean;
-  color:string
+  isContainer?: boolean;
+  color: string
 };
 
-function ContainerName({ name,isContainer = false,color, ...props }: ContainerNameProps) {
+function ContainerName({ name, isContainer = false, color, ...props }: ContainerNameProps) {
   return (
-      <div className={`w-full flex flex-row ${isContainer ? "justify-between" : "justify-center"} pb-2 text-${color}  ${props.className}`}>
+    <div className={`w-full flex flex-row ${isContainer ? "justify-between" : "justify-center"} pb-2 text-${color}  ${props.className}`}>
       <h1 className={"russo-one font-bold text-3xl  md:mb-0 "}>
         {name}
       </h1>
-      {isContainer ?<Image src={"bolt.svg"} alt={"bolt"} width={25} height={25} className={"md:w-7 md:h-7"}/> : null}
+      {isContainer ? <Image src={"bolt.svg"} alt={"bolt"} width={25} height={25} className={"md:w-7 md:h-7"} /> : null}
     </div>
   );
 };
@@ -26,7 +26,7 @@ type ForwardingProps = ComponentProps<"div"> & {
   isContainer?: boolean;
 };
 
-function Forwarding({ tittle, href, isContainer = true ,...props}: ForwardingProps) {
+function Forwarding({ tittle, href, isContainer = true, ...props }: ForwardingProps) {
   return (
     <div className={`flex flex-row    ${props.className}`}>
       <Image src={`${isContainer ? "two-arrows-black.svg" : "two-arrows-white.svg"}`} alt={"two arrows"} width={30} height={30}></Image>
@@ -37,14 +37,14 @@ function Forwarding({ tittle, href, isContainer = true ,...props}: ForwardingPro
   );
 }
 
-const Current = ({...props }: ComponentProps<"div">) => (
+const Current = ({ ...props }: ComponentProps<"div">) => (
   <div className={`text-secondary-300  justify-items-center russo-one ${props.className}`}>
 
-    <div className={" content-card-clip bg-primary   w-full  px-6 py-4   max-w-[454px] md:max-w-full" } style={{ "--clip-size": "20px" }}>
+    <div className={" content-card-clip bg-primary   w-full  px-6 py-4   max-w-[454px] md:max-w-full"} style={{ "--clip-size": "20px" }}>
       <ContainerName name={"W trakcie"} isContainer={true} color={"bg"} />
       <div className={"flex flex-col md:flex-row "}>
 
-        <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} color={"secondary-300"} width={850} height={200}  />
+        <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} color={"secondary-300"} width={850} height={200} />
         <div className={"flex flex-col md:pl-10  md:pt-2 gap-5  russo-one"}>
 
           <h1 className={" pt-5 md:pt-0 pnpm text-3xl "}>
@@ -65,10 +65,10 @@ const BottomImages = ({ ...props }: ComponentProps<"div">) => (
   <div className={`flex flex-col md:flex-row shrink justify-center md:gap-20 gap-10  ${props.className}`}>
 
     <div className={`self-center ${props.className}`}>
-      <ContainerName name={"Nadchodzące"} color={"primary"} className={"pb-5"}/>
+      <ContainerName name={"Nadchodzące"} color={"primary"} className={"pb-5"} />
 
-      <ImageContainer src={"question-mark.svg"} alt={"hackarena 2.5"} width={50} height={50} color={"secondary-400"}  isIcon={true}/>
-      <Forwarding tittle={"???"} href={"/wydarzenia/???"} isContainer={false}  className={"pt-3"} />
+      <ImageContainer src={"question-mark.svg"} alt={"hackarena 2.5"} width={50} height={50} color={"secondary-300"} isIcon={true} />
+      <Forwarding tittle={"???"} href={"/wydarzenia/???"} isContainer={false} className={"pt-3"} />
     </div>
 
     <div className={"  md:border-solid md:border-l-2 md:border-secondary-300 min-w-0  scroll-container  shrink"}>
@@ -76,16 +76,16 @@ const BottomImages = ({ ...props }: ComponentProps<"div">) => (
       <div className={"flex flex-row overflow-x-scroll snap-x snap-mandatory no-scrollbar w-full md:max-w-[450px]    "}>
 
         <div className={" ml-5  snap-center snap-always shrink-0 animated self-center"}>
-          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={280} height={200}/>
-          <Forwarding tittle={"HackArena 2.0"} href={"/wydarzenia/hackArena_2.0"} isContainer={false} className={"pt-3"}/>
+          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={280} height={200} />
+          <Forwarding tittle={"HackArena 2.0"} href={"/wydarzenia/hackArena_2.0"} isContainer={false} className={"pt-3"} />
         </div>
         <div className={" ml-5 snap-center snap-always shrink-0 animated "}>
-          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={280} height={200}/>
-          <Forwarding tittle={"HackArena 2.0"} href={"/wydarzenia/hackArena_2.0"} isContainer={false} className={"pt-3"}/>
+          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={280} height={200} />
+          <Forwarding tittle={"HackArena 2.0"} href={"/wydarzenia/hackArena_2.0"} isContainer={false} className={"pt-3"} />
         </div>
 
         <div className={" ml-5  snap-center snap-always shrink-0 animated "}>
-          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={280} height={200}/>
+          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={280} height={200} />
           <Forwarding tittle={"HackArena 1.0"} href={"/wydarzenia/hackArena_1.0"} isContainer={false} className={"pt-3"} />
         </div>
 
@@ -97,23 +97,23 @@ const BottomImages = ({ ...props }: ComponentProps<"div">) => (
 export default function Events() {
 
 
-  useEffect(() =>{
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if(entry.isIntersecting) {
+          if (entry.isIntersecting) {
             entry.target.classList.add("show")
           } else {
             entry.target.classList.remove("show")
           }
         })
       },
-      {root: document.querySelector(".scroll-container"),threshold: 0.5}
+      { root: document.querySelector(".scroll-container"), threshold: 0.5 }
     );
     document.querySelectorAll(".animated").forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  },[]);
+  }, []);
 
   return (
     <Page className={"flex flex-col gap-10 max-w-[900px] mx-auto "}>

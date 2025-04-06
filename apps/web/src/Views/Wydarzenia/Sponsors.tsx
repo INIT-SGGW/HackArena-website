@@ -70,8 +70,8 @@ function SponsorsSegment({ title, data }: SponsorsSegmentProps) {
           <Link
             href={sponsor.href}
             key={index}
-            className="w-[140px] h-[70px] p-4 bg-text button-clip"
-            style={{ '--cut-size': '10px' } as React.CSSProperties}
+            className="w-[140px] h-[70px] p-4 bg-text both-corners-clip"
+            style={{ '--clip-size': '10px' } as React.CSSProperties}
             target="__blank"
             rel="noopener noreferrer"
           >

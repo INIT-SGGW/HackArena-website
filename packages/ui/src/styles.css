@@ -14,41 +14,16 @@
     );
   }
 
-  .button-clip {
-    --cut-size: 14px;
-    clip-path: polygon(
-      0 0,
-      calc(100% - var(--cut-size)) 0,
-      100% var(--cut-size),
-      100% 100%,
-      var(--cut-size) 100%,
-      0 calc(100% - var(--cut-size)),
-      0% 100%
-    );
-  }
-
-  .gallery-photo-clip {
-    --cut-size: 20px;
-    clip-path: polygon(
-      0 0,
-      calc(100% - var(--cut-size)) 0,
-      100% var(--cut-size),
-      100% 100%,
-      var(--cut-size) 100%,
-      0 calc(100% - var(--cut-size)),
-      0% 100%
-    );
-  }
-
-  .content-card-clip {
-    --clip-size: 25px;
+  .both-corners-clip {
+    --clip-size: 14px;
     clip-path: polygon(
       0 0,
       calc(100% - var(--clip-size)) 0,
       100% var(--clip-size),
       100% 100%,
       var(--clip-size) 100%,
-      0 calc(100% - var(--clip-size))
+      0 calc(100% - var(--clip-size)),
+      0% 100%
     );
   }
 
@@ -56,12 +31,9 @@
     @apply relative after:bg-primary after:absolute after:inset-0;
   }
 
-.ribbon-secondary-300 {
-  @apply after:bg-secondary-300 after:border-secondary-300;
-}
-.ribbon-secondary-400 {
-  @apply after:bg-secondary-400 after:border-secondary-400;
-}
+  .ribbon-secondary-300 {
+    @apply after:bg-secondary-300 after:border-secondary-300;
+  }
 
   .ribbon::after {
     --cut-size: 20px;
@@ -107,15 +79,15 @@
     scrollbar-width: none; /* Firefox */
   }
 
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-    }
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 
   @keyframes scroll-animation {
     from {
@@ -131,7 +103,9 @@
   .animated {
     opacity: 0;
     transform: translateX(50px);
-    transition: opacity 0.5s linear, transform 0.5s ease-out;
+    transition:
+      opacity 0.5s linear,
+      transform 0.5s ease-out;
   }
   .animated.show {
     opacity: 1;
