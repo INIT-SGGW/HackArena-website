@@ -5,6 +5,37 @@
   --color-primary: #ffd200;
   --color-secondary-100: #757c9f;
   --color-secondary-200: #4b5068;
-  --color-secondary-300: #111527;
+  --color-secondary-300: #22263c;
   --color-text: #ffffff;
+}
+
+@layer base {
+  html {
+    font-size: 12px;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: var(--color-secondary-300);
+    border-radius: 2px;
+  }
+  html::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  html {
+    -ms-overflow-style: none;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-secondary-300) transparent;
+  }
+
+  @media screen and (min-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
+  }
 }
