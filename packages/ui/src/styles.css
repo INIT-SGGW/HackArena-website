@@ -27,6 +27,19 @@
     );
   }
 
+  .gallery-photo-clip {
+    --cut-size: 20px;
+    clip-path: polygon(
+      0 0,
+      calc(100% - var(--cut-size)) 0,
+      100% var(--cut-size),
+      100% 100%,
+      var(--cut-size) 100%,
+      0 calc(100% - var(--cut-size)),
+      0% 100%
+    );
+  }
+
   .content-card-clip {
     --clip-size: 25px;
     clip-path: polygon(
@@ -75,6 +88,15 @@
   }
 
   .page-width {
-    @apply max-w-[1200px];
+    @apply max-w-[1100px] w-full;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

@@ -3,3 +3,6 @@ export { Button } from './components/button';
 export { LinkButton } from './components/linkButton';
 export { Page } from './components/page';
 export { Input } from './components/input';
+export { PageSection } from './components/pageSection';
+export { TitleWithIcon } from './components/titleWithIcon';
+export { SocialLinks } from './components/socialLinks';

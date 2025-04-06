@@ -1,6 +1,6 @@
-import { ComponentProps } from "react";
-import LightningIcon from "../assets/lightning-outline.svg";
-import Image from "next/image";
+import { ComponentProps } from 'react';
+import LightningIcon from '../assets/lightning-outline.svg';
+import Image from 'next/image';
 
 type ButtonProps = ComponentProps<'button'> & {
   fullWidth?: boolean;
@@ -27,7 +27,7 @@ export const Button = ({
       )}
       <button
         {...props}
-        className={`${fullWidth ? "w-full" : "w-min"} box bg-primary p-[2px] cursor-pointer button-clip ${props.className}`}
+        className={`${fullWidth ? 'w-full' : 'w-min'} box bg-primary p-[2px] cursor-pointer button-clip ${props.className}`}
       >
         <div
           className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} px-6 py-[calc(var(--spacing)*1.5-2px)] font-bold button-clip w-full h-full text-nowrap`}

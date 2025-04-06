@@ -1,10 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
-import FacebookLogo from '../assets/facebook-logo.svg';
-import InstagramLogo from '../assets/instagram-logo.svg';
-import LinkedinLogo from '../assets/linkedin-logo.svg';
 import { TopBar } from './topBar';
+import { SocialLinks } from './socialLinks';
 
 export type NavProps = {
   navItems: {
@@ -37,29 +34,7 @@ const Footer = ({ navItems }: FooterProps) => {
           </ul>
         </nav>
         <div className="bg-primary p-4 md:pl-[60px] w-full cut-corner">
-          <div className="w-full flex flex-row gap-10 justify-center md:justify-start md:pl-15">
-            <Link
-              href="https://www.facebook.com/kninit/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={FacebookLogo} alt="Facebook" height="25" />
-            </Link>
-            <Link
-              href="https://www.instagram.com/kn_init_/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={InstagramLogo} alt="Instagram" height="25" />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/company/ko%C5%82o-naukowe-init/about/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={LinkedinLogo} alt="Linkedin" height="25" />
-            </Link>
-          </div>
+          <SocialLinks className="justify-center md:justify-start md:pl-15" />
         </div>
       </div>
       <p className="text-center text-xs sm:text-sm md:text-base">
@@ -79,9 +54,7 @@ export const Layout = ({ children, navItems }: RootLayoutProps) => {
     <html lang="pl">
       <body className="flex flex-col items-center min-h-screen bg-background text-text jet-brains">
         <TopBar navItems={navItems} />
-        <main className="flex-grow w-full">
-          {children}
-        </main>
+        <main className="flex-grow w-full">{children}</main>
         <Footer navItems={navItems} />
       </body>
     </html>
