@@ -13,45 +13,47 @@ const isRegistrationOpen = () => {
   const currentDate = new Date().getTime();
   return mockData.wydarzenia.some((event) => {
     return (
-      currentDate >= event.registration.date.start.getTime() && currentDate <= event.registration.date.end.getTime()
+      currentDate >= event.registration.date.start.getTime() &&
+      currentDate <= event.registration.date.end.getTime()
     );
   });
+};
 
-}
-
-const navItems = isRegistrationOpen() ? [
-  {
-    label: 'Rejestracja',
-    href: '/rejestracja',
-    highlight: true,
-  },
-  {
-    label: 'Wydarzenia',
-    href: '/wydarzenia',
-  },
-  {
-    label: 'Kontakt',
-    href: '/kontakt',
-  },
-  {
-    label: 'Konto',
-    href: '/konto',
-  },
-] : [
-  {
-    label: 'Wydarzenia',
-    href: '/wydarzenia',
-  },
-  {
-    label: 'Kontakt',
-    href: '/kontakt',
-  },
-  {
-    label: 'Konto',
-    href: '/konto',
-    highlight: true,
-  },
-];
+const navItems = isRegistrationOpen()
+  ? [
+      {
+        label: 'Rejestracja',
+        href: '/rejestracja',
+        highlight: true,
+      },
+      {
+        label: 'Wydarzenia',
+        href: '/wydarzenia',
+      },
+      {
+        label: 'Kontakt',
+        href: '/kontakt',
+      },
+      {
+        label: 'Konto',
+        href: '/konto',
+      },
+    ]
+  : [
+      {
+        label: 'Wydarzenia',
+        href: '/wydarzenia',
+      },
+      {
+        label: 'Kontakt',
+        href: '/kontakt',
+      },
+      {
+        label: 'Konto',
+        href: '/konto',
+        highlight: true,
+      },
+    ];
 
 export default function RootLayout({
   children,
