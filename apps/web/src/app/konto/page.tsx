@@ -22,7 +22,7 @@ export default function LoginForm() {
         </Button>
         <div className={'flex flex-row w-full justify-center p-3 '}>
           <Image
-            src={'two-arrows.svg'}
+            src={'two-arrows-white.svg'}
             alt={'two arrows'}
             width={30}
             height={30}

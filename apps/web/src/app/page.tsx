@@ -18,8 +18,7 @@ export default function Home() {
           src="/home-bg.svg"
           width={100}
           height={100}
-          className="absolute 
-        top-0 right-[50%] translate-x-1/2 translate-y-[-10%] w-[100%] max-h-[450px] min-w-[400px]
+          className="absolute top-0 right-[50%] translate-x-1/2 translate-y-[-10%] w-[100%] max-h-[450px] min-w-[400px]
         md:right-0 md:top-[50%] md:translate-x-0 md:translate-y-[-50%] md:w-[70%] 
         lg:right-0 lg:top-0 lg:translate-y-0 lg:max-h-[700px] 
         pointer-events-none"

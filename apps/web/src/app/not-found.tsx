@@ -1,4 +1,5 @@
 import { Page } from '@repo/ui';
+
 import { Buttons } from '../views/NotFound/Buttons';
 
 export default function NotFound() {
