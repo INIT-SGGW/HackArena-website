@@ -28,16 +28,15 @@
   }
 
   .ribbon {
-    @apply relative after:bg-primary after:absolute after:inset-0;
-  }
-
-  .ribbon-secondary-300 {
-    @apply after:bg-secondary-300 after:border-secondary-300;
+    --ribbon-color: var(--color-primary);
+    @apply relative after:absolute after:inset-0;
   }
 
   .ribbon::after {
     --cut-size: 20px;
     --ribbon-width: 35px;
+
+    background-color: var(--ribbon-color);
     clip-path: polygon(
       calc(100% - var(--ribbon-width) - var(--cut-size)) 0,
       calc(100% - var(--cut-size)) 0,
