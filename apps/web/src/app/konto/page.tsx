@@ -1,5 +1,4 @@
-import { Button, Input, Page } from '@repo/ui';
-import Image from 'next/image';
+import { ArrowLink, Button, Input, Page } from '@repo/ui';
 
 export default function LoginForm() {
   return (
@@ -21,16 +20,7 @@ export default function LoginForm() {
         <Button type="submit" fullWidth>
           Zaloguj się
         </Button>
-        <div className={'flex flex-row w-full justify-center p-3 '}>
-          <Image
-            src={'two-arrows-white.svg'}
-            alt={'two arrows'}
-            width={30}
-            height={30}
-            className={'mr-4'}
-          />
-          <a href={'/password/forgot'}>Zapomniałeś hasła?</a>
-        </div>
+        <ArrowLink color="white" className='justify-center mt-3' text="Zapomniałeś/aś hasła?" href="/password/forgot" />
       </form>
     </Page>
   );
