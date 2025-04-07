@@ -30,7 +30,7 @@ export const LinkButton = ({
         className={`${fullWidth ? 'w-full' : 'w-min'} block bg-primary p-[2px] cursor-pointer both-corners-clip ${props.className}`}
       >
         <div
-          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} py-[calc(var(--spacing)*1.5-2px)] px-6 text-center font-bold both-corners-clip w-full h-full text-nowrap`}
+          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} py-[calc(var(--spacing)*2.5-2px)] sm:py-[calc(var(--spacing)*1.5-2px)] px-6 text-center font-bold both-corners-clip w-full h-full text-nowrap`}
         >
           {children}
         </div>

@@ -30,7 +30,7 @@ export const Button = ({
         className={`${fullWidth ? 'w-full' : 'w-min'} box bg-primary p-[2px] cursor-pointer both-corners-clip ${props.className}`}
       >
         <div
-          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} px-6 py-[calc(var(--spacing)*1.5-2px)] font-bold both-corners-clip w-full h-full text-nowrap`}
+          className={`${secondary ? 'bg-background text-primary' : 'bg-primary text-background'} py-[calc(var(--spacing)*2.5-2px)] sm:py-[calc(var(--spacing)*1.5-2px)] px-6  font-bold both-corners-clip w-full h-full text-nowrap`}
         >
           {children}
         </div>
