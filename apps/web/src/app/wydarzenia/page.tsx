@@ -58,7 +58,8 @@ const HighlightedEvent = ({ event }: HighlightedEventProps) => {
         key={event.name.text}
         className="grid grid-rows-auto sm:grid-cols-[.5fr_1fr] gap-8"
       >
-        <div
+        <Link
+          href={`/wydarzenia/${event.name.url}`}
           className="bg-background both-corners-clip p-2 min-w-[270px] relative aspect-[1.63]"
           style={{ '--clip-size': '15px' } as React.CSSProperties}
         >
@@ -73,10 +74,12 @@ const HighlightedEvent = ({ event }: HighlightedEventProps) => {
             className="w-full h-full object-cover both-corners-clip"
           />
           <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color" />
-        </div>
+        </Link>
         <div className="flex flex-col justify-between gap-4 md:gap-0">
           <h4 className="text-3xl font-bold">
-            {event.name.text}
+            <Link href={`/wydarzenia/${event.name.url}`}>
+              {event.name.text}
+            </Link>
           </h4>
           <p className="text-xl line-clamp-3">
             {event.description}
