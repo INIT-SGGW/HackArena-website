@@ -1,128 +1,122 @@
 "use client"
 import Image from "next/image";
-import { ImageContainer, Page } from "@repo/ui";
-import { ComponentProps, useEffect } from "react";
+import { ArrowLink, Page } from "@repo/ui";
+import { EventData, mockData } from "../../utils/mockData";
+import Link from "next/link";
 
-type ContainerNameProps = ComponentProps<"div"> & {
-  name: string;
-  isContainer?: boolean;
-  color: string
+type HighlightedEventProps = {
+  event: EventData;
 };
-
-function ContainerName({ name, isContainer = false, color, ...props }: ContainerNameProps) {
-  return (
-    <div className={`w-full flex flex-row ${isContainer ? "justify-between" : "justify-center"} pb-2 text-${color}  ${props.className}`}>
-      <h1 className={"russo-one font-bold text-3xl  md:mb-0 "}>
-        {name}
-      </h1>
-      {isContainer ? <Image src={"bolt.svg"} alt={"bolt"} width={25} height={25} className={"md:w-7 md:h-7"} /> : null}
-    </div>
-  );
-};
-
-type ForwardingProps = ComponentProps<"div"> & {
-  title: string;
-  href: string;
-  isContainer?: boolean;
-};
-
-function Forwarding({ tittle, href, isContainer = true, ...props }: ForwardingProps) {
-  return (
-    <div className={`flex flex-row    ${props.className}`}>
-      <Image src={`${isContainer ? "two-arrows-black.svg" : "two-arrows-white.svg"}`} alt={"two arrows"} width={30} height={30}></Image>
-      <a className={"pl-2 text-lg russo-one "} href={href}>
-        {tittle}
-      </a>
-    </div>
-  );
-}
-
-const Current = ({ ...props }: ComponentProps<"div">) => (
-  <div className={`text-secondary-300  justify-items-center russo-one ${props.className}`}>
-
-    <div className={" content-card-clip bg-primary   w-full  px-6 py-4   max-w-[454px] md:max-w-full"} style={{ "--clip-size": "20px" }}>
-      <ContainerName name={"W trakcie"} isContainer={true} color={"bg"} />
-      <div className={"flex flex-col md:flex-row "}>
-
-        <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} color={"secondary-300"} width={850} height={200} />
-        <div className={"flex flex-col md:pl-10  md:pt-2 gap-5  russo-one"}>
-
-          <h1 className={" pt-5 md:pt-0 pnpm text-3xl "}>
-            HackArena 2.5
-          </h1>
-          <p className={" text-lg font-normal"}>
-            HackArena 2.5 to trzecia edycja hackathonu organizowanego przez Koło Naukowe "init" z SGGW...
-          </p>
-          <Forwarding tittle={"Dowiedz się więcej"} href={"/wydarzenia/hackArena_2.5"} />
-
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const BottomImages = ({ ...props }: ComponentProps<"div">) => (
-  <div className={`flex flex-col md:flex-row shrink justify-center md:gap-20 gap-10  ${props.className}`}>
-
-    <div className={`self-center ${props.className}`}>
-      <ContainerName name={"Nadchodzące"} color={"primary"} className={"pb-5"} />
-
-      <ImageContainer src={"question-mark.svg"} alt={"hackarena 2.5"} width={50} height={50} color={"secondary-300"} isIcon={true} />
-      <Forwarding tittle={"???"} href={"/wydarzenia/???"} isContainer={false} className={"pt-3"} />
-    </div>
-
-    <div className={"  md:border-solid md:border-l-2 md:border-secondary-300 min-w-0  scroll-container  shrink"}>
-      <ContainerName name={"Zakończone"} color={"primary"} className={"pb-5"} />
-      <div className={"flex flex-row overflow-x-scroll snap-x snap-mandatory no-scrollbar w-full md:max-w-[450px]    "}>
-
-        <div className={" ml-5  snap-center snap-always shrink-0 animated self-center"}>
-          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={280} height={200} />
-          <Forwarding tittle={"HackArena 2.0"} href={"/wydarzenia/hackArena_2.0"} isContainer={false} className={"pt-3"} />
-        </div>
-        <div className={" ml-5 snap-center snap-always shrink-0 animated "}>
-          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={280} height={200} />
-          <Forwarding tittle={"HackArena 2.0"} href={"/wydarzenia/hackArena_2.0"} isContainer={false} className={"pt-3"} />
-        </div>
-
-        <div className={" ml-5  snap-center snap-always shrink-0 animated "}>
-          <ImageContainer src={"/hackarena-2-thumb.jpg"} alt={"HackArena 2.0"} width={280} height={200} />
-          <Forwarding tittle={"HackArena 1.0"} href={"/wydarzenia/hackArena_1.0"} isContainer={false} className={"pt-3"} />
-        </div>
-
-      </div>
-    </div>
-  </div>
-);
 
 export default function Events() {
-
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("show")
-          } else {
-            entry.target.classList.remove("show")
-          }
-        })
-      },
-      { root: document.querySelector(".scroll-container"), threshold: 0.5 }
-    );
-    document.querySelectorAll(".animated").forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const sortedEvents = mockData.wydarzenia.sort((a, b) => b.timeDate.start.getTime() - a.timeDate.start.getTime());
+  const incomingEvents = sortedEvents.filter((event) => event.timeDate.start >= new Date());
+  let pastEvents = sortedEvents.filter((event) => event.timeDate.start < new Date());
+  let [highlightedEvent, ...restIncomingEvents] = incomingEvents.sort((a, b) => a.timeDate.start.getTime() - b.timeDate.start.getTime());
+  if (!highlightedEvent) {
+    highlightedEvent = pastEvents[0];
+    pastEvents = pastEvents.slice(1);
+  }
 
   return (
-    <Page className={"flex flex-col gap-10 max-w-[900px] mx-auto "}>
-      <h1 className={"text-5xl text-primary russo-one pl-20  pr-30  self-center md:pl-5 md:pr-0 md:self-start "}>Wydarzenia</h1>
-
-      <div className={"flex flex-col md:gap-8 gap-10 justify-self-center min-w-0"}>
-        <Current className={" "}></Current>
-        <BottomImages className={" "} />
+    <Page className={"page-width flex flex-col gap-12 mx-auto"}>
+      <h1 className={"text-5xl text-primary russo-one pl-8"}>Wydarzenia</h1>
+      <div className={"flex flex-col md:gap-8 gap-10"}>
+        {highlightedEvent && <HighlightedEvent event={highlightedEvent} />}
+        <div className={`flex flex-col md:flex-row p-4 md:p-10 gap-10 md:gap-20 ${restIncomingEvents.length > 1 ? "!flex-col !gap-10" : ""}`}>
+          {restIncomingEvents.length > 0 && (
+            <>
+              <NoDescriptionEvents title="Nadchodzące" events={restIncomingEvents} />
+              <div className={`w-[2px] bg-secondary-200 my-[70px] hidden md:block ${restIncomingEvents.length > 1 ? "!hidden" : ""}`} />
+            </>
+          )}
+          {pastEvents.length > 0 && <NoDescriptionEvents grow title="Zakończone" events={pastEvents} />}
+        </div>
       </div>
     </Page>
   );
+}
+
+const HighlightedEvent = ({ event }: HighlightedEventProps) => {
+  const now = new Date();
+  let title;
+  if (event.timeDate.start > now) {
+    title = "Już wkrótce!";
+  } else if (event.timeDate.end > now) {
+    title = "W trakcie!";
+  } else {
+    title = "Ostatnia HackArena!";
+  }
+
+  return (
+    <div className={"flex flex-col gap-4 text-background both-corners-clip bg-primary w-full p-6"} style={{ "--clip-size": "25px" } as React.CSSProperties}>
+      <div className="flex items-center justify-between">
+        <h2 className="russo-one text-4xl font-bold">{title}</h2>
+        <Image src={"bolt.svg"} alt={"bolt"} width={22} height={22} />
+      </div>
+      <div
+        key={event.name.text}
+        className="grid grid-rows-auto sm:grid-cols-[.5fr_1fr] gap-8"
+      >
+        <div
+          className="bg-background both-corners-clip p-2 min-w-[270px] relative aspect-[1.63]"
+          style={{ '--clip-size': '15px' } as React.CSSProperties}
+        >
+          <Image
+            src={event.thumbnail}
+            width={500}
+            height={500}
+            loading="lazy"
+            alt={event.name.text}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            style={{ '--clip-size': '33px' } as React.CSSProperties}
+            className="w-full h-full object-cover both-corners-clip"
+          />
+          <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color" />
+        </div>
+        <div className="flex flex-col justify-between gap-4 md:gap-0">
+          <h4 className="text-3xl font-bold">
+            {event.name.text}
+          </h4>
+          <p className="text-xl line-clamp-3">
+            {event.description}
+          </p>
+          <ArrowLink text={"Dowiedz się więcej"} href={`/wydarzenia/${event.name.url}`} />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+type NoDescriptionEventProps = {
+  events: EventData[];
+  title: string;
+  grow?: boolean;
+};
+
+const NoDescriptionEvents = ({ grow, title, events }: NoDescriptionEventProps) => {
+  return (
+    <div className={`flex flex-col gap-4 items-start overflow-hidden ${grow && "flex-1"}`}>
+      <h2 className="text-3xl font-bold text-primary russo-one">{title}</h2>
+      <div className="flex items-center gap-8 w-full overflow-x-auto pb-2">
+        {
+          events.map((event) => (
+            <Link className="flex flex-col gap-4 w-max" key={event.name.text} href={`/wydarzenia/${event.name.url}`}>
+              <div style={{ "--ribbon-color": event.color || "var(--color-primary)" } as React.CSSProperties} className="p-2 ribbon relative w-max">
+                <Image
+                  src={event.thumbnail}
+                  className="ribbon-photo-clip object-cover w-full max-w-[300px] aspect-[1.63] "
+                  width={400}
+                  height={200}
+                  alt={event.name.text}
+                />
+                <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color" />
+              </div>
+              <ArrowLink text={event.name.text} color="white" href={`/wydarzenia/${event.name.url}`} as="div" />
+            </Link>
+          ))
+        }
+      </div>
+    </div>
+  )
 }
