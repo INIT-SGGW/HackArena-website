@@ -1,0 +1,15 @@
+services:
+  web:
+    image: ghcr.io/init-sggw/ha-web:${BUILD_ENV:-production}
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        - BUILD_ENV=${BUILD_ENV:-production}
+  admin:
+    image: ghcr.io/init-sggw/ha-admin:${BUILD_ENV:-production}
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        - BUILD_ENV=${BUILD_ENV:-production}
