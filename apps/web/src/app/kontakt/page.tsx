@@ -94,7 +94,7 @@ export default function Contact() {
       <div className="flex flex-col gap-8">
         <ContactBlock
           title="Portale społecznościowe"
-          text="Napisz do nas na nszych portalach społecznościowych!"
+          text="Napisz do nas na naszych portalach społecznościowych!"
           highlight
         />
         <div className="flex flex-row gap-8 flex-wrap">
