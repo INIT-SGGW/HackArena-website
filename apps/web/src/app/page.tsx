@@ -1,7 +1,12 @@
-import { TitleWithIcon, LinkButton, PageSection } from '@repo/ui';
+import { TitleWithIcon, LinkButton, PageSection, ArrowLink } from '@repo/ui';
 import Image from 'next/image';
-import Link from 'next/link';
 import { mockData } from '../utils/mockData';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Hackarena',
+  description: 'Weź udział w wydarzeniu, które łączy programistów w maratonie kodowania. Wykorzystaj swoją kreatywność i zdobywaj nagrody!',
+};
 
 export default function Home() {
   const wydarzenia = mockData.wydarzenia
@@ -76,11 +81,11 @@ export default function Home() {
             {wydarzenia.map((event) => (
               <div
                 key={event.name.text}
-                className="grid grid-rows-auto md:grid-cols-[.4fr_1fr] gap-4 md:gap-6"
+                className="grid grid-rows-auto sm:grid-cols-[.4fr_1fr] gap-4 md:gap-6"
               >
                 <div className="p-2 ribbon relative min-w-[250px]">
                   <Image
-                    src="/hackarena-2-thumb.jpg"
+                    src={event.thumbnail}
                     className="ribbon-photo-clip w-full"
                     width={400}
                     height={200}
@@ -95,16 +100,7 @@ export default function Home() {
                   <p className="text-secondary-100 text-xl line-clamp-3">
                     {event.description}
                   </p>
-                  <Link href={`/wydarzenia/${event.name.url}`}>
-                    <Image
-                      src="/arrow-pointer.svg"
-                      className="inline"
-                      width={30}
-                      height={30}
-                      alt="Czytaj więcej"
-                    />
-                    &nbsp;Dowiedz się więcej
-                  </Link>
+                  <ArrowLink href={`/wydarzenia/${event.name.url}`} text="Dowiedz się więcej" color="white" />
                 </div>
               </div>
             ))}

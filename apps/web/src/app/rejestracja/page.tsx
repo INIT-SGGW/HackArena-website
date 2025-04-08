@@ -1,4 +1,14 @@
 import { Page, SocialLinks } from '@repo/ui';
+import { Metadata } from 'next';
+
+const metadata: Metadata = {
+  title: 'Rejestracja | HackArena',
+  description: `Rejestracja na HackArena - hackathon organizowany przez KNIT`,
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function Rejestracja() {
   return (

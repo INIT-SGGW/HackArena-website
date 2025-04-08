@@ -6,6 +6,7 @@ export enum EventComponents {
   SPONSORS = 'sponsors',
   PHOTOS = 'photos',
   PRIZES = 'prizes',
+  AGENDA = 'agenda',
 }
 
 export const mockData: { wydarzenia: EventData[] } = {
@@ -15,6 +16,7 @@ export const mockData: { wydarzenia: EventData[] } = {
         url: 'hackarena_1_0',
         text: 'HackArena 1.0',
       },
+      thumbnail: "/photos/hackarena_1/thumbnail.jpg",
       registration: {
         date: {
           start: new Date('2024-05-01T10:00:00'),
@@ -111,6 +113,7 @@ export const mockData: { wydarzenia: EventData[] } = {
         url: 'hackarena_2_0',
         text: 'HackArena 2.0',
       },
+      thumbnail: "/photos/hackarena_2/thumbnail.jpg",
       registration: {
         date: {
           start: new Date('2024-09-01T10:00:00'),
@@ -122,7 +125,7 @@ export const mockData: { wydarzenia: EventData[] } = {
         end: new Date('2024-10-27T18:00:00'),
       },
       description:
-        'Druga edycja hackathonu organizowanego przez Koło Naukowe "init". W tej edycji wzieło udział 16 drużyn, a zwycięzcy otrzymali nagrody o łącznej wartości 6000 zł.',
+        'Druga edycja hackathonu organizowanego przez Koło Naukowe "init". W tej edycji wzięło udział 16 drużyn, a zwycięzcy otrzymali nagrody o łącznej wartości 6000 zł.',
       blocks: [
         {
           type: EventComponents.HEADER,
@@ -130,7 +133,7 @@ export const mockData: { wydarzenia: EventData[] } = {
             title: 'Hack{{ icon }}Arena 2.0',
             icon: '/lightning.svg',
             description:
-              'Druga edycja hackathonu organizowanego przez Koło Naukowe "init". W tej edycji wzieło udział 16 drużyn, a zwycięzcy otrzymali nagrody o łącznej wartości 6000 zł.',
+              'Druga edycja hackathonu organizowanego przez Koło Naukowe "init". W tej edycji wzięło udział 16 drużyn, a zwycięzcy otrzymali nagrody o łącznej wartości 6000 zł.',
             timeDate: {
               start: new Date('2024-10-26T10:00:00'),
               end: new Date('2024-10-27T18:00:00'),
@@ -222,7 +225,7 @@ export const mockData: { wydarzenia: EventData[] } = {
             mediaPatronage: [
               {
                 name: 'Grupa StudentNews',
-                logo: '/sponsors/studentNews.png',
+                logo: '/sponsors/studentnews.png',
                 href: 'https://grupa.studentnews.pl/',
               },
               {
@@ -263,79 +266,71 @@ export const mockData: { wydarzenia: EventData[] } = {
         {
           type: EventComponents.PHOTOS,
           data: [
-            '/photos/hackarena_2/DSC06700.JPG',
-            '/photos/hackarena_2/DSC06729.JPG',
-            '/photos/hackarena_2/DSC06748.JPG',
-            '/photos/hackarena_2/DSC06782.JPG',
-            '/photos/hackarena_2/DSC06783.JPG',
-            '/photos/hackarena_2/DSC06827.JPG',
-            '/photos/hackarena_2/DSC06828.JPG',
-            '/photos/hackarena_2/DSC06831.JPG',
-            '/photos/hackarena_2/DSC06839.JPG',
-            '/photos/hackarena_2/DSC06845.JPG',
-            '/photos/hackarena_2/DSC06852.JPG',
-            '/photos/hackarena_2/DSC06884.JPG',
-            '/photos/hackarena_2/DSC06894.JPG',
-            '/photos/hackarena_2/DSC06897.JPG',
-            '/photos/hackarena_2/DSC06902.JPG',
-            '/photos/hackarena_2/DSC06949.JPG',
-            '/photos/hackarena_2/DSC06956.JPG',
-            '/photos/hackarena_2/DSC06973.JPG',
-            '/photos/hackarena_2/DSC06980.JPG',
-            '/photos/hackarena_2/DSC07003.JPG',
-            '/photos/hackarena_2/DSC07029.JPG',
-            '/photos/hackarena_2/DSC07038.JPG',
-            '/photos/hackarena_2/DSC07069.JPG',
-            '/photos/hackarena_2/DSC07072.JPG',
-            '/photos/hackarena_2/DSC07075.JPG',
-            '/photos/hackarena_2/DSC07076.JPG',
-            '/photos/hackarena_2/DSC07077.JPG',
-            '/photos/hackarena_2/DSC07080.JPG',
-            '/photos/hackarena_2/DSC07085.JPG',
-            '/photos/hackarena_2/DSC07089.JPG',
-            '/photos/hackarena_2/DSC07092.JPG',
-            '/photos/hackarena_2/DSC07094.JPG',
-            '/photos/hackarena_2/DSC07095.JPG',
-            '/photos/hackarena_2/DSC07099.JPG',
-            '/photos/hackarena_2/DSC07100.JPG',
-            '/photos/hackarena_2/DSC07103.JPG',
-            '/photos/hackarena_2/DSC07104.JPG',
-            '/photos/hackarena_2/DSC07116.JPG',
-            '/photos/hackarena_2/DSC07162.JPG',
-            '/photos/hackarena_2/DSC07166.JPG',
-            '/photos/hackarena_2/DSC07459.JPG',
-            '/photos/hackarena_2/DSC07513.JPG',
-            '/photos/hackarena_2/DSC07545.JPG',
-            '/photos/hackarena_2/DSC07551.JPG',
-            '/photos/hackarena_2/DSC07564.JPG',
-            '/photos/hackarena_2/DSC07586.JPG',
-            '/photos/hackarena_2/DSC07592.JPG',
-            '/photos/hackarena_2/DSC07593.JPG',
-            '/photos/hackarena_2/DSC07616.JPG',
-            '/photos/hackarena_2/DSC07718.JPG',
-            '/photos/hackarena_2/DSC07761.JPG',
-            '/photos/hackarena_2/DSC07816.JPG',
-            '/photos/hackarena_2/DSC07857.JPG',
-            '/photos/hackarena_2/DSC07870.JPG',
-            '/photos/hackarena_2/DSC07882.JPG',
-            '/photos/hackarena_2/DSC_7285.JPG',
-            '/photos/hackarena_2/DSC_7289.JPG',
-            '/photos/hackarena_2/DSC_7308.JPG',
-            '/photos/hackarena_2/DSC_7314.JPG',
-            '/photos/hackarena_2/DSC_7373.JPG',
-            '/photos/hackarena_2/DSC_7374.JPG',
-            '/photos/hackarena_2/DSC_7411.JPG',
-            '/photos/hackarena_2/DSC_7414.JPG',
-            '/photos/hackarena_2/DSC_7457.JPG',
-            '/photos/hackarena_2/DSC_7500.JPG',
-            '/photos/hackarena_2/DSC_7669.JPG',
-            '/photos/hackarena_2/DSC_7751.JPG',
-            '/photos/hackarena_2/DSC_7793.JPG',
-            '/photos/hackarena_2/DSC_7800.JPG',
-            '/photos/hackarena_2/DSC_7835.JPG',
-            '/photos/hackarena_2/DSC_7858.JPG',
-            '/photos/hackarena_2/DSC_7860.JPG',
-            '/photos/hackarena_2/DSC_7955.JPG',
+            '/photos/hackarena_2/DSC06700.jpg',
+            '/photos/hackarena_2/DSC06783.jpg',
+            '/photos/hackarena_2/DSC_7289.jpg',
+            '/photos/hackarena_2/DSC06827.jpg',
+            '/photos/hackarena_2/DSC06831.jpg',
+            '/photos/hackarena_2/DSC06845.jpg',
+            '/photos/hackarena_2/DSC06884.jpg',
+            '/photos/hackarena_2/DSC06894.jpg',
+            '/photos/hackarena_2/DSC06897.jpg',
+            '/photos/hackarena_2/DSC_7373.jpg',
+            '/photos/hackarena_2/DSC_7374.jpg',
+            '/photos/hackarena_2/DSC_7411.jpg',
+            '/photos/hackarena_2/DSC_7414.jpg',
+            '/photos/hackarena_2/DSC06956.jpg',
+            '/photos/hackarena_2/DSC06973.jpg',
+            '/photos/hackarena_2/DSC07003.jpg',
+            '/photos/hackarena_2/DSC07029.jpg',
+            '/photos/hackarena_2/DSC_7314.jpg',
+            '/photos/hackarena_2/DSC_7669.jpg',
+            '/photos/hackarena_2/DSC07038.jpg',
+            '/photos/hackarena_2/DSC07069.jpg',
+            '/photos/hackarena_2/DSC07072.jpg',
+            '/photos/hackarena_2/DSC07075.jpg',
+            '/photos/hackarena_2/DSC07076.jpg',
+            '/photos/hackarena_2/DSC07077.jpg',
+            '/photos/hackarena_2/DSC07080.jpg',
+            '/photos/hackarena_2/DSC07085.jpg',
+            '/photos/hackarena_2/DSC07089.jpg',
+            '/photos/hackarena_2/DSC07092.jpg',
+            '/photos/hackarena_2/DSC07094.jpg',
+            '/photos/hackarena_2/DSC07095.jpg',
+            '/photos/hackarena_2/DSC07099.jpg',
+            '/photos/hackarena_2/DSC07100.jpg',
+            '/photos/hackarena_2/DSC07103.jpg',
+            '/photos/hackarena_2/DSC07116.jpg',
+            '/photos/hackarena_2/DSC07104.jpg',
+            '/photos/hackarena_2/DSC07162.jpg',
+            '/photos/hackarena_2/DSC07166.jpg',
+            '/photos/hackarena_2/DSC07459.jpg',
+            '/photos/hackarena_2/DSC_7500.jpg',
+            '/photos/hackarena_2/DSC07513.jpg',
+            '/photos/hackarena_2/DSC07545.jpg',
+            '/photos/hackarena_2/DSC07564.jpg',
+            '/photos/hackarena_2/DSC07586.jpg',
+            '/photos/hackarena_2/DSC07592.jpg',
+            '/photos/hackarena_2/DSC07593.jpg',
+            '/photos/hackarena_2/DSC07616.jpg',
+            '/photos/hackarena_2/DSC07718.jpg',
+            '/photos/hackarena_2/DSC_7285.jpg',
+            '/photos/hackarena_2/DSC_7308.jpg',
+            '/photos/hackarena_2/DSC_7751.jpg',
+            '/photos/hackarena_2/DSC_7793.jpg',
+            '/photos/hackarena_2/DSC_7800.jpg',
+            '/photos/hackarena_2/DSC_7835.jpg',
+            '/photos/hackarena_2/DSC_7858.jpg',
+            '/photos/hackarena_2/DSC_7860.jpg',
+            '/photos/hackarena_2/DSC07761.jpg',
+            '/photos/hackarena_2/DSC07816.jpg',
+            '/photos/hackarena_2/DSC07857.jpg',
+            '/photos/hackarena_2/DSC_7955.jpg',
+            '/photos/hackarena_2/DSC07870.jpg',
+            '/photos/hackarena_2/DSC07882.jpg',
+            '/photos/hackarena_2/DSC_7457.jpg',
+            '/photos/hackarena_2/DSC06782.jpg',
+            '/photos/hackarena_2/DSC07551.jpg',
           ],
         },
       ],
@@ -345,6 +340,7 @@ export const mockData: { wydarzenia: EventData[] } = {
         url: 'hackarena_2_5',
         text: 'HackArena 2.5',
       },
+      thumbnail: "/photos/hackarena_2_5/thumbnail.jpg",
       registration: {
         date: {
           start: new Date('2025-04-21T10:00:00'),
@@ -402,6 +398,55 @@ export const mockData: { wydarzenia: EventData[] } = {
             text: 'Turniej zostanie rozegrany <strong>w trzech rundach</strong>, z których każda będzie składać się z emocjonujących <strong>pojedynków 1v1</strong>. Uczestnicy staną do bezpośredniej rywalizacji, testując skuteczność swoich botów. <strong>Ćwierćfinały</strong> rozpoczną się od <strong>losowania par</strong>, które zdecyduje o przydziale do poszczególnych meczów.',
           },
         },
+        {
+          type: EventComponents.AGENDA,
+          data: {
+            days: [
+              {
+                title: 'Dzień 1',
+                events: [
+                  {
+                    time: '10:00',
+                    text: 'Rejestracja uczestników',
+                  },
+                  {
+                    time: '11:00',
+                    text: 'Rozpoczęcie HackAreny 2.5',
+                  },
+                  {
+                    time: '19:00',
+                    text: 'Zakończenie HackAreny 2.5',
+                  },
+                ],
+              },
+              {
+                title: "Dzień II  Niedziela 27.10",
+                events: [
+                  {
+                    time: "09:00",
+                    text: "Start dnia II"
+                  },
+                  {
+                    time: "11:00",
+                    text: "Lunch - catering"
+                  },
+                  {
+                    time: "15:00",
+                    text: "Pizza"
+                  },
+                  {
+                    time: "18:00",
+                    text: "Zakończenie pracy"
+                  },
+                  {
+                    time: "19:00",
+                    text: ["Turniej HackArena 2.0", "Oficjalne zakończenie"]
+                  }
+                ]
+              }
+            ],
+          }
+        }
       ],
     },
     {
@@ -409,10 +454,11 @@ export const mockData: { wydarzenia: EventData[] } = {
         url: 'gamejam',
         text: 'HackArena GameJam',
       },
+      thumbnail: '/photos/gamejam/thumbnail.png',
       registration: {
         date: {
           start: new Date('2025-04-01T10:00:00'),
-          end: new Date('2025-04-28T10:00:00'),
+          end: new Date('2025-04-27T10:00:00'),
         },
         url: 'https://itch.io/jam/hackarena-game-jam',
       },
@@ -433,8 +479,8 @@ export const mockData: { wydarzenia: EventData[] } = {
             description:
               'Weź udział w HackArena GameJam! Stwórz jak najlepszy projekt gry i rywalizuj z innymi zespołami o wygraną. Wydarzenie skierowane jest zarówno do osób rozpoczynających swoją przygodę z gamedevem, jak i zapalonych wyjadaczy. Na zwycięzców czekają wyjątkowe nagrody!',
             timeDate: {
-              start: new Date('2024-03-02T10:00:00'),
-              end: new Date('2024-03-03T18:00:00'),
+              start: new Date('2025-04-28T10:00:00'),
+              end: new Date('2025-05-04T23:59:00'),
             },
             location: 'Online',
             thumbnail: '/photos/gamejam/thumbnail.png',
@@ -444,14 +490,14 @@ export const mockData: { wydarzenia: EventData[] } = {
           type: EventComponents.HEADER_TEXT_SECTION,
           data: {
             title: 'Zadanie',
-            text: 'Zadaniem uczestników jest <strong>stworzenie gry komputerowej o określonych parametrach,</strong> uwzględniając motyw przewodni ujawniony w trakcie wydarzenia. <strong>W maksymalnie 4 osobowych drużynach, uczestnicy dostaną tydzień</strong> na stworzenie gry, która zostanie potem oceniona przez jury oraz społeczność akademicka w głosowaniu.',
+            text: 'Zadaniem uczestników jest <strong>stworzenie gry komputerowej o określonych parametrach,</strong> uwzględniając motyw przewodni ujawniony w trakcie wydarzenia. <strong>W maksymalnie 4 osobowych drużynach, uczestnicy dostaną tydzień</strong> na stworzenie gry, która zostanie potem oceniona przez jury oraz społeczność akademicką w głosowaniu.',
           },
         },
         {
           type: EventComponents.HEADER_TEXT_SECTION,
           data: {
             title: 'Co i gdzie',
-            text: 'Szczegóły, zasady oraz hasło przewodnie konkursu znajdują się <strong>na stronie itch.io,</strong> gdzie uczestnicy prześlą swoje projekty do oceny. Po więcej informacji po kliknięciu w link poniżej.',
+            text: 'Szczegóły, zasady oraz hasło przewodnie konkursu znajdują się <strong>na stronie itch.io,</strong> gdzie uczestnicy prześlą swoje projekty do oceny. Więcej informacji po kliknięciu w link poniżej.',
             link: {
               text: 'Przejdź do strony wydarzenia',
               href: 'https://itch.io/jam/hackarena-game-jam',
@@ -537,12 +583,23 @@ export type HeaderType = {
   thumbnail: string;
 };
 
+export type AgendaType = {
+  days: {
+    title: string;
+    events: {
+      time: string;
+      text: string | string[];
+    }[];
+  }[]
+}
+
 export type EventData = {
   name: {
     url: string;
     text: string;
   };
   description: string;
+  thumbnail: string;
   registration: {
     date: {
       start: Date;
@@ -564,5 +621,6 @@ export type EventData = {
     | SponsorsType
     | PhotosType
     | PrizesType
+    | AgendaType
   >[];
 };

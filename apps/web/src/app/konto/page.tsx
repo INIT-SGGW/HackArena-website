@@ -1,5 +1,10 @@
-import { Button, Input, Page } from '@repo/ui';
-import Image from 'next/image';
+import { ArrowLink, Button, Input, Page } from '@repo/ui';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Konto | HackArena',
+  description: `Zaloguj się na swoje konto Hackarena, aby zarządzać swoimi zespołami, przeglądać wydarzenia, w których brałeś/aś udział i zapisami się na nowe.`,
+}
 
 export default function LoginForm() {
   return (
@@ -11,8 +16,9 @@ export default function LoginForm() {
       </h1>
       <form
         className={
-          'content-card-clip bg-secondary-300 flex flex-col w-full max-w-[410px] justify-self-center p-5 gap-1'
+          'both-corners-clip bg-secondary-300 flex flex-col w-full max-w-[410px] justify-self-center p-5 gap-1'
         }
+        style={{ '--clip-size': '25px' } as React.CSSProperties}
       >
         <Input placeholder="Email" label="Email" />
         <Input type="password" placeholder="Hasło" label="Hasło" />
@@ -20,16 +26,7 @@ export default function LoginForm() {
         <Button type="submit" fullWidth>
           Zaloguj się
         </Button>
-        <div className={'flex flex-row w-full justify-center p-3 '}>
-          <Image
-            src={'two-arrows-white.svg'}
-            alt={'two arrows'}
-            width={30}
-            height={30}
-            className={'mr-4'}
-          />
-          <a href={'/password/forgot'}>Zapomniałeś hasła?</a>
-        </div>
+        <ArrowLink color="white" className='justify-center mt-3' text="Zapomniałeś/aś hasła?" href="/password/forgot" />
       </form>
     </Page>
   );

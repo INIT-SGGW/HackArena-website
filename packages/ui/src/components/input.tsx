@@ -12,7 +12,7 @@ export function Input({ id, label, children, ...props }: Props) {
         {...props}
         id={id}
         className={
-          'button-clip bg-text text-background font-bold px-4 py-1.5 text-start w-full'
+          'both-corners-clip bg-text text-background font-bold px-4 py-2.5 sm:1.5 text-start w-full'
         }
       >
         {children}

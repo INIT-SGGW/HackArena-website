@@ -1,6 +1,16 @@
 import { Page } from '@repo/ui';
 
 import { Buttons } from '../views/NotFound/Buttons';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '404 | HackArena',
+  description: `Nie znaleziono strony Hackarena`,
+  robots: {
+    index: false,
+    follow: false,
+  }
+};
 
 export default function NotFound() {
   return (

@@ -7,13 +7,19 @@
   --color-secondary-200: #4b5068;
   --color-secondary-300: #22263c;
   --color-text: #ffffff;
+
+  --animate-sponsor-scroll: sponsor-scroll linear infinite;
+  @keyframes sponsor-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {
-  html {
-    font-size: 12px;
-  }
-
   html::-webkit-scrollbar-thumb {
     background-color: var(--color-secondary-300);
     border-radius: 2px;
@@ -27,10 +33,8 @@
     scrollbar-color: var(--color-secondary-300) transparent;
   }
 
-  @media screen and (min-width: 768px) {
-    html {
-      font-size: 14px;
-    }
+  html {
+    font-size: 14px;
   }
 
   @media screen and (min-width: 1024px) {

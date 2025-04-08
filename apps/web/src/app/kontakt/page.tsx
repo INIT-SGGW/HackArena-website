@@ -2,6 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Page } from '@repo/ui';
 import { ComponentProps } from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Kontakt | HackArena',
+  description: `Masz pytania? Chcesz nawiązać z nami współpracę? Skontaktuj się z nami poprzez skrzynkę mailową lub nasze portale społecznościowe!`,
+};
 
 type ContactBlockProps = ComponentProps<'div'> & {
   title: string;
@@ -20,7 +26,8 @@ function ContactBlock({
   return (
     <div
       {...props}
-      className={`content-card-clip flex flex-col items-start justify-between ${highlight ? 'bg-primary' : 'bg-secondary-300'} px-6 py-4 pb-6 gap-3 ${props.className}`}
+      className={`both-corners-clip flex flex-col items-start justify-between ${highlight ? 'bg-primary' : 'bg-secondary-300'} px-6 py-4 pb-6 gap-3 ${props.className}`}
+      style={{ '--clip-size': '25px' } as React.CSSProperties}
     >
       <div className="w-full flex items-center justify-between">
         <h1
@@ -93,7 +100,7 @@ export default function Contact() {
       <div className="flex flex-col gap-8">
         <ContactBlock
           title="Portale społecznościowe"
-          text="Napisz do nas na nszych portalach społecznościowych!"
+          text="Napisz do nas na naszych portalach społecznościowych!"
           highlight
         />
         <div className="flex flex-row gap-8 flex-wrap">

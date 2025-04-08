@@ -12,8 +12,8 @@ export function Highlights({ data }: Props) {
     <PageSection>
       <div className="page-width flex flex-col gap-8">
         <div
-          className="flex flex-col gap-2 lg:gap-6 bg-primary p-4 lg:p-8 button-clip"
-          style={{ '--cut-size': '35px' } as React.CSSProperties}
+          className="flex flex-col gap-2 lg:gap-6 bg-primary p-4 lg:p-8 both-corners-clip"
+          style={{ '--clip-size': '35px' } as React.CSSProperties}
         >
           <div className="flex items-center justify-between pr-4 lg:pr-8">
             <h2 className="text-4xl text-background font-bold russo-one">
@@ -28,13 +28,13 @@ export function Highlights({ data }: Props) {
             />
           </div>
           <div
-            className="bg-background p-2 button-clip"
-            style={{ '--cut-size': '20px' } as React.CSSProperties}
+            className="bg-background p-2 both-corners-clip"
+            style={{ '--clip-size': '20px' } as React.CSSProperties}
           >
             <video
               src={data.video}
-              className="w-full h-auto aspect-video button-clip"
-              style={{ '--cut-size': '45px' } as React.CSSProperties}
+              className="w-full h-auto aspect-video both-corners-clip"
+              style={{ '--clip-size': '45px' } as React.CSSProperties}
               controls={false}
               autoPlay
               muted
