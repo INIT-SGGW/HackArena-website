@@ -225,7 +225,7 @@ function Carousel({
   return (
     <div
       {...props}
-      className={`h-full w-full fixed grid grid-cols-1 grid-rows-[1fr_auto] pb-6 top-0 left-0 z-1000 bg-background ${showCarousel ? 'visible' : 'hidden pointer-events-none'} select-none`}
+      className={`h-full w-full fixed flex flex-col pb-6 items-center justify-between max-h-screen top-0 left-0 z-1000 bg-background ${showCarousel ? 'visible' : 'hidden pointer-events-none'} select-none`}
     >
       {/* Controls */}
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none z-10">
@@ -266,28 +266,29 @@ function Carousel({
         {photos.map((photo, index) => (
           <div
             key={index}
-            className="w-full min-w-screen h-full flex items-center justify-center snap-start"
+            className="w-full min-w-screen h-[80vh] flex items-center justify-center snap-start"
           >
             <Image
-              className={`w-full h-full max-w-[100%] md:max-w-[80%] max-h-[80%] object-contain pointer-events-auto`}
+              className={`h-[90%] object-contain pointer-events-auto`}
               src={photo}
               loading="lazy"
               alt={`Photo ${currentPhoto + 1}`}
-              width={1920}
-              height={1080}
+              width={1280}
+              height={720}
             />
           </div>
         ))}
       </div>
-      <div ref={bottomCarouselRef} className="w-full h-min flex items-center overflow-x-auto no-scrollbar">
+      <div ref={bottomCarouselRef} className="w-full h-max flex overflow-x-auto no-scrollbar">
         {photos.map((photo, index) => (
           <Image
             src={photo}
             alt={index.toString()}
-            width={75}
-            height={75}
+            width={80}
+            height={80}
+            sizes='(max-width: 768px) 25vw, (max-width: 1200px) 10vw, 5vw'
             key={index}
-            className={`rounded-lg w-[75px] cursor-pointer active:cursor-grabbing p-1 object-cover`}
+            className={`rounded-lg cursor-pointer lg:w-[6vw] active:cursor-grabbing p-1 object-cover`}
             draggable={false}
             onClick={(e) => {
               if (isDraggingBottomCarousel) return;
