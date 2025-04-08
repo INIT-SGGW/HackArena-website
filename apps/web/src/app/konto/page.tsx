@@ -1,4 +1,10 @@
 import { ArrowLink, Button, Input, Page } from '@repo/ui';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Konto | HackArena',
+  description: `Zaloguj się na swoje konto Hackarena, aby zarządzać swoimi zespołami, przeglądać wydarzenia, w których brałeś/aś udział i zapisami się na nowe.`,
+}
 
 export default function LoginForm() {
   return (

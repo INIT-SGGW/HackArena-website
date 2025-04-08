@@ -2,6 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Page } from '@repo/ui';
 import { ComponentProps } from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Kontakt | HackArena',
+  description: `Masz pytania? Chcesz nawiązać z nami współpracę? Skontaktuj się z nami poprzez skrzynkę mailową lub nasze portale społecznościowe!`,
+};
 
 type ContactBlockProps = ComponentProps<'div'> & {
   title: string;

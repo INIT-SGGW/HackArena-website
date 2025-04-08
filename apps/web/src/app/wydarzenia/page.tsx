@@ -1,9 +1,14 @@
-"use client"
 import Image from "next/image";
 import { ArrowLink, Page } from "@repo/ui";
 import { EventData, mockData } from "../../utils/mockData";
 import Link from "next/link";
 import { NoDescriptionEvents } from "../../views/Wydarzenia/NoDescriptionEvents";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Wydarzenia | HackArena",
+  description: `Zobacz listę nadchodzących oraz zakończonych hackathonów Hackarena. Przeglądaj wydarzenia i nie przegap żadnego z nich!`,
+}
 
 type HighlightedEventProps = {
   event: EventData;

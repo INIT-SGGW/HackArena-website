@@ -1,7 +1,12 @@
 import { TitleWithIcon, LinkButton, PageSection, ArrowLink } from '@repo/ui';
 import Image from 'next/image';
-import Link from 'next/link';
 import { mockData } from '../utils/mockData';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Hackarena',
+  description: 'Weź udział w wydarzeniu, które łączy programistów w maratonie kodowania. Wykorzystaj swoją kreatywność i zdobywaj nagrody!',
+};
 
 export default function Home() {
   const wydarzenia = mockData.wydarzenia
