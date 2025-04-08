@@ -6,6 +6,7 @@ export enum EventComponents {
   SPONSORS = 'sponsors',
   PHOTOS = 'photos',
   PRIZES = 'prizes',
+  AGENDA = 'agenda',
 }
 
 export const mockData: { wydarzenia: EventData[] } = {
@@ -266,26 +267,24 @@ export const mockData: { wydarzenia: EventData[] } = {
           type: EventComponents.PHOTOS,
           data: [
             '/photos/hackarena_2/DSC06700.jpg',
-            '/photos/hackarena_2/DSC06729.jpg',
-            '/photos/hackarena_2/DSC06748.jpg',
-            '/photos/hackarena_2/DSC06782.jpg',
             '/photos/hackarena_2/DSC06783.jpg',
+            '/photos/hackarena_2/DSC_7289.jpg',
             '/photos/hackarena_2/DSC06827.jpg',
-            '/photos/hackarena_2/DSC06828.jpg',
             '/photos/hackarena_2/DSC06831.jpg',
-            '/photos/hackarena_2/DSC06839.jpg',
             '/photos/hackarena_2/DSC06845.jpg',
-            '/photos/hackarena_2/DSC06852.jpg',
             '/photos/hackarena_2/DSC06884.jpg',
             '/photos/hackarena_2/DSC06894.jpg',
             '/photos/hackarena_2/DSC06897.jpg',
-            '/photos/hackarena_2/DSC06902.jpg',
-            '/photos/hackarena_2/DSC06949.jpg',
+            '/photos/hackarena_2/DSC_7373.jpg',
+            '/photos/hackarena_2/DSC_7374.jpg',
+            '/photos/hackarena_2/DSC_7411.jpg',
+            '/photos/hackarena_2/DSC_7414.jpg',
             '/photos/hackarena_2/DSC06956.jpg',
             '/photos/hackarena_2/DSC06973.jpg',
-            '/photos/hackarena_2/DSC06980.jpg',
             '/photos/hackarena_2/DSC07003.jpg',
             '/photos/hackarena_2/DSC07029.jpg',
+            '/photos/hackarena_2/DSC_7314.jpg',
+            '/photos/hackarena_2/DSC_7669.jpg',
             '/photos/hackarena_2/DSC07038.jpg',
             '/photos/hackarena_2/DSC07069.jpg',
             '/photos/hackarena_2/DSC07072.jpg',
@@ -301,43 +300,37 @@ export const mockData: { wydarzenia: EventData[] } = {
             '/photos/hackarena_2/DSC07099.jpg',
             '/photos/hackarena_2/DSC07100.jpg',
             '/photos/hackarena_2/DSC07103.jpg',
-            '/photos/hackarena_2/DSC07104.jpg',
             '/photos/hackarena_2/DSC07116.jpg',
+            '/photos/hackarena_2/DSC07104.jpg',
             '/photos/hackarena_2/DSC07162.jpg',
             '/photos/hackarena_2/DSC07166.jpg',
             '/photos/hackarena_2/DSC07459.jpg',
+            '/photos/hackarena_2/DSC_7500.jpg',
             '/photos/hackarena_2/DSC07513.jpg',
             '/photos/hackarena_2/DSC07545.jpg',
-            '/photos/hackarena_2/DSC07551.jpg',
             '/photos/hackarena_2/DSC07564.jpg',
             '/photos/hackarena_2/DSC07586.jpg',
             '/photos/hackarena_2/DSC07592.jpg',
             '/photos/hackarena_2/DSC07593.jpg',
             '/photos/hackarena_2/DSC07616.jpg',
             '/photos/hackarena_2/DSC07718.jpg',
-            '/photos/hackarena_2/DSC07761.jpg',
-            '/photos/hackarena_2/DSC07816.jpg',
-            '/photos/hackarena_2/DSC07857.jpg',
-            '/photos/hackarena_2/DSC07870.jpg',
-            '/photos/hackarena_2/DSC07882.jpg',
             '/photos/hackarena_2/DSC_7285.jpg',
-            '/photos/hackarena_2/DSC_7289.jpg',
             '/photos/hackarena_2/DSC_7308.jpg',
-            '/photos/hackarena_2/DSC_7314.jpg',
-            '/photos/hackarena_2/DSC_7373.jpg',
-            '/photos/hackarena_2/DSC_7374.jpg',
-            '/photos/hackarena_2/DSC_7411.jpg',
-            '/photos/hackarena_2/DSC_7414.jpg',
-            '/photos/hackarena_2/DSC_7457.jpg',
-            '/photos/hackarena_2/DSC_7500.jpg',
-            '/photos/hackarena_2/DSC_7669.jpg',
             '/photos/hackarena_2/DSC_7751.jpg',
             '/photos/hackarena_2/DSC_7793.jpg',
             '/photos/hackarena_2/DSC_7800.jpg',
             '/photos/hackarena_2/DSC_7835.jpg',
             '/photos/hackarena_2/DSC_7858.jpg',
             '/photos/hackarena_2/DSC_7860.jpg',
+            '/photos/hackarena_2/DSC07761.jpg',
+            '/photos/hackarena_2/DSC07816.jpg',
+            '/photos/hackarena_2/DSC07857.jpg',
             '/photos/hackarena_2/DSC_7955.jpg',
+            '/photos/hackarena_2/DSC07870.jpg',
+            '/photos/hackarena_2/DSC07882.jpg',
+            '/photos/hackarena_2/DSC_7457.jpg',
+            '/photos/hackarena_2/DSC06782.jpg',
+            '/photos/hackarena_2/DSC07551.jpg',
           ],
         },
       ],
@@ -405,6 +398,55 @@ export const mockData: { wydarzenia: EventData[] } = {
             text: 'Turniej zostanie rozegrany <strong>w trzech rundach</strong>, z których każda będzie składać się z emocjonujących <strong>pojedynków 1v1</strong>. Uczestnicy staną do bezpośredniej rywalizacji, testując skuteczność swoich botów. <strong>Ćwierćfinały</strong> rozpoczną się od <strong>losowania par</strong>, które zdecyduje o przydziale do poszczególnych meczów.',
           },
         },
+        {
+          type: EventComponents.AGENDA,
+          data: {
+            days: [
+              {
+                title: 'Dzień 1',
+                events: [
+                  {
+                    time: '10:00',
+                    text: 'Rejestracja uczestników',
+                  },
+                  {
+                    time: '11:00',
+                    text: 'Rozpoczęcie HackAreny 2.5',
+                  },
+                  {
+                    time: '19:00',
+                    text: 'Zakończenie HackAreny 2.5',
+                  },
+                ],
+              },
+              {
+                title: "Dzień II  Niedziela 27.10",
+                events: [
+                  {
+                    time: "09:00",
+                    text: "Start dnia II"
+                  },
+                  {
+                    time: "11:00",
+                    text: "Lunch - catering"
+                  },
+                  {
+                    time: "15:00",
+                    text: "Pizza"
+                  },
+                  {
+                    time: "18:00",
+                    text: "Zakończenie pracy"
+                  },
+                  {
+                    time: "19:00",
+                    text: ["Turniej HackArena 2.0", "Oficjalne zakończenie"]
+                  }
+                ]
+              }
+            ],
+          }
+        }
       ],
     },
     {
@@ -541,6 +583,16 @@ export type HeaderType = {
   thumbnail: string;
 };
 
+export type AgendaType = {
+  days: {
+    title: string;
+    events: {
+      time: string;
+      text: string | string[];
+    }[];
+  }[]
+}
+
 export type EventData = {
   name: {
     url: string;
@@ -569,5 +621,6 @@ export type EventData = {
     | SponsorsType
     | PhotosType
     | PrizesType
+    | AgendaType
   >[];
 };
