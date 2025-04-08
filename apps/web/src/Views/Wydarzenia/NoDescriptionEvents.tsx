@@ -79,7 +79,7 @@ export function NoDescriptionEvents({ grow, title, events }: NoDescriptionEventP
                             <div style={{ "--ribbon-color": event.color || "var(--color-primary)" } as React.CSSProperties} className="p-2 ribbon relative w-max">
                                 <Image
                                     src={event.thumbnail}
-                                    className="ribbon-photo-clip object-cover w-max max-w-[300px] aspect-[1.63]"
+                                    className="ribbon-photo-clip object-cover flex-1 max-w-[300px] aspect-[1.63]"
                                     width={400}
                                     height={200}
                                     alt={event.name.text}
