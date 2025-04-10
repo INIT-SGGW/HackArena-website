@@ -388,7 +388,7 @@ export const mockData: { wydarzenia: EventData[] } = {
           type: EventComponents.HEADER_TEXT_SECTION,
           data: {
             title: 'Zadanie',
-            text: 'Zadaniem uczestników HackAreny 2.5 będzie stworzenie <strong>bota do gry MonoTanks</strong>. Choć gra pojawiła się w edycji 2.0, to wyzwanie, które dla was przygotowaliśmy zapewnia, że nikt nie uzyska nieuczciwej przewagi. W <strong>zespołach do 3 osób</strong> będziecie mieli <strong>8 godzin</strong> na stworzenie swojego rozwiązania. Do wyboru będą języki: <strong>Python, Java, C#, C++, JavaScript, TypeScript oraz Rust</strong>. Dokładniejsze zasady zostaną ogłoszone w dniu wydarzenia.',
+            text: 'Zadaniem uczestników HackAreny 2.5 będzie stworzenie <strong>bota do gry</strong> stworzonej przez członków KN "init". W zespołach do 3 osób będziecie mieli 8 godzin na stworzenie swojego rozwiązania. Do wyboru będą języki: <strong>Python, Java, C#, C++, JavaScript, TypeScript oraz Rust</strong>. Dokładniejsze zasady zostaną ogłoszone w dniu wydarzenia.',
           },
         },
         {

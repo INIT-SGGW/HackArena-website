@@ -28,7 +28,7 @@ export function TitleWithIcon({ title, icon, ...props }: Props) {
       {secondPart && (
         <Image
           src={icon}
-          className="inline-block align-middle m-auto w-auto h-[.8em] object-contain px-1"
+          className="inline-block align-baseline m-auto w-auto h-[.7em] object-contain px-1"
           width={50}
           height={50}
           alt="⚡"

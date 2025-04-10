@@ -2,6 +2,7 @@ import { TitleWithIcon, LinkButton, PageSection, ArrowLink } from '@repo/ui';
 import Image from 'next/image';
 import { mockData } from '../utils/mockData';
 import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Hackarena',
@@ -29,12 +30,12 @@ export default function Home() {
         pointer-events-none"
           alt="Tło"
         />
-        <div className="w-full flex flex-col items-start page-width z-2">
+        <div className="w-full flex flex-col gap-15 sm:gap-22 items-start page-width z-2">
           <div className="flex flex-col gap-2">
             <TitleWithIcon title="Hack{{ icon }}Arena" icon="/lightning.svg" />
             <p className="text-2xl">Zbierz zespół i zdobywaj nagrody!</p>
           </div>
-          <div className="flex flex-row gap-6 mt-22 flex-wrap">
+          <div className="flex flex-row gap-6 lex-wrap">
             <LinkButton href="/wydarzenia">Wydarzenia</LinkButton>
             <LinkButton href="#o-nas" secondary icon>
               O nas
@@ -84,14 +85,15 @@ export default function Home() {
                 className="grid grid-rows-auto sm:grid-cols-[.4fr_1fr] gap-4 md:gap-6"
               >
                 <div className="p-2 ribbon relative min-w-[250px]">
-                  <Image
-                    src={event.thumbnail}
-                    className="ribbon-photo-clip w-full"
-                    width={400}
-                    height={200}
-                    alt="HackArena 2"
-                  />
-                  <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color" />
+                  <Link href={`/wydarzenia/${event.name.url}`} >
+                    <Image
+                      src={event.thumbnail}
+                      className="ribbon-photo-clip w-full"
+                      width={400}
+                      height={200}
+                      alt="HackArena 2"
+                    /></Link>
+                  <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color pointer-events-none" />
                 </div>
                 <div className="flex flex-col justify-around gap-4 md:gap-0">
                   <h4 className="text-primary text-3xl font-bold">

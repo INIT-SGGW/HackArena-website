@@ -25,11 +25,11 @@ export default function Events() {
   }
 
   return (
-    <Page className={"page-width flex flex-col gap-12 mx-auto"}>
-      <h1 className={"text-5xl text-primary russo-one pl-8"}>Wydarzenia</h1>
+    <Page className={"page-width flex flex-col gap-12 !px-0 sm:!px-4 mx-auto"}>
+      <h1 className={"text-4xl sm:text-5xl text-primary russo-one pl-8"}>Wydarzenia</h1>
       <div className={"flex flex-col md:gap-8 gap-10"}>
         {highlightedEvent && <HighlightedEvent event={highlightedEvent} />}
-        <div className={`flex flex-col md:flex-row p-4 md:p-10 gap-10 md:gap-20 ${restIncomingEvents.length > 1 ? "!flex-col !gap-10" : ""}`}>
+        <div className={`flex flex-col md:flex-row px-0 sm:px-4 p-4 md:p-10 gap-10 md:gap-20 ${restIncomingEvents.length > 1 ? "!flex-col !gap-10" : ""}`}>
           {restIncomingEvents.length > 0 && (
             <>
               <NoDescriptionEvents title="Nadchodzące" events={restIncomingEvents} />
@@ -55,42 +55,44 @@ const HighlightedEvent = ({ event }: HighlightedEventProps) => {
   }
 
   return (
-    <div className={"flex flex-col gap-4 text-background both-corners-clip bg-primary w-full p-6"} style={{ "--clip-size": "25px" } as React.CSSProperties}>
-      <div className="flex items-center justify-between">
-        <h2 className="russo-one text-4xl font-bold">{title}</h2>
-        <Image src={"bolt.svg"} alt={"bolt"} width={22} height={22} />
-      </div>
-      <div
-        key={event.name.text}
-        className="grid grid-rows-auto sm:grid-cols-[.5fr_1fr] gap-8"
-      >
-        <Link
-          href={`/wydarzenia/${event.name.url}`}
-          className="bg-background both-corners-clip p-2 min-w-[270px] relative aspect-[1.63]"
-          style={{ '--clip-size': '15px' } as React.CSSProperties}
+    <div className="px-4 sm:px-0">
+      <div className={"flex flex-col gap-4 text-background both-corners-clip bg-primary w-full p-6"} style={{ "--clip-size": "25px" } as React.CSSProperties}>
+        <div className="flex items-center justify-between">
+          <h2 className="russo-one text-4xl font-bold">{title}</h2>
+          <Image src={"bolt.svg"} alt={"bolt"} width={22} height={22} />
+        </div>
+        <div
+          key={event.name.text}
+          className="grid grid-rows-auto sm:grid-cols-[.5fr_1fr] gap-8"
         >
-          <Image
-            src={event.thumbnail}
-            width={500}
-            height={500}
-            loading="lazy"
-            alt={event.name.text}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            style={{ '--clip-size': '33px' } as React.CSSProperties}
-            className="w-full h-full object-cover both-corners-clip"
-          />
-          <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color" />
-        </Link>
-        <div className="flex flex-col justify-between gap-4 md:gap-0">
-          <h4 className="text-3xl font-bold">
-            <Link href={`/wydarzenia/${event.name.url}`}>
-              {event.name.text}
-            </Link>
-          </h4>
-          <p className="text-xl line-clamp-3">
-            {event.description}
-          </p>
-          <ArrowLink text={"Dowiedz się więcej"} href={`/wydarzenia/${event.name.url}`} />
+          <Link
+            href={`/wydarzenia/${event.name.url}`}
+            className="bg-background both-corners-clip p-2 relative aspect-[1.63]"
+            style={{ '--clip-size': '15px' } as React.CSSProperties}
+          >
+            <Image
+              src={event.thumbnail}
+              width={500}
+              height={500}
+              loading="lazy"
+              alt={event.name.text}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              style={{ '--clip-size': '33px' } as React.CSSProperties}
+              className="w-full h-full object-cover both-corners-clip"
+            />
+            <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color" />
+          </Link>
+          <div className="flex flex-col justify-between gap-4 md:gap-0">
+            <h4 className="text-3xl font-bold">
+              <Link href={`/wydarzenia/${event.name.url}`}>
+                {event.name.text}
+              </Link>
+            </h4>
+            <p className="text-xl line-clamp-3">
+              {event.description}
+            </p>
+            <ArrowLink text={"Dowiedz się więcej"} href={`/wydarzenia/${event.name.url}`} />
+          </div>
         </div>
       </div>
     </div>
