@@ -29,12 +29,12 @@ export default function Home() {
         pointer-events-none"
           alt="Tło"
         />
-        <div className="w-full flex flex-col items-start page-width z-2">
+        <div className="w-full flex flex-col gap-15 sm:gap-22 items-start page-width z-2">
           <div className="flex flex-col gap-2">
             <TitleWithIcon title="Hack{{ icon }}Arena" icon="/lightning.svg" />
             <p className="text-2xl">Zbierz zespół i zdobywaj nagrody!</p>
           </div>
-          <div className="flex flex-row gap-6 mt-22 flex-wrap">
+          <div className="flex flex-row gap-6 lex-wrap">
             <LinkButton href="/wydarzenia">Wydarzenia</LinkButton>
             <LinkButton href="#o-nas" secondary icon>
               O nas
