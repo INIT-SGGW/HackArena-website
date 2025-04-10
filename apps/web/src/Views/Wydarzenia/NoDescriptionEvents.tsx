@@ -25,6 +25,7 @@ export function NoDescriptionEvents({ grow, title, events }: NoDescriptionEventP
         if (!container) return;
 
         const handleMouseDown = (e: MouseEvent) => {
+            if (window.innerWidth < 640) return;
             setIsDragging(true);
             isDown = true;
             container.classList.add('active');
@@ -33,6 +34,8 @@ export function NoDescriptionEvents({ grow, title, events }: NoDescriptionEventP
         };
 
         const handleMouseUp = (e: MouseEvent) => {
+            if (window.innerWidth < 640) return;
+
             if (Math.abs(startX - e.pageX + container.offsetLeft) < 5) {
                 setIsDragging(false)
             };
@@ -41,6 +44,8 @@ export function NoDescriptionEvents({ grow, title, events }: NoDescriptionEventP
         };
 
         const handleMouseMove = (e: MouseEvent) => {
+            if (window.innerWidth < 640) return;
+
             if (!isDown) return;
             e.preventDefault();
 
@@ -71,15 +76,15 @@ export function NoDescriptionEvents({ grow, title, events }: NoDescriptionEventP
 
     return (
         <div className={`flex flex-col gap-4 items-start overflow-hidden ${grow && "flex-1"}`}>
-            <h2 className="text-3xl font-bold text-primary russo-one">{title}</h2>
-            <div ref={carouselRef} className="flex items-center gap-8 w-full overflow-x-auto pb-2 select-none no-scrollbar">
+            <h2 className="text-3xl font-bold ml-4 sm:ml-0 text-primary russo-one">{title}</h2>
+            <div ref={carouselRef} className="flex items-center gap-4 sm:gap-8 w-full overflow-x-auto pb-2 select-none no-scrollbar snap-x sm:snap-none snap-mandatory px-[10%] sm:px-0 scroll-px-[10%] sm:scroll-px-0">
                 {
                     events.map((event) => (
-                        <Link className="flex flex-col gap-4 w-max active:cursor-grabbing" draggable={false} key={event.name.text} onClick={handleClick} href={`/wydarzenia/${event.name.url}`}>
-                            <div style={{ "--ribbon-color": event.color || "var(--color-primary)" } as React.CSSProperties} className="p-2 ribbon relative w-max">
+                        <Link className="flex flex-col gap-4 snap-center sm:snap-none sm:max-w-none flex-[1_0_auto] sm:flex-auto w-full sm:w-max sm:active:cursor-grabbing" draggable={false} key={event.name.text} onClick={handleClick} href={`/wydarzenia/${event.name.url}`}>
+                            <div style={{ "--ribbon-color": event.color || "var(--color-primary)" } as React.CSSProperties} className="p-2 ribbon relative w-full sm:w-max ">
                                 <Image
                                     src={event.thumbnail}
-                                    className="ribbon-photo-clip object-cover flex-1 max-w-[300px] aspect-[1.63]"
+                                    className="ribbon-photo-clip object-cover w-full flex-1 sm:max-w-[300px] aspect-[1.63]"
                                     width={400}
                                     height={200}
                                     alt={event.name.text}
