@@ -17,7 +17,7 @@ export function ArrowLink({ text, href, color = "black", as: Tag = "a", ...props
                 <path d="M32.2408 0.345703L48.361 0.345703L59.7598 12.3457L43.6395 12.3457L32.2408 0.345703Z" />
                 <path d="M0.000270844 0.345703L16.1205 0.345703L27.5193 12.3457L11.399 12.3457L0.000270844 0.345703Z" />
             </svg>
-            <Tag href={href}>
+            <Tag href={href} className="text-ellipsis overflow-hidden text-nowrap">
                 {text}
             </Tag>
         </div>
