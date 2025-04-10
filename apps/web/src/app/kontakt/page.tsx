@@ -31,7 +31,7 @@ function ContactBlock({
     >
       <div className="w-full flex items-center justify-between">
         <h1
-          className={`russo-one text-3xl font-bold md:text-nowrap ${highlight ? 'text-background' : 'text-primary'}`}
+          className={`russo-one text-2xl sm:text-3xl font-bold md:text-nowrap ${highlight ? 'text-background' : 'text-primary'}`}
         >
           {title}
         </h1>
