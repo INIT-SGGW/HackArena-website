@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentProps } from 'react';
 import LightningIcon from '../assets/lightning-outline.svg';
 import Image from 'next/image';
