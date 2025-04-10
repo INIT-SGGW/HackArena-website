@@ -153,7 +153,7 @@ const SideMenu = ({
       className={`fixed top-0 right-0 h-full w-full flex flex-col items-center justify-between bg-background z-40 pb-4 
         ${isMenuOpen ? '' : 'translate-x-full'} transform transition-transform duration-250 ease-in-out bg-[url('/side-menu-bg.svg')] bg-right bg-cover`}
     >
-      <div className="w-full flex flex-col items-center gap-20">
+      <div className="w-full flex flex-col items-center gap-10">
         <Header
           isMobile={isMobile}
           navItems={navItems}
@@ -167,7 +167,7 @@ const SideMenu = ({
                 <Link
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`${item.highlight ? 'text-primary' : ''} text-3xl font-bold`}
+                  className={`${item.highlight ? 'text-primary' : ''} text-2xl font-bold`}
                 >
                   {item.label}
                 </Link>
