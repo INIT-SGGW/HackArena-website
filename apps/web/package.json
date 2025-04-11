@@ -21,7 +21,6 @@
     "@jest/globals": "^29.7.0",
     "@next/eslint-plugin-next": "^15.2.3",
     "@playwright/test": "^1.51.1",
-    "@repo/api": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/jest-config": "workspace:*",
     "@repo/tailwind-config": "workspace:^",
