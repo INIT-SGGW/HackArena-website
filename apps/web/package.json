@@ -13,9 +13,12 @@
   },
   "dependencies": {
     "@repo/ui": "workspace:^",
+    "jose": "^6.0.10",
     "next": "^15.2.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "swr": "^2.3.3",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
