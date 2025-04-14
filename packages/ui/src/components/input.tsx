@@ -1,10 +1,11 @@
 import { ComponentProps } from 'react';
 
 type Props = ComponentProps<'input'> & {
-  label: string;
+  label?: string;
+  error?: string[];
 };
 
-export function Input({ id, label, children, ...props }: Props) {
+export function Input({ id, label, children, error, ...props }: Props) {
   return (
     <div className="flex flex-col gap-1">
       <label htmlFor={id}>{label}</label>
@@ -17,6 +18,7 @@ export function Input({ id, label, children, ...props }: Props) {
       >
         {children}
       </input>
+      {error && <span className="text-sm text-error">{error[0]}</span>}
     </div>
   );
 }
