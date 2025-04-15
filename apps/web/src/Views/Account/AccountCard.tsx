@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@repo/ui";
+import { Button, LinkButton } from "@repo/ui";
 import { fetcherAuth } from "../../api/fetcher";
 
 export function AccountCard() {
@@ -20,6 +20,9 @@ export function AccountCard() {
     }
 
     return (
-        <Button onClick={logout} >Wyloguj się</Button>
+        <div className="w-full">
+            <LinkButton href="/konto/ustawienia" secondary className="mb-4" fullWidth>Ustawienia konta</LinkButton>
+            <Button onClick={logout} fullWidth>Wyloguj się</Button>
+        </div>
     )
 }
