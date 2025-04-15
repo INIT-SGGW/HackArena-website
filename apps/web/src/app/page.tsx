@@ -55,7 +55,7 @@ export default function Home() {
           alt="Tło"
         />
         <div className="w-full flex flex-col items-start page-width z-2 gap-4">
-          <h2 className="text-5xl text-primary russo-one">O nas</h2>
+          <h2 className="title">O nas</h2>
           <p className="text-secondary-100 text-xl max-w-[900px]">
             HackArena to hackathon organizowany przez{' '}
             <strong className="text-white">
@@ -77,7 +77,7 @@ export default function Home() {
           alt="Tło"
         />
         <div className="w-full flex flex-col items-start page-width z-2 gap-8">
-          <h2 className="text-5xl text-primary russo-one">Ostatnie</h2>
+          <h2 className="title">Ostatnie</h2>
           <div className="flex flex-col gap-8 md:gap-6">
             {wydarzenia.map((event) => (
               <div
@@ -96,7 +96,7 @@ export default function Home() {
                   <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color pointer-events-none" />
                 </div>
                 <div className="flex flex-col justify-around gap-4 md:gap-0">
-                  <h4 className="text-primary text-3xl font-bold">
+                  <h4 className="subsubtitle jet-brains">
                     {event.name.text}
                   </h4>
                   <p className="text-secondary-100 text-xl line-clamp-3">

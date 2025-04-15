@@ -17,7 +17,7 @@ export function HeaderTextSection({ color, data }: Props) {
   return (
     <PageSection>
       <div className="page-width flex flex-col items-start gap-8">
-        <h2 className="text-5xl text-primary font-bold russo-one">
+        <h2 className="title">
           {data.title}
         </h2>
         <p

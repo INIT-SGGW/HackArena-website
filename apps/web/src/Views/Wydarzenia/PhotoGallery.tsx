@@ -33,7 +33,7 @@ export function PhotoGallery({ data }: Props) {
           setShowCarousel={setShowCarousel}
         />
         <div className="relative w-full">
-          <h2 className="text-5xl text-primary font-bold russo-one z-2 bg-background w-min m-auto px-12">
+          <h2 className="title z-2 bg-background w-min m-auto px-12">
             Galeria
           </h2>
           <div className="absolute w-full h-[4px] bg-primary top-[50%] -translate-y-[50%] left-0 -z-1" />

@@ -30,11 +30,11 @@ function ContactBlock({
       style={{ '--clip-size': '25px' } as React.CSSProperties}
     >
       <div className="w-full flex items-center justify-between">
-        <h1
-          className={`russo-one text-2xl sm:text-3xl font-bold md:text-nowrap ${highlight ? 'text-background' : 'text-primary'}`}
+        <h2
+          className={`subsubtitle text-2xl sm:text-3xl md:text-nowrap ${highlight ? 'text-background' : 'text-primary'}`}
         >
           {title}
-        </h1>
+        </h2>
         {!mail && <Image src="/bolt.svg" alt="bolt" width="25" height="25" />}
       </div>
       <p
@@ -96,7 +96,7 @@ function ContactBlock({
 export default function Contact() {
   return (
     <Page className="flex flex-col gap-10 max-w-[800px] mx-auto">
-      <h1 className="text-5xl text-primary russo-one pl-4">Kontakt</h1>
+      <h1 className="title pl-4">Kontakt</h1>
       <div className="flex flex-col gap-8">
         <ContactBlock
           title="Portale społecznościowe"

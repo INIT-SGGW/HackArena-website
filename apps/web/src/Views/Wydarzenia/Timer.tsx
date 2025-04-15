@@ -28,7 +28,7 @@ export function Timer({ startDate, registration }: TimerProps) {
 
   return (
     <div className="w-full flex flex-col items-center gap-4">
-      <h2 className="text-4xl text-primary russo-one">Początek już za</h2>
+      <h2 className="subtitle">Początek już za</h2>
       <p className="text-text font-bold text-5xl sm:text-6xl ">
         {timeToString(timeLeft)}
       </p>

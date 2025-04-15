@@ -14,7 +14,7 @@ const metadata: Metadata = {
 export default function RejestracjaDrużyny() {
   return (
     <Page className="flex flex-col items-center gap-4">
-      <h1 className="text-5xl text-primary font-bold russo-one">
+      <h1 className="title">
         Rejestracja
       </h1>
       <RegisterForm />

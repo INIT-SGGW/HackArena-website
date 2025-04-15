@@ -79,7 +79,7 @@ export function NoDescriptionEvents({ grow, title, events }: NoDescriptionEventP
 
     return (
         <div className={`flex flex-col gap-4 items-start overflow-hidden ${grow && "flex-1"}`}>
-            <h2 className="text-3xl font-bold ml-4 sm:ml-0 text-primary russo-one">{title}</h2>
+            <h2 className="subsubtitle ml-4 sm:ml-0">{title}</h2>
             <div ref={carouselRef} className="flex items-center gap-4 sm:gap-8 w-full overflow-x-auto pb-2 select-none no-scrollbar snap-x sm:snap-none snap-mandatory px-[10%] sm:px-0 scroll-px-[10%] sm:scroll-px-0">
                 {
                     events.map((event) => (

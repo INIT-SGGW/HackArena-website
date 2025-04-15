@@ -19,7 +19,7 @@ export default function NotFound() {
       paddingTop="0px"
     >
       <div className="flex flex-col items-center gap-2">
-        <h1 className="russo-one text-primary text-5xl">Błąd 404</h1>
+        <h1 className="title">Błąd 404</h1>
         <p>Strona, którą próbujesz otworzyć, nie istnieje.</p>
       </div>
       <Buttons />

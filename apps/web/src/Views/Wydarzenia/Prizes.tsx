@@ -19,7 +19,7 @@ export function Prizes({ data }: Props) {
     <PageSection>
       <div className="page-width flex flex-col items-center gap-4">
         <div className="flex flex-col items-center text-center gap-4">
-          <h2 className="text-5xl text-primary font-bold russo-one">Nagrody</h2>
+          <h2 className="title">Nagrody</h2>
           <p>{data.text}</p>
         </div>
         <div className="flex flex-col items-center w-full">

@@ -36,7 +36,7 @@ export default function LoginPage() {
             <div className='flex flex-col items-center gap-4 page-width mx-auto'>
 
                 <h1
-                    className={'russo-one justify-self-center text-primary mb-10 text-5xl'}
+                    className="title"
                 >
                     Konto
                 </h1>

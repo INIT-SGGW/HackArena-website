@@ -17,7 +17,7 @@ export default function LoginPage() {
   return (
     <Page>
       <h1
-        className={'russo-one justify-self-center text-primary text-5xl mb-4'}
+        className='title justify-self-center mb-4'
       >
         Logowanie
       </h1>

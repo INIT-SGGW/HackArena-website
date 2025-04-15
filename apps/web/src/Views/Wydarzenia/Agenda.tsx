@@ -11,11 +11,11 @@ function Agenda({ data }: Props) {
     return (
         <PageSection>
             <div className='page-width flex flex-col gap-10'>
-                <h1 className="text-5xl text-primary russo-one font-bold">Plan wydarzenia</h1>
+                <h1 className="title">Plan wydarzenia</h1>
                 <div className="flex items-start flex-wrap gap-12 m-auto">
                     {data.days.map((day, index) => (
                         <div key={index} className="agenda__day gap-2 w-full min-w-[350px] max-w-[450px]">
-                            <h3 className='text-xl font-bold text-primary'>{day.title}</h3>
+                            <h3 className='subtitle'>{day.title}</h3>
                             <ul>
                                 <div>
                                     <div className='agenda__marker'>

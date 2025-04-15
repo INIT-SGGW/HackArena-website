@@ -16,7 +16,7 @@ export function Highlights({ data }: Props) {
           style={{ '--clip-size': '35px' } as React.CSSProperties}
         >
           <div className="flex items-center justify-between pr-4 lg:pr-8">
-            <h2 className="text-4xl text-background font-bold russo-one">
+            <h2 className="subtitle text-background">
               Najlepsze momenty
             </h2>
             <Image

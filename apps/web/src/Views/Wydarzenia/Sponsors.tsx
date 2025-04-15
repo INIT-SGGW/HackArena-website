@@ -64,7 +64,7 @@ type SponsorsSegmentProps = {
 function SponsorsSegment({ title, data }: SponsorsSegmentProps) {
   return (
     <div className="w-full flex flex-col gap-2">
-      <h2 className="text-xl">{title}</h2>
+      <h4 className="text-xl">{title}</h4>
       <div className="w-full flex gap-4 items-center">
         {data.map((sponsor, index) => (
           <Link

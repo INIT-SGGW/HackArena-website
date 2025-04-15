@@ -26,7 +26,7 @@ export default function Events() {
 
   return (
     <Page className={"page-width flex flex-col gap-12 !px-0 sm:!px-4 mx-auto"}>
-      <h1 className={"text-4xl sm:text-5xl text-primary russo-one pl-8"}>Wydarzenia</h1>
+      <h1 className={"title text-4xl sm:text-5xl pl-8"}>Wydarzenia</h1>
       <div className={"flex flex-col md:gap-8 gap-10"}>
         {highlightedEvent && <HighlightedEvent event={highlightedEvent} />}
         <div className={`flex flex-col md:flex-row px-0 sm:px-4 p-4 md:p-10 gap-10 md:gap-20 ${restIncomingEvents.length > 1 ? "!flex-col !gap-10" : ""}`}>
@@ -58,7 +58,7 @@ const HighlightedEvent = ({ event }: HighlightedEventProps) => {
     <div className="px-4 sm:px-0">
       <div className={"flex flex-col gap-4 text-background both-corners-clip bg-primary w-full p-6"} style={{ "--clip-size": "25px" } as React.CSSProperties}>
         <div className="flex items-center justify-between">
-          <h2 className="russo-one text-4xl font-bold">{title}</h2>
+          <h2 className="subtitle text-background">{title}</h2>
           <Image src={"bolt.svg"} alt={"bolt"} width={22} height={22} />
         </div>
         <div
@@ -83,7 +83,7 @@ const HighlightedEvent = ({ event }: HighlightedEventProps) => {
             <div className="absolute inset-0 flex flex-col w-full justify-center items-center bg-background mix-blend-color" />
           </Link>
           <div className="flex flex-col justify-between gap-4 md:gap-0">
-            <h4 className="text-3xl font-bold">
+            <h4 className="subsubtitle jet-brains text-background font-bold">
               <Link href={`/wydarzenia/${event.name.url}`}>
                 {event.name.text}
               </Link>

@@ -22,7 +22,7 @@ export function TitleWithIcon({ title, icon, ...props }: Props) {
   return (
     <h1
       {...props}
-      className={`text-5xl sm:text-6xl russo-one ${props.className}`}
+      className={`title text-text text-5xl sm:text-6xl ${props.className}`}
     >
       {firstPart}
       {secondPart && (
