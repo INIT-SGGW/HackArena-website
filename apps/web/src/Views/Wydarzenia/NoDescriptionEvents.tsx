@@ -11,11 +11,12 @@ type NoDescriptionEventProps = {
         thumbnail: string;
         color?: string;
     }[];
-    title: string;
+    title?: string;
     grow?: boolean;
+    compact?: boolean;
 };
 
-export function NoDescriptionEvents({ grow, title, events }: NoDescriptionEventProps) {
+export function NoDescriptionEvents({ grow, title, events, compact = false }: NoDescriptionEventProps) {
     const carouselRef = useRef<HTMLDivElement>(null);
     const [isDragging, setIsDragging] = useState(false);
 
@@ -79,15 +80,15 @@ export function NoDescriptionEvents({ grow, title, events }: NoDescriptionEventP
 
     return (
         <div className={`flex flex-col gap-4 items-start overflow-hidden ${grow && "flex-1"}`}>
-            <h2 className="subsubtitle ml-4 sm:ml-0">{title}</h2>
+            {title && <h2 className="subsubtitle ml-4 sm:ml-0">{title}</h2>}
             <div ref={carouselRef} className="flex items-center gap-4 sm:gap-8 w-full overflow-x-auto pb-2 select-none no-scrollbar snap-x sm:snap-none snap-mandatory px-[10%] sm:px-0 scroll-px-[10%] sm:scroll-px-0">
                 {
                     events.map((event) => (
-                        <Link className="flex flex-col gap-4 snap-center sm:snap-none sm:max-w-none flex-[1_0_auto] sm:flex-auto w-full sm:w-max sm:active:cursor-grabbing" draggable={false} key={event.name.text} onClick={handleClick} href={`/wydarzenia/${event.name.url}`}>
-                            <div style={{ "--ribbon-color": event.color || "var(--color-primary)" } as React.CSSProperties} className="p-2 ribbon relative w-full sm:w-max ">
+                        <Link className={`flex flex-col gap-4 snap-center sm:snap-none flex-[1_0_auto] ${compact ? "sm:max-w-[250px]" : "sm:max-w-[300px]"} sm:flex-auto w-full sm:w-max sm:active:cursor-grabbing`} draggable={false} key={event.name.text} onClick={handleClick} href={`/wydarzenia/${event.name.url}`}>
+                            <div style={{ "--ribbon-color": event.color || "var(--color-primary)" } as React.CSSProperties} className={`p-2 ribbon relative w-full sm:w-max ${compact ? "sm:max-w-[250px]" : "sm:max-w-[300px]"}`}>
                                 <Image
                                     src={event.thumbnail}
-                                    className="ribbon-photo-clip object-cover w-full flex-1 sm:max-w-[300px] aspect-[1.63]"
+                                    className={`ribbon-photo-clip object-cover w-full flex-1 ${compact ? "sm:max-w-[250px]" : "sm:max-w-[300px]"}  aspect-[1.63]`}
                                     width={400}
                                     height={200}
                                     alt={event.name.text}
