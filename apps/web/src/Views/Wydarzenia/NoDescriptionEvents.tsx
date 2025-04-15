@@ -4,10 +4,13 @@ import { ArrowLink } from "@repo/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent } from "react";
-import { EventData } from "../../utils/mockData";
 
 type NoDescriptionEventProps = {
-    events: EventData[];
+    events: {
+        name: { text: string; url: string };
+        thumbnail: string;
+        color?: string;
+    }[];
     title: string;
     grow?: boolean;
 };
