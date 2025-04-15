@@ -23,7 +23,7 @@ const navItems = isRegistrationOpen()
   ? [
     {
       label: 'Rejestracja',
-      href: '/rejestracja',
+      href: '/rejestracja/druzyna',
       highlight: true,
     },
     {
