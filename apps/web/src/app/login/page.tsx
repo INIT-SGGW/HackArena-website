@@ -1,6 +1,7 @@
-import { Page } from '@repo/ui';
+import { ArrowLink, Page } from '@repo/ui';
 import { Metadata } from 'next';
 import { LoginForm } from '../../views/Account/LoginForm';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Login | HackArena',
@@ -16,11 +17,12 @@ export default function LoginPage() {
   return (
     <Page>
       <h1
-        className={'russo-one justify-self-center text-primary mb-10 text-5xl'}
+        className={'russo-one justify-self-center text-primary text-5xl mb-4'}
       >
         Logowanie
       </h1>
       <LoginForm />
+      <Link color="var(--color-primary)" className='block justify-self-center mt-3 text-primary' href="/rejestracja/użytkownik" >Nie masz jeszcze konta?</Link>
     </Page>
   );
 }
