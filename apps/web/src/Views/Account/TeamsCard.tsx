@@ -54,7 +54,7 @@ export function TeamsCard() {
                 ) : (
                     <p className="text-center">Nie jesteś jeszcze członkiem żadnej drużyny</p>
                 )}
-                <LinkButton href="/rejestracja/druzyna" fullWidth >Stwórz drużynę</LinkButton>
+                <LinkButton href="/rejestracja/druzyna" fullWidth>Stwórz drużynę</LinkButton>
             </div>
         </div>
     )
@@ -135,7 +135,7 @@ export function TeamsCarousel({ teams }: NoDescriptionEventProps) {
             <div ref={carouselRef} className="flex items-center gap-4 w-full overflow-x-auto select-none no-scrollbar snap-x sm:snap-none snap-mandatory sm:scroll-px-0">
                 {
                     teams.map((team) => (
-                        <Link className={`bg-primary both-corners-clip mx-auto py-4 px-6 flex flex-col items-center min-w-[250px] max-w-[600px] gap-1 snap-center sm:snap-none w-full sm:active:cursor-grabbing`} draggable={false} key={team.id} onClick={handleClick} href={`/konto/wydarzenie/${team.id}`}>
+                        <Link className={`bg-primary both-corners-clip mx-auto py-4 px-6 flex flex-col items-center min-w-[250px] max-w-[600px] gap-1 snap-center sm:snap-none w-full sm:active:cursor-grabbing`} draggable={false} key={team.id} onClick={handleClick} href={`/konto/druzyna/${team.id}`}>
                             <p className="text-background w-full font-bold overflow-hidden text-ellipsis text-center text-nowrap">{team.name}</p>
                             <div className="flex items-center gap-1">
                                 {new Array(team.memberCount).fill(0).map((_, index) => (

@@ -13,7 +13,10 @@ export function LoginForm() {
     const fetcher = async (data: LoginDTO) => {
         const res = await fetcherAuth<LoginResponse>('/register/login', {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify({
+                ...data,
+                service: "ha"
+            }),
         });
 
         const userId = res.userId.split("\"")[1]

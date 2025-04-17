@@ -8,6 +8,7 @@
   --color-secondary-300: #22263c;
   --color-text: #ffffff;
   --color-error: #ff4949;
+  --color-success: #00ff00;
 
   --animate-sponsor-scroll: sponsor-scroll linear infinite;
   @keyframes sponsor-scroll {
