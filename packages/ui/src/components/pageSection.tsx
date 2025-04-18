@@ -1,13 +1,13 @@
 import { ComponentProps } from 'react';
 
 export const PageSection = ({
-  children,
-  ...props
+    children,
+    ...props
 }: ComponentProps<'section'>) => (
-  <section
-    {...props}
-    className={`w-full flex flex-col items-center px-4 ${props.className}`}
-  >
-    {children}
-  </section>
+    <section
+        {...props}
+        className={`w-full flex flex-col items-center px-4 ${props.className}`}
+    >
+        {children}
+    </section>
 );

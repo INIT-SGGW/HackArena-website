@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
 import { Button, Input } from '@repo/ui';
 import { useActionState } from 'react';
-import { ZodSchema } from 'zod';
 import { registerTeamSchema } from '../../utils/validation';
 import { fetcherHack } from '../../api/fetcher';
 import { LoginResponse } from '../../types/responses';
@@ -16,7 +15,7 @@ export function RegisterForm() {
             body: JSON.stringify(data),
         });
 
-        const userId = res.userId.split("\"")[1]
+        const userId = res.userId.split('"')[1];
 
         if (userId) {
             localStorage.setItem('userId', userId);
@@ -24,14 +23,26 @@ export function RegisterForm() {
 
             window.location.href = '/konto';
         }
-    }
+    };
 
-    const [state, action, isLoading] = useActionState<FormActionState<RegisterTeamDTO>, FormData>((prevState, payload) => formAction<RegisterTeamDTO>(prevState, payload, registerTeamSchema, fetcher), {
-        data: {
-            teamName: '',
-            emails: [],
-        }
-    })
+    const [state, action, isLoading] = useActionState<
+        FormActionState<RegisterTeamDTO>,
+        FormData
+    >(
+        (prevState, payload) =>
+            formAction<RegisterTeamDTO>(
+                prevState,
+                payload,
+                registerTeamSchema,
+                fetcher,
+            ),
+        {
+            data: {
+                teamName: '',
+                emails: [],
+            },
+        },
+    );
 
     return (
         <form
@@ -62,10 +73,17 @@ export function RegisterForm() {
                 defaultValue={state.data.emails}
                 error={state.errors?.client?.emails}
             />
-            <Button type="submit" fullWidth className='mt-[1em]' disabled={isLoading}>
+            <Button
+                type="submit"
+                fullWidth
+                className="mt-[1em]"
+                disabled={isLoading}
+            >
                 {isLoading ? 'Ładowanie...' : 'Zarejestruj drużynę'}
             </Button>
-            <span className="text-sm text-error text-center">{state.errors?.server}</span>
+            <span className="text-sm text-error text-center">
+                {state.errors?.server}
+            </span>
         </form>
-    )
+    );
 }

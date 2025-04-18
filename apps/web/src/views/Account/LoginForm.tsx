@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
 import { ArrowLink, Button, Input } from '@repo/ui';
 import { useActionState } from 'react';
-import { ZodSchema } from 'zod';
 import { loginSchema } from '../../utils/validation';
 import { fetcherAuth } from '../../api/fetcher';
 import { LoginResponse } from '../../types/responses';
@@ -15,25 +14,32 @@ export function LoginForm() {
             method: 'POST',
             body: JSON.stringify({
                 ...data,
-                service: "ha"
+                service: 'ha',
             }),
         });
 
-        const userId = res.userId.split("\"")[1]
+        const userId = res.userId.split('"')[1];
 
         if (userId) {
             localStorage.setItem('userId', userId);
 
             window.location.href = '/konto';
         }
-    }
+    };
 
-    const [state, action, isLoading] = useActionState<FormActionState<LoginDTO>, FormData>((prevState, payload) => formAction<LoginDTO>(prevState, payload, loginSchema, fetcher), {
-        data: {
-            email: '',
-            password: ''
-        }
-    })
+    const [state, action, isLoading] = useActionState<
+        FormActionState<LoginDTO>,
+        FormData
+    >(
+        (prevState, payload) =>
+            formAction<LoginDTO>(prevState, payload, loginSchema, fetcher),
+        {
+            data: {
+                email: '',
+                password: '',
+            },
+        },
+    );
 
     return (
         <form
@@ -49,24 +55,36 @@ export function LoginForm() {
                 label="Email"
                 name="email"
                 type="email"
-                autoComplete='email'
+                autoComplete="email"
                 defaultValue={state.data.email}
                 error={state.errors?.client?.email}
             />
             <Input
                 placeholder="Hasło"
                 label="Hasło"
-                name='password'
+                name="password"
                 type="password"
-                autoComplete='current-password'
+                autoComplete="current-password"
                 defaultValue={state.data.password}
                 error={state.errors?.client?.password}
             />
-            <Button type="submit" fullWidth className='mt-[1em]' disabled={isLoading}>
+            <Button
+                type="submit"
+                fullWidth
+                className="mt-[1em]"
+                disabled={isLoading}
+            >
                 {isLoading ? 'Ładowanie...' : 'Zaloguj się'}
             </Button>
-            <span className="text-sm text-error text-center">{state.errors?.server}</span>
-            <ArrowLink color="white" className='justify-center mt-3' text="Zapomniałeś/aś hasła?" href="/password/forgot" />
+            <span className="text-sm text-error text-center">
+                {state.errors?.server}
+            </span>
+            <ArrowLink
+                color="white"
+                className="justify-center mt-3"
+                text="Zapomniałeś/aś hasła?"
+                href="/password/forgot"
+            />
         </form>
-    )
+    );
 }

@@ -1,10 +1,10 @@
-import { Page } from "./page";
-import { SocialLinks } from "./socialLinks";
+import { Page } from './page';
+import { SocialLinks } from './socialLinks';
 
 type Props = {
-    title: string,
-    text: string
-}
+    title: string;
+    text: string;
+};
 
 export function SuccessPage({ title, text }: Props) {
     return (
@@ -18,5 +18,5 @@ export function SuccessPage({ title, text }: Props) {
                 <SocialLinks className="mt-8 w-max" color="#fff" size={30} />
             </div>
         </Page>
-    )
+    );
 }

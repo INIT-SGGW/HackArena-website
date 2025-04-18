@@ -1,6 +1,6 @@
-import React, { Suspense } from "react";
-import { Page } from "@repo/ui"
-import VerificationCard from "../../../../views/Account/VerificationCard";
+import React, { Suspense } from 'react';
+import { Page } from '@repo/ui';
+import VerificationCard from '../../../../views/Account/VerificationCard';
 
 export default function MailVerificationPage(): React.JSX.Element {
     return (
@@ -12,5 +12,5 @@ export default function MailVerificationPage(): React.JSX.Element {
                 <VerificationCard />
             </Page>
         </Suspense>
-    )
+    );
 }

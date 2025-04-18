@@ -1,43 +1,46 @@
-"use client";
+'use client';
 
-import { ArrowLink } from "@repo/ui";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useRef, useState, MouseEvent as ReactMouseEvent } from "react";
-import { LinkButton } from "@repo/ui";
+import Image from 'next/image';
+import Link from 'next/link';
+import {
+    useEffect,
+    useRef,
+    useState,
+    MouseEvent as ReactMouseEvent,
+} from 'react';
+import { LinkButton } from '@repo/ui';
 
 const mockTeams: {
-    name: string,
+    name: string;
     memberCount: number;
     id: string;
 }[] = [
-        {
-            name: 'HackArena Team 1 asdf asdf asd f',
-            memberCount: 3,
-            id: '1',
-        },
-        {
-            name: 'HackArena Team 2',
-            memberCount: 2,
-            id: '2',
-        },
-        {
-            name: 'HackArena Team 3',
-            memberCount: 4,
-            id: '3',
-        },
-        {
-            name: 'HackArena Team 1',
-            memberCount: 3,
-            id: '4',
-        },
-        {
-            name: 'HackArena Team 2',
-            memberCount: 2,
-            id: '5',
-        },
-
-    ]
+    {
+        name: 'HackArena Team 1 asdf asdf asd f',
+        memberCount: 3,
+        id: '1',
+    },
+    {
+        name: 'HackArena Team 2',
+        memberCount: 2,
+        id: '2',
+    },
+    {
+        name: 'HackArena Team 3',
+        memberCount: 4,
+        id: '3',
+    },
+    {
+        name: 'HackArena Team 1',
+        memberCount: 3,
+        id: '4',
+    },
+    {
+        name: 'HackArena Team 2',
+        memberCount: 2,
+        id: '5',
+    },
+];
 
 export function TeamsCard() {
     return (
@@ -52,12 +55,16 @@ export function TeamsCard() {
                 {mockTeams.length > 0 ? (
                     <TeamsCarousel teams={mockTeams} />
                 ) : (
-                    <p className="text-center">Nie jesteś jeszcze członkiem żadnej drużyny</p>
+                    <p className="text-center">
+                        Nie jesteś jeszcze członkiem żadnej drużyny
+                    </p>
                 )}
-                <LinkButton href="/rejestracja/druzyna" fullWidth>Stwórz drużynę</LinkButton>
+                <LinkButton href="/rejestracja/druzyna" fullWidth>
+                    Stwórz drużynę
+                </LinkButton>
             </div>
         </div>
-    )
+    );
 }
 
 type NoDescriptionEventProps = {
@@ -93,8 +100,8 @@ export function TeamsCarousel({ teams }: NoDescriptionEventProps) {
             if (window.innerWidth < 640) return;
 
             if (Math.abs(startX - e.pageX + container.offsetLeft) < 5) {
-                setIsDragging(false)
-            };
+                setIsDragging(false);
+            }
             isDown = false;
             container.classList.remove('active');
         };
@@ -128,24 +135,41 @@ export function TeamsCarousel({ teams }: NoDescriptionEventProps) {
             e.preventDefault();
             setIsDragging(false);
         }
-    }
+    };
 
     return (
         <div className={`flex flex-col gap-4 items-start overflow-hidden`}>
-            <div ref={carouselRef} className="flex items-center gap-4 w-full overflow-x-auto select-none no-scrollbar snap-x sm:snap-none snap-mandatory sm:scroll-px-0">
-                {
-                    teams.map((team) => (
-                        <Link className={`bg-primary both-corners-clip mx-auto py-4 px-6 flex flex-col items-center min-w-[250px] max-w-[600px] gap-1 snap-center sm:snap-none w-full sm:active:cursor-grabbing`} draggable={false} key={team.id} onClick={handleClick} href={`/konto/druzyna/${team.id}`}>
-                            <p className="text-background w-full font-bold overflow-hidden text-ellipsis text-center text-nowrap">{team.name}</p>
-                            <div className="flex items-center gap-1">
-                                {new Array(team.memberCount).fill(0).map((_, index) => (
-                                    <Image key={index} src={`/member.svg`} alt="member" width={20} height={20} />
+            <div
+                ref={carouselRef}
+                className="flex items-center gap-4 w-full overflow-x-auto select-none no-scrollbar snap-x sm:snap-none snap-mandatory sm:scroll-px-0"
+            >
+                {teams.map((team) => (
+                    <Link
+                        className={`bg-primary both-corners-clip mx-auto py-4 px-6 flex flex-col items-center min-w-[250px] max-w-[600px] gap-1 snap-center sm:snap-none w-full sm:active:cursor-grabbing`}
+                        draggable={false}
+                        key={team.id}
+                        onClick={handleClick}
+                        href={`/konto/druzyna/${team.id}`}
+                    >
+                        <p className="text-background w-full font-bold overflow-hidden text-ellipsis text-center text-nowrap">
+                            {team.name}
+                        </p>
+                        <div className="flex items-center gap-1">
+                            {new Array(team.memberCount)
+                                .fill(0)
+                                .map((_, index) => (
+                                    <Image
+                                        key={index}
+                                        src={`/member.svg`}
+                                        alt="member"
+                                        width={20}
+                                        height={20}
+                                    />
                                 ))}
-                            </div>
-                        </Link>
-                    ))
-                }
+                        </div>
+                    </Link>
+                ))}
             </div>
         </div>
-    )
+    );
 }

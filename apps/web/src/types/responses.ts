@@ -1,9 +1,9 @@
 export type LoginResponse = {
-    status: number
-    userId: string
-}
+    status: number;
+    userId: string;
+};
 
 export type RegisterUserResponse = {
-    status: number,
-    error?: string
-}
+    status: number;
+    error?: string;
+};

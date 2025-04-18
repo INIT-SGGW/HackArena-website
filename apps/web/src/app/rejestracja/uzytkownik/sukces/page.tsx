@@ -1,4 +1,4 @@
-import { SuccessPage } from "@repo/ui";
+import { SuccessPage } from '@repo/ui';
 
 export default function RejestracjaUzytkownikaSukces() {
     return (
@@ -6,5 +6,5 @@ export default function RejestracjaUzytkownikaSukces() {
             title="Gratulacje!"
             text="Twoje konto zostało pomyślnie założone. Sprawdź swoją skrzynkę pocztową w celu zweryfikowania maila."
         />
-    )
+    );
 }

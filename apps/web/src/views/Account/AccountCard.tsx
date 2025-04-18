@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Button, LinkButton } from "@repo/ui";
-import { fetcherAuth } from "../../api/fetcher";
+import { Button, LinkButton } from '@repo/ui';
+import { fetcherAuth } from '../../api/fetcher';
 
 export function AccountCard() {
     const logout = async () => {
@@ -17,12 +17,21 @@ export function AccountCard() {
                 console.error('Logout error:', error);
             }
         }
-    }
+    };
 
     return (
         <div className="w-full">
-            <LinkButton href="/konto/ustawienia" secondary className="mb-4" fullWidth>Ustawienia konta</LinkButton>
-            <Button onClick={logout} fullWidth>Wyloguj się</Button>
+            <LinkButton
+                href="/konto/ustawienia"
+                secondary
+                className="mb-4"
+                fullWidth
+            >
+                Ustawienia konta
+            </LinkButton>
+            <Button onClick={logout} fullWidth>
+                Wyloguj się
+            </Button>
         </div>
-    )
+    );
 }

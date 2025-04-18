@@ -1,14 +1,19 @@
-import { ZodError, ZodSchema } from "zod";
+import { ZodError, ZodSchema } from 'zod';
 
 export type FormActionState<T> = {
-    data: T,
+    data: T;
     errors?: {
-        client?: { [x: string | number | symbol]: string[] | undefined },
-        server?: string,
-    },
-}
+        client?: { [x: string | number | symbol]: string[] | undefined };
+        server?: string;
+    };
+};
 
-export async function formAction<T>(_: FormActionState<T>, formData: FormData, dataSchema: ZodSchema, fetcher: (data: T) => Promise<void>): Promise<FormActionState<T>> {
+export async function formAction<T>(
+    _: FormActionState<T>,
+    formData: FormData,
+    dataSchema: ZodSchema,
+    fetcher: (data: T) => Promise<void>,
+): Promise<FormActionState<T>> {
     let newData = Object.fromEntries(formData.entries()) as T;
 
     try {
@@ -23,7 +28,7 @@ export async function formAction<T>(_: FormActionState<T>, formData: FormData, d
                 },
                 errors: {
                     client: {
-                        ...errors
+                        ...errors,
                     },
                     server: undefined,
                 },
@@ -39,9 +44,9 @@ export async function formAction<T>(_: FormActionState<T>, formData: FormData, d
                 ...newData,
             },
             errors: {
-                server: "Wystąpił błąd podczas przetwarzania żądania",
-            }
-        }
+                server: 'Wystąpił błąd podczas przetwarzania żądania',
+            },
+        };
     }
 
     try {
@@ -56,14 +61,14 @@ export async function formAction<T>(_: FormActionState<T>, formData: FormData, d
                 ...newData,
             },
             errors: {
-                server: "Wystąpił błąd podczas przetwarzania żądania",
-            }
-        }
+                server: 'Wystąpił błąd podczas przetwarzania żądania',
+            },
+        };
     }
 
     return {
         data: {
             ...newData,
-        }
-    }
+        },
+    };
 }

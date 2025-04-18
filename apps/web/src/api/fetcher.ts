@@ -1,10 +1,11 @@
 type FetcherOptions = RequestInit & {
     skipAuthRedirect?: boolean;
-}
+};
 
-export async function fetcher<T = any>(
-    url: string, options: FetcherOptions)
-    : Promise<T> {
+export async function fetcher<T>(
+    url: string,
+    options: FetcherOptions,
+): Promise<T> {
     const res = await fetch(url, {
         ...options,
         credentials: 'include',
@@ -16,7 +17,7 @@ export async function fetcher<T = any>(
 
     if (!res.ok) {
         const isAuthError = res.status === 401 || res.status === 403;
-        const response = await res.json()
+        const response = await res.json();
 
         if (isAuthError && !options?.skipAuthRedirect) {
             if (typeof window !== 'undefined') {
@@ -48,20 +49,21 @@ export async function fetcher<T = any>(
     return res.json();
 }
 
-export async function fetcherAuth<T = any>(
-    url: string, options: FetcherOptions
+export async function fetcherAuth<T>(
+    url: string,
+    options: FetcherOptions,
 ): Promise<T> {
     let authApiUrl: string;
 
     switch (process.env.NEXT_PUBLIC_NODE_ENV) {
         case 'production':
-            authApiUrl = "https://hackarena.pl";
+            authApiUrl = 'https://hackarena.pl';
             break;
         case 'test':
-            authApiUrl = "https://hackarena.pl:5000";
+            authApiUrl = 'https://hackarena.pl:5000';
             break;
         default:
-            authApiUrl = "http://localhost:8080";
+            authApiUrl = 'http://localhost:8080';
             break;
     }
 
@@ -74,20 +76,21 @@ export async function fetcherAuth<T = any>(
     return fetcher<T>(fullUrl, options);
 }
 
-export async function fetcherHack<T = any>(
-    url: string, options: FetcherOptions
+export async function fetcherHack<T>(
+    url: string,
+    options: FetcherOptions,
 ): Promise<T> {
     let hackApiUrl: string;
 
     switch (process.env.NEXT_PUBLIC_NODE_ENV) {
         case 'production':
-            hackApiUrl = "https://initcodingchallenge.pl/api/v1";
+            hackApiUrl = 'https://initcodingchallenge.pl/api/v1';
             break;
         case 'test':
-            hackApiUrl = "https://initcodingchallenge.pl:5000/api/v1";
+            hackApiUrl = 'https://initcodingchallenge.pl:5000/api/v1';
             break;
         default:
-            hackApiUrl = "http://localhost:4000";
+            hackApiUrl = 'http://localhost:4000';
             break;
     }
 
