@@ -3,14 +3,14 @@
 import { Button, Input } from '@repo/ui';
 import { useActionState } from 'react';
 import { ZodSchema } from 'zod';
-import { registerSchema } from '../../utils/validation';
+import { registerTeamSchema } from '../../utils/validation';
 import { fetcherHack } from '../../api/fetcher';
 import { LoginResponse } from '../../types/responses';
 import { formAction, FormActionState } from '../../api/formAction';
-import { RegisterDTO } from '../../types/dtos';
+import { RegisterTeamDTO } from '../../types/dtos';
 
 export function RegisterForm() {
-    const fetcher = async (data: RegisterDTO) => {
+    const fetcher = async (data: RegisterTeamDTO) => {
         const res = await fetcherHack<LoginResponse>('/register', {
             method: 'POST',
             body: JSON.stringify(data),
@@ -26,7 +26,7 @@ export function RegisterForm() {
         }
     }
 
-    const [state, action, isLoading] = useActionState<FormActionState<RegisterDTO>, FormData>((prevState, payload) => formAction<RegisterDTO>(prevState, payload, registerSchema, fetcher), {
+    const [state, action, isLoading] = useActionState<FormActionState<RegisterTeamDTO>, FormData>((prevState, payload) => formAction<RegisterTeamDTO>(prevState, payload, registerTeamSchema, fetcher), {
         data: {
             teamName: '',
             emails: [],
