@@ -1,33 +1,25 @@
-import { ArrowLink, Button, Input, Page } from '@repo/ui';
+import { Page } from '@repo/ui';
 import { Metadata } from 'next';
+import { AccountCard } from '../../views/Account/AccountCard';
+import { EventsCard } from '../../views/Account/EventsCard';
+import { TeamsCard } from '../../views/Account/TeamsCard';
+import { EventLiveCard } from '../../views/Account/EventLiveCard';
 
 export const metadata: Metadata = {
-  title: 'Konto | HackArena',
-  description: `Zaloguj się na swoje konto Hackarena, aby zarządzać swoimi zespołami, przeglądać wydarzenia, w których brałeś/aś udział i zapisami się na nowe.`,
-}
+    title: 'Konto | HackArena',
+    description: `Zarządzaj swoim kontem Hackarena, przeglądaj swoje zespoły i wydarzenia, w których brałeś/aś udział.`,
+};
 
-export default function LoginForm() {
-  return (
-    <Page>
-      <h1
-        className={'russo-one justify-self-center text-primary mb-10 text-5xl'}
-      >
-        Logowanie
-      </h1>
-      <form
-        className={
-          'both-corners-clip bg-secondary-300 flex flex-col w-full max-w-[410px] justify-self-center p-5 gap-1'
-        }
-        style={{ '--clip-size': '25px' } as React.CSSProperties}
-      >
-        <Input placeholder="Email" label="Email" />
-        <Input type="password" placeholder="Hasło" label="Hasło" />
-        <div className={'p-1 text-secondary-300'}>żeby było równo :)</div>
-        <Button type="submit" fullWidth>
-          Zaloguj się
-        </Button>
-        <ArrowLink color="white" className='justify-center mt-3' text="Zapomniałeś/aś hasła?" href="/password/forgot" />
-      </form>
-    </Page>
-  );
+export default function LoginPage() {
+    return (
+        <Page>
+            <div className="flex flex-col gap-15 page-width mx-auto">
+                <h1 className="title text-left">Hej, Jan!</h1>
+                <EventLiveCard />
+                <TeamsCard />
+                <EventsCard />
+                <AccountCard />
+            </div>
+        </Page>
+    );
 }

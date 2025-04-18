@@ -7,3 +7,5 @@ export { PageSection } from './components/pageSection';
 export { TitleWithIcon } from './components/titleWithIcon';
 export { SocialLinks } from './components/socialLinks';
 export { ArrowLink } from './components/arrowLink';
+export { SuccessPage } from './components/successPage';
+export { Select } from './components/select';
