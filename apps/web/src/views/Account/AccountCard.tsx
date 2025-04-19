@@ -6,7 +6,7 @@ import { fetcherAuth } from '../../api/fetcher';
 export function AccountCard() {
     const logout = async () => {
         try {
-            await fetcherAuth('/register/logout', {
+            await fetcherAuth<null, null>('/register/logout', {
                 method: 'POST',
             });
 

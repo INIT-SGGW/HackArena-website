@@ -1,6 +1,6 @@
 import { Page } from '@repo/ui';
 import { Metadata } from 'next';
-import { RegisterForm } from '../../../views/Account/RegisterForm';
+import { RegisterTeamForm } from '../../../views/Account/RegisterTeamForm';
 
 export const metadata: Metadata = {
     title: 'Rejestracja | HackArena',
@@ -15,7 +15,7 @@ export default function RejestracjaDrużyny() {
     return (
         <Page className="flex flex-col items-center gap-4">
             <h1 className="title">Rejestracja</h1>
-            <RegisterForm />
+            <RegisterTeamForm />
             {/* <p className="text-center text-lg">
           Aktualnie nie prowadzimy zapisów. Śledź nasze portale społecznościowe,
           żeby nie przegapić następnego wydarzenia!

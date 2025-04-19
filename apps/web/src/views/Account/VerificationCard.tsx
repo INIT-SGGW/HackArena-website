@@ -4,6 +4,7 @@ import { LinkButton } from '@repo/ui';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { fetcherAuth } from '../../api/fetcher';
+import { VerifyEmailRequest } from '../../types/requests';
 
 export default function VerificationCard(): React.JSX.Element {
     const searchParams = useSearchParams();
@@ -20,14 +21,14 @@ export default function VerificationCard(): React.JSX.Element {
 
         const handle = async (): Promise<void> => {
             try {
-                await fetcherAuth<void>(
+                await fetcherAuth<VerifyEmailRequest, null>(
                     `/register/verifiy?email=${email}&token=${token}`,
                     {
                         method: 'POST',
-                        body: JSON.stringify({
+                        body: {
                             email: email,
                             verificationToken: token,
-                        }),
+                        },
                     },
                 );
             } catch (_: unknown) {

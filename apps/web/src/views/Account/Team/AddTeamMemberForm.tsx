@@ -2,12 +2,13 @@
 
 import { notFound, useParams } from "next/navigation";
 import { AddTeamMemberDTO } from "../../../types/dtos";
-import { AddTEamMemberResponse } from "../../../types/responses";
+import { AddTeamMemberResponse } from "../../../types/responses";
 import { fetcherHack } from "../../../api/fetcher";
 import { useActionState } from "react";
 import { formAction, FormActionState } from "../../../api/formAction";
 import { AddTeamMEmberSchema } from "../../../utils/validation";
 import { Button, Input } from "@repo/ui";
+import { AddTeamMemberRequest } from "../../../types/requests";
 
 export function AddTeamMemberForm() {
     const { id } = useParams();
@@ -17,12 +18,12 @@ export function AddTeamMemberForm() {
     }
 
     const fetcher = async (data: AddTeamMemberDTO) => {
-        await fetcherHack<AddTEamMemberResponse>('/register/login', {
+        await fetcherHack<AddTeamMemberRequest, AddTeamMemberResponse>('/register/login', {
             method: 'POST',
-            body: JSON.stringify({
+            body: {
                 ...data,
                 teamId: id
-            }),
+            }
         });
 
         window.location.href = `/konto/druzyna/${id}`;

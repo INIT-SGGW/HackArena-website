@@ -4,25 +4,17 @@ import { Button, Input } from '@repo/ui';
 import { useActionState } from 'react';
 import { registerTeamSchema } from '../../utils/validation';
 import { fetcherHack } from '../../api/fetcher';
-import { LoginResponse } from '../../types/responses';
+import { RegisterTeamResponse } from '../../types/responses';
 import { formAction, FormActionState } from '../../api/formAction';
 import { RegisterTeamDTO } from '../../types/dtos';
+import { RegisterTeamRequest } from '../../types/requests';
 
-export function RegisterForm() {
+export function RegisterTeamForm() {
     const fetcher = async (data: RegisterTeamDTO) => {
-        const res = await fetcherHack<LoginResponse>('/register', {
+        const res = await fetcherHack<RegisterTeamRequest, RegisterTeamResponse>('/register', {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: data,
         });
-
-        const userId = res.userId.split('"')[1];
-
-        if (userId) {
-            localStorage.setItem('userId', userId);
-            localStorage.setItem('loginTime', new Date().toString());
-
-            window.location.href = '/konto';
-        }
     };
 
     const [state, action, isLoading] = useActionState<
