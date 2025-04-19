@@ -102,3 +102,8 @@ export const registerUserSchema = z
         message: 'Hasła muszą być takie same',
         path: ['repeatPassword'],
     });
+
+export const AddTeamMEmberSchema = z
+    .object({
+        email: emailSchema
+    })

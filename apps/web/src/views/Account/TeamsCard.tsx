@@ -8,49 +8,44 @@ import {
     useState,
     MouseEvent as ReactMouseEvent,
 } from 'react';
-import { LinkButton } from '@repo/ui';
+import { CrossedTitle, LinkButton } from '@repo/ui';
 
 const mockTeams: {
     name: string;
     memberCount: number;
     id: string;
 }[] = [
-    {
-        name: 'HackArena Team 1 asdf asdf asd f',
-        memberCount: 3,
-        id: '1',
-    },
-    {
-        name: 'HackArena Team 2',
-        memberCount: 2,
-        id: '2',
-    },
-    {
-        name: 'HackArena Team 3',
-        memberCount: 4,
-        id: '3',
-    },
-    {
-        name: 'HackArena Team 1',
-        memberCount: 3,
-        id: '4',
-    },
-    {
-        name: 'HackArena Team 2',
-        memberCount: 2,
-        id: '5',
-    },
-];
+        {
+            name: 'HackArena Team 1 asdf asdf asd f',
+            memberCount: 3,
+            id: '1',
+        },
+        {
+            name: 'HackArena Team 2',
+            memberCount: 2,
+            id: '2',
+        },
+        {
+            name: 'HackArena Team 3',
+            memberCount: 4,
+            id: '3',
+        },
+        {
+            name: 'HackArena Team 1',
+            memberCount: 3,
+            id: '4',
+        },
+        {
+            name: 'HackArena Team 2',
+            memberCount: 2,
+            id: '5',
+        },
+    ];
 
 export function TeamsCard() {
     return (
         <div className="flex flex-col page-width gap-10">
-            <div className="relative w-full">
-                <h2 className="title z-2 bg-background m-auto text-4xl sm:text-5xl sm:w-fit sm:px-10 sm:text-left">
-                    Twoje drużyny
-                </h2>
-                <div className="absolute w-full h-[4px] bg-primary top-[50%] -translate-y-[50%] left-0 -z-1 hidden sm:block" />
-            </div>
+            <CrossedTitle title="Twoje drużyny" />
             <div className="flex flex-col gap-10 sm:p-4">
                 {mockTeams.length > 0 ? (
                     <TeamsCarousel teams={mockTeams} />

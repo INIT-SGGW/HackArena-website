@@ -1,5 +1,7 @@
-import { Page } from '@repo/ui';
+import { Button, CrossedTitle, Page } from '@repo/ui';
 import { NoDescriptionEvents } from '../../../../views/Wydarzenia/NoDescriptionEvents';
+import { MembersCard } from '../../../../views/Account/Team/MembersCard';
+import { LeaveTeamCard } from '../../../../views/Account/Team/LeaveTeamCard';
 
 const mockData = {
     name: 'HackArena Team 1',
@@ -41,52 +43,16 @@ const mockData = {
 export default function TeamPage() {
     return (
         <Page>
-            <div className="flex flex-col gap-10 page-width mx-auto">
+            <div className="flex flex-col gap-15 page-width mx-auto">
                 <h1 className="title text-left">{mockData.name}</h1>
-                <div className="flex flex-col gap-5">
-                    <h2 className="subtitle text-left">Członkowie drużyny</h2>
-                    <div>
-                        <ol className="w-full max-w-[700px] mx-auto">
-                            {mockData.members.map((member, index) => (
-                                <li
-                                    key={index}
-                                    className="flex flex-col gap-2 mb-5 last:mb-0"
-                                >
-                                    <div className="flex gap-5 justify-between">
-                                        <div className="flex flex-col gap-1">
-                                            <span className="text-lg font-semibold">
-                                                {member.name}
-                                            </span>
-                                            <span className="text-sm text-gray-500">
-                                                {member.email}
-                                            </span>
-                                        </div>
-                                        <div className="flex gap-3">
-                                            {member.captain && (
-                                                <span className="text-blue-500">
-                                                    Kapitan
-                                                </span>
-                                            )}
-                                            {member.verified ? (
-                                                <span className="text-green-500">
-                                                    Zweryfikowany
-                                                </span>
-                                            ) : (
-                                                <span className="text-error">
-                                                    Niezweryfikowany
-                                                </span>
-                                            )}
-                                        </div>
-                                    </div>
-                                </li>
-                            ))}
-                        </ol>
-                    </div>
+                <div className="flex flex-col gap-10">
+                    <CrossedTitle title="Członkowie drużyny" />
+                    <MembersCard />
                 </div>
-                <div className="flex flex-col gap-2">
-                    <h2 className="subtitle text-left">Wydarzenia</h2>
+                <div className="flex flex-col gap-5">
+                    <CrossedTitle title="Wydarzenia" />
 
-                    <div className="sm:p-4">
+                    <div className="py-5">
                         {mockData.events.length > 0 ? (
                             <div
                                 className={`flex flex-col md:flex-row gap-5 md:gap-10 ${mockData.events.length > 1 ? '!flex-col !gap-10' : ''}`}
@@ -106,6 +72,7 @@ export default function TeamPage() {
                         )}
                     </div>
                 </div>
+                <LeaveTeamCard />
             </div>
         </Page>
     );
