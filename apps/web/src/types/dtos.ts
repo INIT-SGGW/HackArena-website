@@ -32,3 +32,7 @@ export type RegisterUserDTO = {
     occupation: Occupation;
     dietPreference: DietPreference;
 };
+
+export type AddTeamMemberDTO = {
+    email: string;
+}

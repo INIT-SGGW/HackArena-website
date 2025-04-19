@@ -7,3 +7,8 @@ export type RegisterUserResponse = {
     status: number;
     error?: string;
 };
+
+export type AddTEamMemberResponse = {
+    status: number;
+    error?: string;
+}
