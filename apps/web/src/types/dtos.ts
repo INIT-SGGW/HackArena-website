@@ -9,16 +9,16 @@ export type RegisterTeamDTO = {
 };
 
 export enum Occupation {
-    STUDENT = 'student',
-    UNDERGRADUATE = 'undergraduate',
-    POSTGRADUATE = 'postgraduate',
-    OTHER = 'other',
+    OTHER = 'Inne',
+    STUDENT = 'Uczeń',
+    UNDERGRADUATE = 'Student',
+    POSTGRADUATE = 'Absolwent',
 }
 
 export enum DietPreference {
-    VEGETARIAN = 'vegetarian',
-    VEGAN = 'vegan',
-    NONE = 'none',
+    NONE = 'Brak',
+    VEGAN = 'Wegańskie',
+    VEGETARIAN = 'Wegegetariańskie',
 }
 
 export type RegisterUserDTO = {

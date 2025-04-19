@@ -17,7 +17,7 @@ export function Select({ id, label, error, options, ...props }: Props) {
             >
                 {options.map((value, index) => {
                     return (
-                        <option key={index} value={value}>
+                        <option key={index} value={value.toLowerCase()}>
                             {value}
                         </option>
                     );
