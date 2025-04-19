@@ -1,12 +1,12 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { getUserId } from "../../../utils/getUserId";
+import { useGetUserId } from "../../../utils/useGetUserId";
 import { Button } from "@repo/ui";
 
 export function LeaveTeamCard() {
     const { _id } = useParams();
-    const userId = getUserId();
+    const userId = useGetUserId();
 
     const handleLeaveTeam = () => {
         // Implement the logic to leave the team
