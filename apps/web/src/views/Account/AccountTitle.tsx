@@ -1,0 +1,80 @@
+"use client";
+
+import { Button } from "@repo/ui";
+import Image from "next/image"
+import { useState } from "react";
+import { TeamInvite } from "../Notifications/TeamInvite";
+import useSWR from "swr";
+import { fetcherAuth } from "../../api/fetcher";
+import { TeamInviteNotification } from "../../types/dtos";
+import { GetNotificationsResponse } from "../../types/responses";
+
+export function AccountTitle() {
+    return (
+        <div className="flex flex-row justify-between items-center">
+            <h1 className="title text-left w-full max-w-[80%] text-ellipsis overflow-hidden">Hej, Jan!</h1>
+            <Notifications />
+        </div>
+    )
+}
+
+function Notifications() {
+    const [showNotifications, setShowNotifications] = useState(false);
+    const userId = typeof window !== "undefined" ? localStorage.getItem("userId") : null;
+
+    const { data, error, isLoading } = useSWR<GetNotificationsResponse<TeamInviteNotification>, Error>(
+        `/register/user/notifications/${userId}?service=ha`,
+        (url: string) => fetcherAuth<null, GetNotificationsResponse<TeamInviteNotification>>(url, {
+            method: "GET",
+        }))
+
+    return (
+        <div className="relative">
+            <div className="absolute top-0 right-0 w-[15px] h-[15px] bg-red-500 rounded-full" />
+            <Image title="Powiadomienia" width={45} height={45} onClick={() => setShowNotifications(!showNotifications)} className="cursor-pointer" src="/notification.svg" alt="Notifications" />
+            {
+                showNotifications && (
+                    <div
+                        className="absolute top-[calc(100%+10px)] right-0  w-[calc(100vw-var(--spacing)*4*2)] max-w-[500px] bg-primary p-[3px] both-corners-clip z-20"
+                        style={{ "--clip-size": "30px" } as React.CSSProperties}
+                    >
+                        <div
+                            className="flex flex-col gap-5 bg-background both-corners-clip p-4"
+                            style={{ "--clip-size": "30px" } as React.CSSProperties}
+                        >
+                            <h2 className="subsubtitle">Powiadomienia</h2>
+                            <ul className="flex flex-col gap-6 max-h-[50vh] overflow-y-auto">
+                                {
+                                    isLoading && !error && (
+                                        <li>Ładowanie...</li>
+                                    )
+                                }
+                                {
+                                    error && (
+                                        <li className="text-error">{error.message}</li>
+                                    )
+                                }
+                                {
+                                    data?.notifications.map((notification) => {
+                                        switch (notification.type) {
+                                            case "ha_team_invite":
+                                                return <TeamInvite key={notification._id} notification={notification} />
+                                            default:
+                                                return null;
+                                        }
+                                    })
+                                }
+                                {
+                                    data?.notifications.length === 0 && (
+                                        <li className="">Brak nowych powiadomień</li>
+                                    )
+                                }
+                            </ul>
+                            <Button fullWidth className="mt-3" onClick={() => setShowNotifications(false)}>Zamknij</Button>
+                        </div>
+                    </div>
+                )
+            }
+        </div>
+    )
+}

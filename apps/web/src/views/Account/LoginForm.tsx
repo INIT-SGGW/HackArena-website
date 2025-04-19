@@ -7,15 +7,16 @@ import { fetcherAuth } from '../../api/fetcher';
 import { LoginResponse } from '../../types/responses';
 import { formAction, FormActionState } from '../../api/formAction';
 import { LoginDTO } from '../../types/dtos';
+import { LoginRequest } from '../../types/requests';
 
 export function LoginForm() {
     const fetcher = async (data: LoginDTO) => {
-        const res = await fetcherAuth<LoginResponse>('/register/login', {
+        const res = await fetcherAuth<LoginRequest, LoginResponse>('/register/login', {
             method: 'POST',
-            body: JSON.stringify({
+            body: {
                 ...data,
                 service: 'ha',
-            }),
+            },
         });
 
         const userId = res.userId.split('"')[1];

@@ -4,6 +4,7 @@ import { AccountCard } from '../../views/Account/AccountCard';
 import { EventsCard } from '../../views/Account/EventsCard';
 import { TeamsCard } from '../../views/Account/TeamsCard';
 import { EventLiveCard } from '../../views/Account/EventLiveCard';
+import { AccountTitle } from '../../views/Account/AccountTitle';
 
 export const metadata: Metadata = {
     title: 'Konto | HackArena',
@@ -14,7 +15,7 @@ export default function LoginPage() {
     return (
         <Page>
             <div className="flex flex-col gap-15 page-width mx-auto">
-                <h1 className="title text-left">Hej, Jan!</h1>
+                <AccountTitle />
                 <EventLiveCard />
                 <TeamsCard />
                 <EventsCard />

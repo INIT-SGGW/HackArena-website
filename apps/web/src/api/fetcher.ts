@@ -1,11 +1,12 @@
-type FetcherOptions = RequestInit & {
+type FetcherOptions<RQ> = Omit<RequestInit, 'body'> & {
+    body?: RQ,
     skipAuthRedirect?: boolean;
 };
 
-export async function fetcher<T>(
+export async function fetcher<RQ, RE>(
     url: string,
-    options: FetcherOptions,
-): Promise<T> {
+    options: FetcherOptions<RQ>,
+): Promise<RE> {
     const res = await fetch(url, {
         ...options,
         credentials: 'include',
@@ -13,6 +14,7 @@ export async function fetcher<T>(
             'Content-Type': 'application/json',
             ...(options?.headers || {}),
         },
+        body: options?.body ? JSON.stringify(options.body) : undefined,
     });
 
     if (!res.ok) {
@@ -49,10 +51,10 @@ export async function fetcher<T>(
     return res.json();
 }
 
-export async function fetcherAuth<T>(
+export async function fetcherAuth<RQ, RE>(
     url: string,
-    options: FetcherOptions,
-): Promise<T> {
+    options: FetcherOptions<RQ>,
+): Promise<RE> {
     let authApiUrl: string;
 
     switch (process.env.NEXT_PUBLIC_NODE_ENV) {
@@ -73,13 +75,13 @@ export async function fetcherAuth<T>(
 
     const fullUrl = new URL(url, authApiUrl).toString();
 
-    return fetcher<T>(fullUrl, options);
+    return fetcher<RQ, RE>(fullUrl, options);
 }
 
-export async function fetcherHack<T>(
+export async function fetcherHack<RQ, RE>(
     url: string,
-    options: FetcherOptions,
-): Promise<T> {
+    options: FetcherOptions<RQ>,
+): Promise<RE> {
     let hackApiUrl: string;
 
     switch (process.env.NEXT_PUBLIC_NODE_ENV) {
@@ -100,5 +102,5 @@ export async function fetcherHack<T>(
 
     const fullUrl = new URL(url, hackApiUrl).toString();
 
-    return fetcher<T>(fullUrl, options);
+    return fetcher<RQ, RE>(fullUrl, options);
 }
