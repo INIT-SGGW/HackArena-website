@@ -12,6 +12,8 @@ export type LoginResponse = {
 
 export type RegisterUserResponse = TypicalResponse
 
+export type RegisterUserFromInvitationResponse = TypicalResponse
+
 export type GetNotificationsResponse<T> = {
     status: string;
     notifications: Notification<T>[];

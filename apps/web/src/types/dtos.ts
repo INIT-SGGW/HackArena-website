@@ -33,6 +33,17 @@ export type RegisterUserDTO = {
     dietPreference: DietPreference;
 };
 
+export type RegisterUserFromInvitationDTO = {
+    firstName: string;
+    lastName: string;
+    password: string;
+    repeatPassword?: string;
+    dateOfBirth: Date;
+    aggrement: boolean;
+    occupation: Occupation;
+    dietPreference: DietPreference;
+};
+
 export type TeamInviteNotification = {
     teamId: string;
     teamName: string;

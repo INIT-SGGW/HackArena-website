@@ -3,18 +3,18 @@
 import { Button, Input, Select } from '@repo/ui';
 import { useActionState } from 'react';
 import { registerUserSchema } from '../../utils/validation';
-import { RegisterUserResponse } from '../../types/responses';
+import { RegisterUserFromInvitationResponse } from '../../types/responses';
 import { formAction, FormActionState } from '../../api/formAction';
-import { DietPreference, Occupation, RegisterUserDTO } from '../../types/dtos';
+import { DietPreference, Occupation, RegisterUserFromInvitationDTO } from '../../types/dtos';
 import { fetcherAuth } from '../../api/fetcher';
-import { RegisterUserRequest } from '../../types/requests';
+import { RegisterUserFromInvitationRequest } from '../../types/requests';
+import { notFound, useSearchParams } from 'next/navigation';
 
 const eighteenYearsAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 18));
 
-const initialValue: RegisterUserDTO = {
+const initialValue: RegisterUserFromInvitationDTO = {
     firstName: '',
     lastName: '',
-    email: '',
     password: '',
     repeatPassword: '',
     dateOfBirth: eighteenYearsAgo,
@@ -23,27 +23,38 @@ const initialValue: RegisterUserDTO = {
     dietPreference: DietPreference.NONE,
 };
 
-export function RegisterUserForm() {
-    const fetcher = async (data: RegisterUserDTO) => {
-        delete data.repeatPassword;
+export function RegisterUserFromInvitationForm() {
+    const searchParams = useSearchParams();
 
-        await fetcherAuth<RegisterUserRequest, RegisterUserResponse>('/register/user', {
-            method: 'POST',
-            body: {
-                service: 'ha',
-                ...data,
-            },
-        });
+    const email = searchParams.get('email');
+    const token = searchParams.get('token');
 
-        window.location.href = 'uzytkownik/sukces';
+    if (!email || !token) {
+        notFound()
+    }
+
+    const fetcher = async (data: RegisterUserFromInvitationDTO) => {
+        // delete data.repeatPassword;
+
+        // await fetcherAuth<RegisterUserFromInvitationRequest, RegisterUserFromInvitationResponse>('/register/user/invitation', {
+        //     method: 'POST',
+        //     body: {
+        //         service: 'ha',
+        //         email: email,
+        //         verificationToken: token,
+        //         ...data,
+        //     },
+        // });
+
+        window.location.href += "/sukces";
     };
 
     const [state, action, isLoading] = useActionState<
-        FormActionState<RegisterUserDTO>,
+        FormActionState<RegisterUserFromInvitationDTO>,
         FormData
     >(
         (prevState, payload) =>
-            formAction<RegisterUserDTO>(
+            formAction<RegisterUserFromInvitationDTO>(
                 prevState,
                 payload,
                 registerUserSchema,
@@ -81,15 +92,6 @@ export function RegisterUserForm() {
                 type="text"
                 defaultValue={state.data.lastName}
                 error={state.errors?.client?.lastName}
-            />
-            <Input
-                autoComplete="email"
-                placeholder="Email"
-                label="Email"
-                name="email"
-                type="email"
-                defaultValue={state.data.email}
-                error={state.errors?.client?.email}
             />
             <Input
                 autoComplete="new-password"

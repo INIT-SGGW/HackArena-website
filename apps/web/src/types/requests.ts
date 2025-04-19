@@ -29,6 +29,20 @@ export type RegisterUserRequest = {
     dietPreference: DietPreference;
 }
 
+export type RegisterUserFromInvitationRequest = {
+    service: "ha",
+    verificationToken: string,
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    repeatPassword?: string;
+    dateOfBirth: Date;
+    aggrement: boolean;
+    occupation: Occupation;
+    dietPreference: DietPreference;
+}
+
 export type VerifyEmailRequest = {
     email: string,
     verificationToken: string,
