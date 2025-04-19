@@ -3,6 +3,11 @@
 import { Button } from "@repo/ui";
 import Image from "next/image"
 import { useState } from "react";
+import { TeamInvite } from "../Notifications/TeamInvite";
+import useSWR from "swr";
+import { fetcherAuth } from "../../api/fetcher";
+import { TeamInviteNotification } from "../../types/dtos";
+import { GetNotificationsResponse } from "../../types/responses";
 
 export function AccountTitle() {
     return (
@@ -13,38 +18,15 @@ export function AccountTitle() {
     )
 }
 
-const notifications = [
-    {
-        service: "ha",
-        type: "ha_25_event",
-        status: "",
-        args: {
-            team_name: "Zespół 1",
-            team_id: "123456",
-        }
-    },
-    {
-        service: "ha",
-        type: "ha_25_team",
-        status: "",
-        args: {
-            team_name: "Zespół 1",
-            team_id: "123456",
-        }
-    },
-    {
-        service: "ha",
-        type: "ha_25_event",
-        status: "",
-        args: {
-            team_name: "Zespół 1",
-            team_id: "123456",
-        }
-    }
-]
-
 function Notifications() {
     const [showNotifications, setShowNotifications] = useState(false);
+    const userId = typeof window !== "undefined" ? localStorage.getItem("userId") : null;
+
+    const { data, error, isLoading } = useSWR<GetNotificationsResponse<TeamInviteNotification>, Error>(
+        `/register/user/notifications/${userId}?service=ha`,
+        (url: string) => fetcherAuth<null, GetNotificationsResponse<TeamInviteNotification>>(url, {
+            method: "GET",
+        }))
 
     return (
         <div className="relative">
@@ -63,35 +45,27 @@ function Notifications() {
                             <h2 className="subsubtitle">Powiadomienia</h2>
                             <ul className="flex flex-col gap-6 max-h-[50vh] overflow-y-auto">
                                 {
-                                    notifications.map((notification, index) => {
-                                        switch (notification.type) {
-                                            case "ha_25_event": {
-                                                const handleJoin = () => {
-                                                    console.log("Dołącz do wydarzenia", notification.args.team_id);
-                                                }
-
-                                                const handleDecline = () => {
-                                                    console.log("Odrzuć zaproszenie", notification.args.team_id);
-                                                }
-
-                                                return (
-                                                    <li key={index} className="flex flex-col gap-3 last:mb-0">
-                                                        <div className="flex flex-col gap-1">
-                                                            <span className="text-md">Nowe zaproszenie</span>
-                                                            <span className="text-sm text-secondary-100">Dostałeś zaproszenie do zespołu {notification.args.team_name}. Dołączenie jest równoznaczna z akcektacją regulaminu wydarzenia</span>
-                                                        </div>
-
-                                                        <div className="flex gap-2">
-                                                            <Button fullWidth onClick={() => handleJoin()}>Dołącz</Button>
-                                                            <Button secondary fullWidth onClick={() => handleDecline()}>Odrzuć</Button>
-                                                        </div>
-                                                    </li>
-                                                )
-                                            }
-                                        }
-                                    })}
+                                    isLoading && !error && (
+                                        <li>Ładowanie...</li>
+                                    )
+                                }
                                 {
-                                    notifications.length === 0 && (
+                                    error && (
+                                        <li className="text-error">{error.message}</li>
+                                    )
+                                }
+                                {
+                                    data?.notifications.map((notification) => {
+                                        switch (notification.type) {
+                                            case "ha_team_invite":
+                                                return <TeamInvite key={notification._id} notification={notification} />
+                                            default:
+                                                return null;
+                                        }
+                                    })
+                                }
+                                {
+                                    data?.notifications.length === 0 && (
                                         <li className="">Brak nowych powiadomień</li>
                                     )
                                 }

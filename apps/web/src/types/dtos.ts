@@ -32,3 +32,16 @@ export type RegisterUserDTO = {
     occupation: Occupation;
     dietPreference: DietPreference;
 };
+
+export type TeamInviteNotification = {
+    teamId: string;
+    teamName: string;
+}
+
+export type Notification<T> = {
+    _id: string;
+    service: string;
+    type: string;
+    status: string;
+    args: T;
+}
