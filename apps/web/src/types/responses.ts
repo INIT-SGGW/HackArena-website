@@ -14,3 +14,8 @@ export type GetNotificationsResponse<T> = {
     status: string;
     notifications: Notification<T>[];
 }
+
+export type AddTEamMemberResponse = {
+    status: number;
+    error?: string;
+}

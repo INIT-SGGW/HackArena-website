@@ -45,3 +45,7 @@ export type Notification<T> = {
     status: string;
     args: T;
 }
+
+export type AddTeamMemberDTO = {
+    email: string;
+}

@@ -1,4 +1,4 @@
-import { PageSection } from '@repo/ui';
+import { CrossedTitle, PageSection } from '@repo/ui';
 import { PhotosType } from '../../utils/mockData';
 import Image from 'next/image';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
@@ -26,12 +26,7 @@ export function PhotoGallery({ data }: Props) {
                     setCurrentPhoto={setCurrentPhoto}
                     setShowCarousel={setShowCarousel}
                 />
-                <div className="relative w-full">
-                    <h2 className="title z-2 bg-background w-min m-auto px-12">
-                        Galeria
-                    </h2>
-                    <div className="absolute w-full h-[4px] bg-primary top-[50%] -translate-y-[50%] left-0 -z-1" />
-                </div>
+                <CrossedTitle title="Galeria" />
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                     {photosToShow.map((photo, index) => (
                         <Photo
@@ -314,7 +309,7 @@ function Carousel({
                                     e.currentTarget.offsetWidth * index +
                                     e.currentTarget.offsetWidth / 2 -
                                     e.currentTarget.parentElement?.offsetWidth /
-                                        2,
+                                    2,
                                 behavior: 'smooth',
                             });
                         }}
