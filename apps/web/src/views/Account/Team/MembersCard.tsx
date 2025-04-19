@@ -14,13 +14,13 @@ const mockData = [
         verified: true,
         captain: true,
     },
-    {
-        id: "680203caf6a04ff8c8d34b9",
+    // {
+    //     id: "680203caf6a04ff8c8d34b9",
 
-        name: 'Karolina Nowak',
-        email: 'karolina.nowak@asdf.asdf',
-        verified: true,
-    },
+    //     name: 'Karolina Nowak',
+    //     email: 'karolina.nowak@asdf.asdf',
+    //     verified: true,
+    // },
     {
         id: "680203caf6a04ff8c8d34b",
 
@@ -94,7 +94,7 @@ export function MembersCard() {
                     </li>
                 ))}
             </ol>
-            {captain?.id === userId && <LinkButton href={window.location.href + "/dodaj"} fullWidth>Dodaj członka</LinkButton>}
+            {captain?.id === userId && mockData.length < 3 && <LinkButton href={window.location.href + "/dodaj"} fullWidth>Dodaj członka</LinkButton>}
         </div>
     )
 }
