@@ -16,7 +16,7 @@ export default function LoginPage() {
         <Page>
             <div className="flex flex-col gap-15 page-width mx-auto">
                 <AccountTitle />
-                <EventLiveCard />
+                {/* <EventLiveCard /> */}
                 <TeamsCard />
                 <EventsCard />
                 <AccountCard />
