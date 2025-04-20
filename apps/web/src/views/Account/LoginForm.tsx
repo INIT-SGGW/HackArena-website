@@ -17,7 +17,6 @@ export function LoginForm() {
                 ...data,
                 service: 'ha',
             },
-            skipAuthRedirect: true,
         });
 
         const userId = res.userId.split('"')[1];
