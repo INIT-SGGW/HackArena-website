@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Input } from '@repo/ui';
+import { Button, Input, LinkButton } from '@repo/ui';
 import { useActionState } from 'react';
 import { registerTeamSchema } from '../../utils/validation';
 import { fetcherHack } from '../../api/fetcher';
@@ -8,13 +8,16 @@ import { RegisterTeamResponse } from '../../types/responses';
 import { formAction, FormActionState } from '../../api/formAction';
 import { RegisterTeamDTO } from '../../types/dtos';
 import { RegisterTeamRequest } from '../../types/requests';
+import { useGetUserId } from '../../utils/useGetUserId';
 
 export function RegisterTeamForm() {
     const fetcher = async (data: RegisterTeamDTO) => {
-        const res = await fetcherHack<RegisterTeamRequest, RegisterTeamResponse>('/register', {
+        const res = await fetcherHack<RegisterTeamRequest, RegisterTeamResponse>('/teams', {
             method: 'POST',
             body: data,
         });
+
+        window.location.href += "/sukces";
     };
 
     const [state, action, isLoading] = useActionState<
@@ -35,6 +38,24 @@ export function RegisterTeamForm() {
             },
         },
     );
+
+    // if (!userId) {
+    //     return (
+    //         <div className="flex flex-col items-center justify-center page-width">
+    //             <span className="text-sm text-center">
+    //                 Musisz się zalogowawć do swojego konta, aby zarejestrować drużynę.
+    //             </span>
+    //             <LinkButton
+    //                 className="mt-2"
+    //                 onClick={() => {
+    //                     window.location.href = '/konto';
+    //                 }}
+    //             >
+    //                 Zaloguj się
+    //             </LinkButton>
+    //         </div>
+    //     )
+    // }
 
     return (
         <form
