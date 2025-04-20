@@ -22,7 +22,7 @@ export default function VerificationCard(): React.JSX.Element {
         const handle = async (): Promise<void> => {
             try {
                 await fetcherAuth<VerifyEmailRequest, null>(
-                    `/register/verifiy?email=${email}&token=${token}`,
+                    `/register/verifiy`,
                     {
                         method: 'POST',
                         body: {
