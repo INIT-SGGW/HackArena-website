@@ -12,9 +12,9 @@ export function SuccessPage({ title, text }: Props) {
             className="flex flex-col items-center justify-center gap-8 text-center min-h-[600px]"
             paddingTop="0px"
         >
-            <div className="flex flex-col gap-4 items-center">
+            <div className="flex flex-col gap-4 items-center page-width">
                 <h1 className="title text-center">{title}</h1>
-                <p className="text-center">{text}</p>
+                <p className="text-center text-lg">{text}</p>
                 <SocialLinks className="mt-8 w-max" color="#fff" size={30} />
             </div>
         </Page>
