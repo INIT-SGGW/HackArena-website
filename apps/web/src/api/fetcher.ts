@@ -1,6 +1,6 @@
 type FetcherOptions<RQ> = Omit<RequestInit, 'body'> & {
     body?: RQ,
-    skipAuthRedirect?: boolean;
+    authRedirect?: boolean;
 };
 
 export async function fetcher<RQ, RE>(
@@ -19,16 +19,20 @@ export async function fetcher<RQ, RE>(
 
     if (!res.ok) {
         const isAuthError = res.status === 401 || res.status === 403;
-        const response = await res.json();
 
-        if (isAuthError && !options?.skipAuthRedirect) {
+        if (isAuthError && options?.authRedirect) {
             if (typeof window !== 'undefined') {
                 window.location.href = '/login';
             }
         }
 
         if (process.env.NODE_ENV !== 'production') {
-            console.error('Error response:', response);
+            try {
+                const response = await res.json();
+                console.error('Error response:', response);
+            } catch (e) {
+                console.error('Error response when parsing response:', e);
+            }
         }
 
         if (res.status === 500) {
@@ -92,7 +96,7 @@ export async function fetcherHack<RQ, RE>(
             hackApiUrl = 'https://initcodingchallenge.pl:5000/api/v1';
             break;
         default:
-            hackApiUrl = 'http://localhost:4000';
+            hackApiUrl = 'http://localhost:5000';
             break;
     }
 
