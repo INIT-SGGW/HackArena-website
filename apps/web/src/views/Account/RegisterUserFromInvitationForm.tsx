@@ -2,7 +2,7 @@
 
 import { Button, Input, Select } from '@repo/ui';
 import { useActionState } from 'react';
-import { registerUserSchema } from '../../utils/validation';
+import { registerUserFromInvitationSchema, registerUserSchema } from '../../utils/validation';
 import { RegisterUserFromInvitationResponse } from '../../types/responses';
 import { formAction, FormActionState } from '../../api/formAction';
 import { DietPreference, Occupation, RegisterUserFromInvitationDTO } from '../../types/dtos';
@@ -34,19 +34,19 @@ export function RegisterUserFromInvitationForm() {
     }
 
     const fetcher = async (data: RegisterUserFromInvitationDTO) => {
-        // delete data.repeatPassword;
+        delete data.repeatPassword;
 
-        // await fetcherAuth<RegisterUserFromInvitationRequest, RegisterUserFromInvitationResponse>('/register/user/invitation', {
-        //     method: 'POST',
-        //     body: {
-        //         service: 'ha',
-        //         email: email,
-        //         verificationToken: token,
-        //         ...data,
-        //     },
-        // });
+        await fetcherAuth<RegisterUserFromInvitationRequest, RegisterUserFromInvitationResponse>('/register/user/invitation', {
+            method: 'POST',
+            body: {
+                service: 'ha',
+                email: email,
+                verificationToken: token,
+                ...data,
+            },
+        });
 
-        window.location.href += "/sukces";
+        window.location.href = "/rejestracja/uzytkownik/zaproszenie/sukces";
     };
 
     const [state, action, isLoading] = useActionState<
@@ -57,7 +57,7 @@ export function RegisterUserFromInvitationForm() {
             formAction<RegisterUserFromInvitationDTO>(
                 prevState,
                 payload,
-                registerUserSchema,
+                registerUserFromInvitationSchema,
                 fetcher,
             ),
         {

@@ -103,6 +103,22 @@ export const registerUserSchema = z
         path: ['repeatPassword'],
     });
 
+export const registerUserFromInvitationSchema = z
+    .object({
+        firstName: firstNameSchema,
+        lastName: lastNameSchema,
+        password: registerPasaswordSchema,
+        repeatPassword: z.string(),
+        dateOfBirth: dateOfBirthSchema,
+        aggrement: aggrementSchema,
+        occupation: z.string(),
+        dietPreference: z.string(),
+    })
+    .refine((data) => data.password === data.repeatPassword, {
+        message: 'Hasła muszą być takie same',
+        path: ['repeatPassword'],
+    });
+
 export const AddTeamMEmberSchema = z
     .object({
         email: emailSchema
