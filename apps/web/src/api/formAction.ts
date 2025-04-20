@@ -56,6 +56,17 @@ export async function formAction<T>(
             console.error(e);
         }
 
+        if (e instanceof Error) {
+            return {
+                data: {
+                    ...newData,
+                },
+                errors: {
+                    server: e.message,
+                },
+            };
+        }
+
         return {
             data: {
                 ...newData,
