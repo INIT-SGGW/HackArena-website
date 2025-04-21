@@ -14,42 +14,10 @@ import useSWR from 'swr';
 import { GetTeamsResponse } from '../../types/responses';
 import { useGetUserId } from '../../utils/useGetUserId';
 
-const mockTeams: {
-    name: string;
-    memberCount: number;
-    id: string;
-}[] = [
-        {
-            name: 'HackArena Team 1 asdf asdf asd f',
-            memberCount: 3,
-            id: '1',
-        },
-        {
-            name: 'HackArena Team 2',
-            memberCount: 2,
-            id: '2',
-        },
-        {
-            name: 'HackArena Team 3',
-            memberCount: 4,
-            id: '3',
-        },
-        {
-            name: 'HackArena Team 1',
-            memberCount: 3,
-            id: '4',
-        },
-        {
-            name: 'HackArena Team 2',
-            memberCount: 2,
-            id: '5',
-        },
-    ];
-
 export function TeamsCard() {
     const userId = useGetUserId();
 
-    const { data, error, isLoading, mutate } = useSWR<GetTeamsResponse, Error>(
+    const { data, error, isLoading } = useSWR<GetTeamsResponse, Error>(
         `/users/${userId}/teams`,
         (url: string) => fetcherHack<null, GetTeamsResponse>(url, {
             method: "GET",
