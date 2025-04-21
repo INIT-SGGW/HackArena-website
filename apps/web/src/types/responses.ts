@@ -30,3 +30,17 @@ export type GetTeamsResponse = {
     name: string,
     memberCount: number,
 }[]
+
+type GetEventEvent = {
+    _id: string;
+    name: {
+        text: string;
+        url: string;
+    },
+    thumbnail: string;
+}
+
+export type GetEventsResponse = {
+    incoming: GetEventEvent[];
+    ended: GetEventEvent[];
+}
