@@ -14,6 +14,7 @@ export type AddTeamMemberRequest = {
 export type RegisterTeamRequest = {
     teamName: string,
     emails: string[]
+    eventTag?: string
 }
 
 export type RegisterUserRequest = {
@@ -46,4 +47,8 @@ export type RegisterUserFromInvitationRequest = {
 export type VerifyEmailRequest = {
     email: string,
     verificationToken: string,
+}
+
+export type ChangeNotificationStatusRequest = {
+    status: "read" | "unread",
 }
