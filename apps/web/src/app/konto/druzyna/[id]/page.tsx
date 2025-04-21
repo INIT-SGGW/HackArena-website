@@ -62,24 +62,6 @@ export default function TeamPage() {
                                     wydarzeniach.</p>
                             )
                         }
-
-                        {/* {data && data?.events.length > 0 ? (
-                            <div
-                                className={`flex flex-col md:flex-row gap-5 md:gap-10 ${mockData.events.length > 1 ? '!flex-col !gap-10' : ''}`}
-                            >
-                                {mockData.events.length > 0 && (
-                                    <NoDescriptionEvents
-                                        events={mockData.events}
-                                        compact
-                                    />
-                                )}
-                            </div>
-                        ) : (
-                            <p className="text-center">
-                                Nie brałeś jeszcze udziału w żadnych
-                                wydarzeniach.
-                            </p>
-                        )} */}
                     </div>
                 </div>
                 <LeaveTeamCard />
