@@ -1,4 +1,4 @@
-import { Notification } from "./dtos";
+import { DietPreference, Notification, Occupation } from "./dtos";
 
 type TypicalResponse = {
     status: number;
@@ -67,4 +67,15 @@ export type GetSingleTeamResponse = {
         date: string;
         isActive: boolean;
     }[]
+}
+
+
+export type GetUserByIdResponse = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    dateOfBirth: Date;
+    aggrement: boolean;
+    occupation: Occupation;
+    dietPreference: DietPreference;
 }

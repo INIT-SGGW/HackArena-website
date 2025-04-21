@@ -7,13 +7,28 @@ import { TeamInvite } from "../Notifications/TeamInvite";
 import useSWR from "swr";
 import { fetcherAuth } from "../../api/fetcher";
 import { TeamInviteNotification } from "../../types/dtos";
-import { GetNotificationsResponse } from "../../types/responses";
+import { GetNotificationsResponse, GetUserByIdResponse } from "../../types/responses";
 import { useGetUserId } from "../../utils/useGetUserId";
 
 export function AccountTitle() {
+    const userId = useGetUserId();
+    const { data, isLoading, error } = useSWR<GetUserByIdResponse, Error>(
+        `/register/user/id/${userId}`,
+        (url: string) => fetcherAuth<null, GetUserByIdResponse>(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            authRedirect: true,
+        }));
+
     return (
         <div className="flex flex-row justify-between items-center">
-            <h1 className="title text-left w-full max-w-[80%] text-ellipsis overflow-hidden">Hej, Jan!</h1>
+            <h1 className="title text-left w-full max-w-[80%] text-ellipsis overflow-hidden">
+                {
+                    !isLoading && !error && data ? `Hej, ${data.firstName}` : "Konto"
+                }
+            </h1>
             <Notifications />
         </div>
     )
