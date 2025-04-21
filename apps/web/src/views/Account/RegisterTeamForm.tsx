@@ -8,13 +8,15 @@ import { RegisterTeamResponse } from '../../types/responses';
 import { formAction, FormActionState } from '../../api/formAction';
 import { RegisterTeamDTO } from '../../types/dtos';
 import { RegisterTeamRequest } from '../../types/requests';
-import { useGetUserId } from '../../utils/useGetUserId';
 
 export function RegisterTeamForm() {
     const fetcher = async (data: RegisterTeamDTO) => {
         const res = await fetcherHack<RegisterTeamRequest, RegisterTeamResponse>('/teams', {
             method: 'POST',
-            body: data,
+            body: {
+                ...data,
+                eventTag: "ha_2.5"
+            },
         });
 
         window.location.href += "/sukces";
@@ -38,24 +40,6 @@ export function RegisterTeamForm() {
             },
         },
     );
-
-    // if (!userId) {
-    //     return (
-    //         <div className="flex flex-col items-center justify-center page-width">
-    //             <span className="text-sm text-center">
-    //                 Musisz się zalogowawć do swojego konta, aby zarejestrować drużynę.
-    //             </span>
-    //             <LinkButton
-    //                 className="mt-2"
-    //                 onClick={() => {
-    //                     window.location.href = '/konto';
-    //                 }}
-    //             >
-    //                 Zaloguj się
-    //             </LinkButton>
-    //         </div>
-    //     )
-    // }
 
     return (
         <form
