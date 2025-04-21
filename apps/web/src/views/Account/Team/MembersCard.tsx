@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ComponentProps } from "react";
 import { GetSingleTeamResponse } from "../../../types/responses";
 import { fetcherHack } from "../../../api/fetcher";
+import { MemberStatus } from "../../../types/types";
 
 type Props = {
     data: GetSingleTeamResponse["members"] | undefined;
@@ -79,11 +80,22 @@ export function MembersCard({ data, isLoading, error, mutate }: Props) {
                             >
                                 <div className="flex flex-col gap-1">
                                     {
-                                        member.isVerified ? (
+                                        member.isVerified && member.status === MemberStatus.ACCEPTED && (
                                             <span className={`text-lg font-semibold ${member.isLeader ? "text-blue-500" : ""}`}>
                                                 {member.firstName} {member.lastName}
                                             </span>
-                                        ) : (
+                                        )
+                                    }
+                                    {
+                                        member.isVerified && member.status === MemberStatus.INVITED && (
+                                            <span className="text-lg font-semibold text-orange-500">
+                                                Zaproszony/a
+                                            </span>
+
+                                        )
+                                    }
+                                    {
+                                        !member.isVerified && (
                                             <span className="text-lg font-semibold text-error">
                                                 Niezweryfikowany/a
                                             </span>
