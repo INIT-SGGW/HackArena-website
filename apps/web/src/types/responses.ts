@@ -44,3 +44,27 @@ export type GetEventsResponse = {
     incoming: GetEventEvent[];
     ended: GetEventEvent[];
 }
+
+export type GetSingleTeamResponse = {
+    _id: string;
+    name: string;
+    members: {
+        _id: string;
+        firstName: string;
+        lastName: string;
+        email: string;
+        isLeader: boolean;
+        isVerified: boolean;
+        status: string;
+    }[],
+    events: {
+        _id: string;
+        name: {
+            text: string;
+            url: string;
+        },
+        thumbnail: string;
+        date: string;
+        isActive: boolean;
+    }[]
+}

@@ -9,13 +9,10 @@ import {
     useState,
     MouseEvent as ReactMouseEvent,
 } from 'react';
+import { GetSingleTeamResponse } from '../../types/responses';
 
 type NoDescriptionEventProps = {
-    events: {
-        name: { text: string; url: string };
-        thumbnail: string;
-        color?: string;
-    }[];
+    events: GetSingleTeamResponse['events'];
     title?: string;
     grow?: boolean;
     compact?: boolean;
@@ -108,8 +105,7 @@ export function NoDescriptionEvents({
                         <div
                             style={
                                 {
-                                    '--ribbon-color':
-                                        event.color || 'var(--color-primary)',
+                                    '--ribbon-color': 'var(--color-primary)',
                                 } as React.CSSProperties
                             }
                             className={`p-2 ribbon relative w-full sm:w-max ${compact ? 'sm:max-w-[250px]' : 'sm:max-w-[300px]'}`}

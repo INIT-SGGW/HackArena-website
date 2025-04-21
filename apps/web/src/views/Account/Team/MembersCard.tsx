@@ -5,35 +5,17 @@ import { useGetUserId } from "../../../utils/useGetUserId";
 import { LinkButton } from "@repo/ui";
 import Image from "next/image";
 import { ComponentProps } from "react";
+import { GetSingleTeamResponse } from "../../../types/responses";
 
-const mockData = [
-    {
-        id: "6802ba98bbb26f540ad4121b",
-        name: 'Jan Kowalski',
-        email: 'jan.kowalski@sadf.asdf',
-        verified: true,
-        captain: true,
-    },
-    // {
-    //     id: "680203caf6a04ff8c8d34b9",
+type Props = {
+    data: GetSingleTeamResponse["members"] | undefined;
+    isLoading: boolean;
+    error: Error | undefined;
+}
 
-    //     name: 'Karolina Nowak',
-    //     email: 'karolina.nowak@asdf.asdf',
-    //     verified: true,
-    // },
-    {
-        id: "680203caf6a04ff8c8d34b",
-
-        email: 'karolina.nowak@asdf.asdf',
-        verified: false,
-    },
-]
-
-export function MembersCard() {
-    const { _id } = useParams();
-
+export function MembersCard({ data, isLoading, error }: Props) {
     const userId = useGetUserId();
-    const captain = mockData.find((member) => member.id === userId);
+    const captain = data?.find((member) => member._id === userId);
 
     const handleChangeLeader = (id: string) => {
         console.log(`Change leader to ${id}`);
@@ -45,56 +27,77 @@ export function MembersCard() {
 
     return (
         <div className="flex flex-col gap-10">
-            <ol className="w-full flex flex-col gap-5 mx-auto">
-                {mockData.map((member, index) => (
-                    <li
-                        key={index}
-                        className="flex flex-col sm:flex-row gap-2 justify-between"
-                    >
-                        <div className="flex flex-col gap-1">
-                            {
-                                member.verified ? (
-                                    <span className={`text-lg font-semibold ${member.captain ? "text-blue-500" : ""}`}>
-                                        {member.name}
+            {
+                isLoading && !error && (
+                    <p className='text-center'>Ładowanie...</p>
+                )
+            }
+            {
+                error && (
+                    <p className="text-error text-center">Wystąpił błąd podczas pobierania danych</p>
+                )
+            }
+            {
+                data && data.length !== 0 && (
+                    <ol className="w-full flex flex-col gap-5 mx-auto">
+
+                        {data.map((member, index) => (
+                            <li
+                                key={index}
+                                className="flex flex-col sm:flex-row gap-2 justify-between"
+                            >
+                                <div className="flex flex-col gap-1">
+                                    {
+                                        member.isVerified ? (
+                                            <span className={`text-lg font-semibold ${member.isLeader ? "text-blue-500" : ""}`}>
+                                                {member.firstName} {member.lastName}
+                                            </span>
+                                        ) : (
+                                            <span className="text-lg font-semibold text-error">
+                                                Niezweryfikowany/a
+                                            </span>
+                                        )
+                                    }
+                                    <span className="text-sm text-gray-500">
+                                        {member.email}
                                     </span>
-                                ) : (
-                                    <span className="text-lg font-semibold text-error">
-                                        Niezweryfikowany/a
-                                    </span>
-                                )
-                            }
-                            <span className="text-sm text-gray-500">
-                                {member.email}
-                            </span>
-                        </div>
-                        <div className="flex gap-3 items-center">
-                            {
-                                captain?.id === userId && !member.captain && (
-                                    <>
-                                        {
-                                            member.verified && (
+                                </div>
+                                <div className="flex gap-3 items-center">
+                                    {
+                                        captain?._id === userId && !member.isLeader && (
+                                            <>
+                                                {
+                                                    member.isVerified && (
+                                                        <OptionsButtons
+                                                            title="Zmień na lidera"
+                                                            src="/crown-black.svg"
+                                                            className="bg-primary"
+                                                            onClick={() => handleChangeLeader(member._id)}
+                                                        />
+                                                    )
+                                                }
                                                 <OptionsButtons
-                                                    title="Zmień na lidera"
-                                                    src="/crown-black.svg"
-                                                    className="bg-primary"
-                                                    onClick={() => handleChangeLeader(member.id)}
+                                                    title="Usuń członka"
+                                                    src="/leave.svg"
+                                                    className="bg-error"
+                                                    onClick={() => handleDeleteMember(member._id)}
                                                 />
-                                            )
-                                        }
-                                        <OptionsButtons
-                                            title="Usuń członka"
-                                            src="/leave.svg"
-                                            className="bg-error"
-                                            onClick={() => handleDeleteMember(member.id)}
-                                        />
-                                    </>
-                                )
-                            }
-                        </div>
-                    </li>
-                ))}
-            </ol>
-            {captain?.id === userId && mockData.length < 3 && <LinkButton href={window.location.href + "/dodaj"} fullWidth>Dodaj członka</LinkButton>}
+                                            </>
+                                        )
+                                    }
+                                </div>
+                            </li>
+                        ))}
+                    </ol>
+                )
+            }
+            {
+                !data || data?.length === 0 && (
+                    <p className='text-center'>Brak członków drużyny</p>
+                )
+            }
+
+            {captain?._id === userId && data && data.length < 3 && <LinkButton href={window.location.href + "/dodaj"} fullWidth>Dodaj członka</LinkButton>}
         </div>
     )
 }
