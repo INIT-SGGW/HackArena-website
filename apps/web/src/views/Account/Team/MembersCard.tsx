@@ -6,24 +6,55 @@ import { LinkButton } from "@repo/ui";
 import Image from "next/image";
 import { ComponentProps } from "react";
 import { GetSingleTeamResponse } from "../../../types/responses";
+import { fetcherHack } from "../../../api/fetcher";
 
 type Props = {
     data: GetSingleTeamResponse["members"] | undefined;
     isLoading: boolean;
     error: Error | undefined;
+    mutate: () => Promise<void | GetSingleTeamResponse | undefined>;
 }
 
-export function MembersCard({ data, isLoading, error }: Props) {
+export function MembersCard({ data, isLoading, error, mutate }: Props) {
     const userId = useGetUserId();
-    const captain = data?.find((member) => member._id === userId);
+    const captain = data?.find((member) => member.isLeader);
+    const teamId = useParams().id;
 
-    const handleChangeLeader = (id: string) => {
-        console.log(`Change leader to ${id}`);
+    const handleChangeLeader = async (userLeaderId: string) => {
+        try {
+            await fetcherHack<null, null>(`/teams/${teamId}/members/${userLeaderId}/change-leader`, {
+                method: 'PATCH',
+            });
+        } catch (error) {
+            if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') {
+                console.error('Logout error:', error);
+            }
+        }
+
+        await mutate();
     }
 
-    const handleDeleteMember = (id: string) => {
-        console.log(`Delete member with id ${id}`);
+    const handleDeleteMember = async (userDeleteId: string) => {
+        try {
+            await fetcherHack<null, null>(`/teams/${teamId}/members/${userDeleteId}/remove-user`, {
+                method: 'PATCH',
+            });
+        } catch (error) {
+            if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') {
+                console.error('Logout error:', error);
+            }
+        }
+
+        await mutate();
     }
+
+    const sortedData = data?.sort((a, b) => {
+        if (a.isLeader && !b.isLeader) return -1;
+        if (!a.isLeader && b.isLeader) return 1;
+        if (a.isVerified && !b.isVerified) return -1;
+        if (!a.isVerified && b.isVerified) return 1;
+        return 0;
+    });
 
     return (
         <div className="flex flex-col gap-10">
@@ -38,10 +69,10 @@ export function MembersCard({ data, isLoading, error }: Props) {
                 )
             }
             {
-                data && data.length !== 0 && (
+                sortedData && sortedData.length !== 0 && (
                     <ol className="w-full flex flex-col gap-5 mx-auto">
 
-                        {data.map((member, index) => (
+                        {sortedData.map((member, index) => (
                             <li
                                 key={index}
                                 className="flex flex-col sm:flex-row gap-2 justify-between"

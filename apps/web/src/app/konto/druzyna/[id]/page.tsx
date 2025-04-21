@@ -26,7 +26,7 @@ export default function TeamPage() {
                 <h1 className="title text-left">{data?.name || "Drużyna"}</h1>
                 <div className="flex flex-col gap-10">
                     <CrossedTitle title="Członkowie drużyny" />
-                    <MembersCard data={data?.members} error={error} isLoading={isLoading} />
+                    <MembersCard data={data?.members} error={error} isLoading={isLoading} mutate={mutate} />
                 </div>
                 <div className="flex flex-col gap-5">
                     <CrossedTitle title="Wydarzenia" />
