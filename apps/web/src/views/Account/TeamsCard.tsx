@@ -137,7 +137,7 @@ export function TeamsCarousel({ teams }: NoDescriptionEventProps) {
                             {team.name}
                         </p>
                         <div className="flex items-center gap-1">
-                            {new Array(team.memberCount)
+                            {new Array(team.membersCount)
                                 .fill(0)
                                 .map((_, index) => (
                                     <Image

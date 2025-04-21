@@ -28,7 +28,7 @@ export type ChangeNotificationStatusResponse = TypicalResponse
 export type GetTeamsResponse = {
     _id: string,
     name: string,
-    memberCount: number,
+    membersCount: number,
 }[]
 
 type GetEventEvent = {
