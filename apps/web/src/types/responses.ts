@@ -24,3 +24,9 @@ export type AddTeamMemberResponse = TypicalResponse
 export type RegisterTeamResponse = TypicalResponse
 
 export type ChangeNotificationStatusResponse = TypicalResponse
+
+export type GetTeamsResponse = {
+    _id: string,
+    name: string,
+    memberCount: number,
+}[]

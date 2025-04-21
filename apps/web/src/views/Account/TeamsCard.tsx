@@ -9,6 +9,10 @@ import {
     MouseEvent as ReactMouseEvent,
 } from 'react';
 import { CrossedTitle, LinkButton } from '@repo/ui';
+import { fetcherHack } from '../../api/fetcher';
+import useSWR from 'swr';
+import { GetTeamsResponse } from '../../types/responses';
+import { useGetUserId } from '../../utils/useGetUserId';
 
 const mockTeams: {
     name: string;
@@ -43,17 +47,36 @@ const mockTeams: {
     ];
 
 export function TeamsCard() {
+    const userId = useGetUserId();
+
+    const { data, error, isLoading, mutate } = useSWR<GetTeamsResponse, Error>(
+        `/users/${userId}/teams`,
+        (url: string) => fetcherHack<null, GetTeamsResponse>(url, {
+            method: "GET",
+        }))
+
     return (
         <div className="flex flex-col page-width gap-10">
             <CrossedTitle title="Twoje drużyny" />
             <div className="flex flex-col gap-10 sm:p-4">
-                {mockTeams.length > 0 ? (
-                    <TeamsCarousel teams={mockTeams} />
-                ) : (
-                    <p className="text-center">
-                        Nie jesteś jeszcze członkiem żadnej drużyny
-                    </p>
-                )}
+                {
+                    isLoading && !error && (
+                        <p className='text-center'>Ładowanie...</p>
+                    )
+                }
+                {
+                    error && (
+                        <p className="text-error text-center">Wystąpił błąd podczas ładowania drużyn</p>
+                    )
+                }
+                {
+                    data && data.length !== 0 && (<TeamsCarousel teams={data} />)
+                }
+                {
+                    !data || data?.length === 0 && (
+                        <p className='text-center'>Nie należysz jeszcze do żadnej drużyny</p>
+                    )
+                }
                 <LinkButton href="/rejestracja/druzyna" fullWidth>
                     Stwórz drużynę
                 </LinkButton>
@@ -63,11 +86,7 @@ export function TeamsCard() {
 }
 
 type NoDescriptionEventProps = {
-    teams: {
-        name: string;
-        memberCount: number;
-        id: string;
-    }[];
+    teams: GetTeamsResponse;
 };
 
 export function TeamsCarousel({ teams }: NoDescriptionEventProps) {
@@ -142,9 +161,9 @@ export function TeamsCarousel({ teams }: NoDescriptionEventProps) {
                     <Link
                         className={`bg-primary both-corners-clip mx-auto py-4 px-6 flex flex-col items-center min-w-[250px] max-w-[600px] gap-1 snap-center sm:snap-none w-full sm:active:cursor-grabbing`}
                         draggable={false}
-                        key={team.id}
+                        key={team._id}
                         onClick={handleClick}
-                        href={`/konto/druzyna/${team.id}`}
+                        href={`/konto/druzyna/${team._id}`}
                     >
                         <p className="text-background w-full font-bold overflow-hidden text-ellipsis text-center text-nowrap">
                             {team.name}
