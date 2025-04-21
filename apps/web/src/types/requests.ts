@@ -8,7 +8,6 @@ export type LoginRequest = {
 
 export type AddTeamMemberRequest = {
     email: string,
-    teamId: string
 }
 
 export type RegisterTeamRequest = {

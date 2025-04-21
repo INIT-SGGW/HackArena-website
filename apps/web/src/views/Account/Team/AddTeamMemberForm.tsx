@@ -18,11 +18,10 @@ export function AddTeamMemberForm() {
     }
 
     const fetcher = async (data: AddTeamMemberDTO) => {
-        await fetcherHack<AddTeamMemberRequest, AddTeamMemberResponse>('/register/login', {
-            method: 'POST',
+        await fetcherHack<AddTeamMemberRequest, AddTeamMemberResponse>(`/teams/${id}/add-user`, {
+            method: 'PATCH',
             body: {
                 ...data,
-                teamId: id
             }
         });
 
