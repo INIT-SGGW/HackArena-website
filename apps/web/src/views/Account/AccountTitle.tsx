@@ -8,6 +8,7 @@ import useSWR from "swr";
 import { fetcherAuth } from "../../api/fetcher";
 import { TeamInviteNotification } from "../../types/dtos";
 import { GetNotificationsResponse } from "../../types/responses";
+import { useGetUserId } from "../../utils/useGetUserId";
 
 export function AccountTitle() {
     return (
@@ -21,9 +22,8 @@ export function AccountTitle() {
 function Notifications() {
     const [showNotifications, setShowNotifications] = useState(false);
     const userId = typeof window !== "undefined" ? localStorage.getItem("userId") : null;
-
-    const { data, error, isLoading } = useSWR<GetNotificationsResponse<TeamInviteNotification>, Error>(
-        `/register/user/notifications/${userId}?service=ha`,
+    const { data, error, isLoading, mutate } = useSWR<GetNotificationsResponse<TeamInviteNotification>, Error>(
+        `/register/user/${userId}/notifications?service=ha`,
         (url: string) => fetcherAuth<null, GetNotificationsResponse<TeamInviteNotification>>(url, {
             method: "GET",
         }))
@@ -58,7 +58,7 @@ function Notifications() {
                                     data?.notifications.map((notification) => {
                                         switch (notification.type) {
                                             case "ha_team_invite":
-                                                return <TeamInvite key={notification._id} notification={notification} />
+                                                return <TeamInvite key={notification._id} notification={notification} mutate={mutate} />
                                             default:
                                                 return null;
                                         }

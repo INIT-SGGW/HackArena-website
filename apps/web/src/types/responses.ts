@@ -22,3 +22,5 @@ export type GetNotificationsResponse<T> = {
 export type AddTeamMemberResponse = TypicalResponse
 
 export type RegisterTeamResponse = TypicalResponse
+
+export type ChangeNotificationStatusResponse = TypicalResponse
