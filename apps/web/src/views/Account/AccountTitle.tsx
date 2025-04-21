@@ -45,7 +45,7 @@ function Notifications() {
 
     return (
         <div className="relative">
-            <div className={`${!data || data?.notifications.length === 0 ? "hidden" : "block"}`}>
+            <div className={`${!data || data?.notifications.length === 0 ? "hidden" : "block"} pointer-events-none`}>
                 <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-red-500 rounded-full z-2 animate-ping`} />
                 <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-red-500 rounded-full z-3`} />
             </div>
