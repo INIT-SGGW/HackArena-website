@@ -45,8 +45,12 @@ function Notifications() {
 
     return (
         <div className="relative">
-            <div className="absolute top-0 right-0 w-[15px] h-[15px] bg-red-500 rounded-full" />
-            <Image title="Powiadomienia" width={45} height={45} onClick={() => setShowNotifications(!showNotifications)} className="cursor-pointer" src="/notification.svg" alt="Notifications" />
+            <div className={`${!data || data?.notifications.length === 0 ? "hidden" : "block"}`}>
+                <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-red-500 rounded-full z-2 animate-ping`} />
+                <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-red-500 rounded-full z-3`} />
+            </div>
+
+            <Image title="Powiadomienia" width={45} height={45} onClick={() => setShowNotifications(!showNotifications)} className={`cursor-pointer`} src="/notification.svg" alt="Notifications" />
             {
                 showNotifications && (
                     <div
