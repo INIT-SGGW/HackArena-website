@@ -89,7 +89,14 @@ export function MembersCard({ data, isLoading, error, mutate }: Props) {
                                     {
                                         member.isVerified && member.status === MemberStatus.INVITED && (
                                             <span className="text-lg font-semibold text-orange-500">
-                                                Zaproszony/a
+                                                Zaproszony/a <Image
+                                                    src="/question-mark.svg"
+                                                    alt="Help"
+                                                    width={16}
+                                                    height={16}
+                                                    className="sm:inline-block hidden"
+                                                    title="Zaproszenie do drużyny zostało wysłane i czeka na akceptację w powiadomieniach na koncie użytkownika"
+                                                />
                                             </span>
 
                                         )
@@ -97,7 +104,14 @@ export function MembersCard({ data, isLoading, error, mutate }: Props) {
                                     {
                                         !member.isVerified && (
                                             <span className="text-lg font-semibold text-error">
-                                                Niezweryfikowany/a
+                                                Niezweryfikowany/a <Image
+                                                    src="/question-mark.svg"
+                                                    alt="Help"
+                                                    width={16}
+                                                    height={16}
+                                                    className="sm:inline-block hidden"
+                                                    title={`Email z linkiem aktywacyjnym został wysłany na adres: ${member.email}`}
+                                                />
                                             </span>
                                         )
                                     }
@@ -110,7 +124,7 @@ export function MembersCard({ data, isLoading, error, mutate }: Props) {
                                         captain?._id === userId && !member.isLeader && (
                                             <>
                                                 {
-                                                    member.isVerified && (
+                                                    member.isVerified && member.status === MemberStatus.ACCEPTED && (
                                                         <OptionsButtons
                                                             title="Zmień na lidera"
                                                             src="/crown-black.svg"
