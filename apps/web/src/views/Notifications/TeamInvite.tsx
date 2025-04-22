@@ -8,7 +8,7 @@ import { ChangeNotificationStatusResponse, GetNotificationsResponse } from "../.
 
 type Props = {
     notification: Notification<TeamInviteNotification>;
-    mutate: () => Promise<void | GetNotificationsResponse<TeamInviteNotification> | undefined>;
+    mutate: () => Promise<void | GetNotificationsResponse<unknown> | undefined>;
 }
 
 export function TeamInvite({ notification, mutate }: Props) {
