@@ -96,7 +96,7 @@ export async function fetcherHack<RQ, RE>(
             hackApiUrl = 'https://initcodingchallenge.pl:5000/api/v1';
             break;
         default:
-            hackApiUrl = 'http://localhost:5000';
+            hackApiUrl = 'http://localhost:5500';
             break;
     }
 
