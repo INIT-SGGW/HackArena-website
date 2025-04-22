@@ -49,13 +49,13 @@ const mockEvents: {
 export function EventsCard() {
     const userId = useGetUserId();
 
-    const { data, error, isLoading, mutate } = useSWR<GetEventsResponse, Error>(
+    const { data, error, isLoading } = useSWR<GetEventsResponse, Error>(
         `/users/${userId}/events`,
         (url: string) => fetcherHack<null, GetEventsResponse>(url, {
             method: "GET",
         }))
 
-
+    console.log('data', data);
     return (
         <div className="flex flex-col page-width gap-5">
             <CrossedTitle title="Twoje wydarzenia" />

@@ -60,3 +60,12 @@ export type Notification<T> = {
 export type AddTeamMemberDTO = {
     email: string;
 }
+
+export type Event = {
+    _id: string;
+    name: {
+        text: string;
+        url: string;
+    },
+    thumbnail: string;
+}

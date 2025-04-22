@@ -1,4 +1,4 @@
-import { DietPreference, Notification, Occupation } from "./dtos";
+import { DietPreference, Event, Notification, Occupation } from "./dtos";
 
 type TypicalResponse = {
     status: number;
@@ -31,18 +31,9 @@ export type GetTeamsResponse = {
     membersCount: number,
 }[]
 
-type GetEventEvent = {
-    _id: string;
-    name: {
-        text: string;
-        url: string;
-    },
-    thumbnail: string;
-}
-
 export type GetEventsResponse = {
-    incoming: GetEventEvent[];
-    ended: GetEventEvent[];
+    incoming: Event[];
+    ended: Event[];
 }
 
 export type GetSingleTeamResponse = {
@@ -57,18 +48,11 @@ export type GetSingleTeamResponse = {
         isVerified: boolean;
         status: string;
     }[],
-    events: {
-        _id: string;
-        name: {
-            text: string;
-            url: string;
-        },
-        thumbnail: string;
+    events: (Event & {
         date: string;
         isActive: boolean;
-    }[]
+    })[]
 }
-
 
 export type GetUserByIdResponse = {
     firstName: string;

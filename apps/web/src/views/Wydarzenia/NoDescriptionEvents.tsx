@@ -9,10 +9,10 @@ import {
     useState,
     MouseEvent as ReactMouseEvent,
 } from 'react';
-import { GetSingleTeamResponse } from '../../types/responses';
+import { Event } from '../../types/dtos';
 
 type NoDescriptionEventProps = {
-    events: GetSingleTeamResponse['events'];
+    events: Event[];
     title?: string;
     grow?: boolean;
     compact?: boolean;
