@@ -2,7 +2,7 @@
 
 import { Button } from "@repo/ui";
 import Image from "next/image"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TeamInvite } from "../Notifications/TeamInvite";
 import useSWR from "swr";
 import { fetcherAuth } from "../../api/fetcher";
@@ -39,9 +39,24 @@ function Notifications() {
     const userId = typeof window !== "undefined" ? localStorage.getItem("userId") : null;
     const { data, error, isLoading, mutate } = useSWR<GetNotificationsResponse<unknown>, Error>(
         `/register/user/${userId}/notifications?service=ha`,
-        (url: string) => fetcherAuth<null, GetNotificationsResponse<TeamInviteNotification>>(url, {
+        (url: string) => fetcherAuth<null, GetNotificationsResponse<unknown>>(url, {
             method: "GET",
         }))
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+            if (!target.closest("#notifications") && !target.closest("#notifications-icon")) {
+                setShowNotifications(false);
+            }
+        };
+
+        document.addEventListener("click", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
 
     return (
         <div className="relative">
@@ -50,12 +65,13 @@ function Notifications() {
                 <div className={`absolute top-0 right-0 w-[15px] h-[15px] bg-red-500 rounded-full z-3`} />
             </div>
 
-            <Image title="Powiadomienia" width={45} height={45} onClick={() => setShowNotifications(!showNotifications)} className={`cursor-pointer`} src="/notification.svg" alt="Notifications" />
+            <Image id="notifications-icon" title="Powiadomienia" width={45} height={45} onClick={() => setShowNotifications(!showNotifications)} className={`cursor-pointer`} src="/notification.svg" alt="Notifications" />
             {
                 showNotifications && (
                     <div
                         className="absolute top-[calc(100%+10px)] right-0  w-[calc(100vw-var(--spacing)*4*2)] max-w-[500px] bg-primary p-[3px] both-corners-clip z-20"
                         style={{ "--clip-size": "30px" } as React.CSSProperties}
+                        id="notifications"
                     >
                         <div
                             className="flex flex-col gap-5 bg-background both-corners-clip p-4"
