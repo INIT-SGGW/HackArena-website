@@ -11,13 +11,16 @@ import { LoginRequest } from '../../types/requests';
 
 export function LoginForm() {
     const fetcher = async (data: LoginDTO) => {
-        const res = await fetcherAuth<LoginRequest, LoginResponse>('/register/login', {
-            method: 'POST',
-            body: {
-                ...data,
-                service: 'ha',
+        const res = await fetcherAuth<LoginRequest, LoginResponse>(
+            '/register/login',
+            {
+                method: 'POST',
+                body: {
+                    ...data,
+                    service: 'ha',
+                },
             },
-        });
+        );
 
         const userId = res.userId.split('"')[1];
 
@@ -83,8 +86,8 @@ export function LoginForm() {
             <ArrowLink
                 color="white"
                 className="justify-center mt-3"
-                text="Zapomniałeś/aś hasła?"
-                href="/password/forgot"
+                text="Nie masz jeszcze konta?"
+                href="/rejestracja/uzytkownik"
             />
         </form>
     );

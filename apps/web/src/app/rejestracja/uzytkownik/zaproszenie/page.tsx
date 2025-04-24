@@ -1,6 +1,7 @@
 import { Page } from '@repo/ui';
 import { Metadata } from 'next';
 import { RegisterUserFromInvitationForm } from '../../../../views/Account/RegisterUserFromInvitationForm';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
     title: 'Rejestracja | HackArena',
@@ -15,8 +16,9 @@ export default function UserRegisterFromInvitationPage() {
     return (
         <Page className="flex flex-col items-center gap-4">
             <h1 className="title">Rejestracja</h1>
-            <RegisterUserFromInvitationForm />
+            <Suspense>
+                <RegisterUserFromInvitationForm />
+            </Suspense>
         </Page>
     );
 }
-

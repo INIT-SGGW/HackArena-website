@@ -1,23 +1,23 @@
-import { DietPreference, Occupation } from "./dtos"
+import { DietPreference, Occupation } from './dtos';
 
 export type LoginRequest = {
-    email: string,
-    password: string,
-    service: string
-}
+    email: string;
+    password: string;
+    service: string;
+};
 
 export type AddTeamMemberRequest = {
-    email: string,
-}
+    email: string;
+};
 
 export type RegisterTeamRequest = {
-    teamName: string,
-    emails: string[]
-    eventTag?: string
-}
+    teamName: string;
+    emails: string[];
+    eventTag?: string;
+};
 
 export type RegisterUserRequest = {
-    service: "ha",
+    service: 'ha';
     firstName: string;
     lastName: string;
     email: string;
@@ -27,11 +27,11 @@ export type RegisterUserRequest = {
     aggrement: boolean;
     occupation: Occupation;
     dietPreference: DietPreference;
-}
+};
 
 export type RegisterUserFromInvitationRequest = {
-    service: "ha",
-    verificationToken: string,
+    service: 'ha';
+    verificationToken: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -41,13 +41,13 @@ export type RegisterUserFromInvitationRequest = {
     aggrement: boolean;
     occupation: Occupation;
     dietPreference: DietPreference;
-}
+};
 
 export type VerifyEmailRequest = {
-    email: string,
-    verificationToken: string,
-}
+    email: string;
+    verificationToken: string;
+};
 
 export type ChangeNotificationStatusRequest = {
-    status: "read" | "unread",
-}
+    status: 'read' | 'unread';
+};

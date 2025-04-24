@@ -2,15 +2,21 @@
 
 import { Button, Input, Select } from '@repo/ui';
 import { useActionState } from 'react';
-import { registerUserFromInvitationSchema, registerUserSchema } from '../../utils/validation';
+import { registerUserFromInvitationSchema } from '../../utils/validation';
 import { RegisterUserFromInvitationResponse } from '../../types/responses';
 import { formAction, FormActionState } from '../../api/formAction';
-import { DietPreference, Occupation, RegisterUserFromInvitationDTO } from '../../types/dtos';
+import {
+    DietPreference,
+    Occupation,
+    RegisterUserFromInvitationDTO,
+} from '../../types/dtos';
 import { fetcherAuth } from '../../api/fetcher';
 import { RegisterUserFromInvitationRequest } from '../../types/requests';
 import { notFound, useSearchParams } from 'next/navigation';
 
-const eighteenYearsAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 18));
+const eighteenYearsAgo = new Date(
+    new Date().setFullYear(new Date().getFullYear() - 18),
+);
 
 const initialValue: RegisterUserFromInvitationDTO = {
     firstName: '',
@@ -30,13 +36,16 @@ export function RegisterUserFromInvitationForm() {
     const token = searchParams.get('token');
 
     if (!email || !token) {
-        notFound()
+        notFound();
     }
 
     const fetcher = async (data: RegisterUserFromInvitationDTO) => {
         delete data.repeatPassword;
 
-        await fetcherAuth<RegisterUserFromInvitationRequest, RegisterUserFromInvitationResponse>('/register/user/invitation', {
+        await fetcherAuth<
+            RegisterUserFromInvitationRequest,
+            RegisterUserFromInvitationResponse
+        >('/register/user/invitation', {
             method: 'POST',
             body: {
                 service: 'ha',
@@ -46,7 +55,7 @@ export function RegisterUserFromInvitationForm() {
             },
         });
 
-        window.location.href = "/rejestracja/uzytkownik/zaproszenie/sukces";
+        window.location.href = '/rejestracja/uzytkownik/zaproszenie/sukces';
     };
 
     const [state, action, isLoading] = useActionState<

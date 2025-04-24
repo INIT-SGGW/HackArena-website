@@ -1,5 +1,5 @@
-import { Page } from "@repo/ui";
-import { AddTeamMemberForm } from "../../../../../views/Account/Team/AddTeamMemberForm";
+import { Page } from '@repo/ui';
+import { AddTeamMemberForm } from '../../../../../views/Account/Team/AddTeamMemberForm';
 
 export default function AddTeamMemberPage() {
     return (
@@ -7,5 +7,5 @@ export default function AddTeamMemberPage() {
             <h1 className="title justify-self-center mb-4">Dodaj członka</h1>
             <AddTeamMemberForm />
         </Page>
-    )
+    );
 }

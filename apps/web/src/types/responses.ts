@@ -1,40 +1,40 @@
-import { DietPreference, Event, Notification, Occupation } from "./dtos";
+import { DietPreference, Event, Notification, Occupation } from './dtos';
 
 type TypicalResponse = {
     status: number;
     error?: string;
-}
+};
 
 export type LoginResponse = {
     status: number;
     userId: string;
 };
 
-export type RegisterUserResponse = TypicalResponse
+export type RegisterUserResponse = TypicalResponse;
 
-export type RegisterUserFromInvitationResponse = TypicalResponse
+export type RegisterUserFromInvitationResponse = TypicalResponse;
 
 export type GetNotificationsResponse<T> = {
     status: string;
     notifications: Notification<T>[];
-}
+};
 
-export type AddTeamMemberResponse = TypicalResponse
+export type AddTeamMemberResponse = TypicalResponse;
 
-export type RegisterTeamResponse = TypicalResponse
+export type RegisterTeamResponse = TypicalResponse;
 
-export type ChangeNotificationStatusResponse = TypicalResponse
+export type ChangeNotificationStatusResponse = TypicalResponse;
 
 export type GetTeamsResponse = {
-    _id: string,
-    name: string,
-    membersCount: number,
-}[]
+    _id: string;
+    name: string;
+    membersCount: number;
+}[];
 
 export type GetEventsResponse = {
     incoming: Event[];
     ended: Event[];
-}
+};
 
 export type GetSingleTeamResponse = {
     _id: string;
@@ -47,12 +47,12 @@ export type GetSingleTeamResponse = {
         isLeader: boolean;
         isVerified: boolean;
         status: string;
-    }[],
+    }[];
     events: (Event & {
         date: string;
         isActive: boolean;
-    })[]
-}
+    })[];
+};
 
 export type GetUserByIdResponse = {
     firstName: string;
@@ -62,4 +62,4 @@ export type GetUserByIdResponse = {
     aggrement: boolean;
     occupation: Occupation;
     dietPreference: DietPreference;
-}
+};

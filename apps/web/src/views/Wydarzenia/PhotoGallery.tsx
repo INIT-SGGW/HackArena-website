@@ -309,7 +309,7 @@ function Carousel({
                                     e.currentTarget.offsetWidth * index +
                                     e.currentTarget.offsetWidth / 2 -
                                     e.currentTarget.parentElement?.offsetWidth /
-                                    2,
+                                        2,
                                 behavior: 'smooth',
                             });
                         }}

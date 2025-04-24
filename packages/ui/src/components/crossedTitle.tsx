@@ -1,6 +1,6 @@
 type Props = {
     title: string;
-}
+};
 
 export function CrossedTitle({ title }: Props) {
     return (
@@ -10,5 +10,5 @@ export function CrossedTitle({ title }: Props) {
             </h2>
             <div className="absolute w-full h-[4px] bg-primary top-[50%] -translate-y-[50%] left-0 -z-1 hidden sm:block" />
         </div>
-    )
+    );
 }

@@ -6,10 +6,7 @@ type Props = {
     params: Promise<{ event: string }>;
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
-export async function generateMetadata({
-    params,
-    searchParams,
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { event } = await params;
 
     const eventData = mockData.wydarzenia.find(

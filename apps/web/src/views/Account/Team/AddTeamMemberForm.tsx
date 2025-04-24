@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { notFound, useParams } from "next/navigation";
-import { AddTeamMemberDTO } from "../../../types/dtos";
-import { AddTeamMemberResponse } from "../../../types/responses";
-import { fetcherHack } from "../../../api/fetcher";
-import { useActionState } from "react";
-import { formAction, FormActionState } from "../../../api/formAction";
-import { AddTeamMEmberSchema } from "../../../utils/validation";
-import { Button, Input } from "@repo/ui";
-import { AddTeamMemberRequest } from "../../../types/requests";
+import { notFound, useParams } from 'next/navigation';
+import { AddTeamMemberDTO } from '../../../types/dtos';
+import { AddTeamMemberResponse } from '../../../types/responses';
+import { fetcherHack } from '../../../api/fetcher';
+import { useActionState } from 'react';
+import { formAction, FormActionState } from '../../../api/formAction';
+import { AddTeamMEmberSchema } from '../../../utils/validation';
+import { Button, Input } from '@repo/ui';
+import { AddTeamMemberRequest } from '../../../types/requests';
 
 export function AddTeamMemberForm() {
     const { id } = useParams();
@@ -18,12 +18,15 @@ export function AddTeamMemberForm() {
     }
 
     const fetcher = async (data: AddTeamMemberDTO) => {
-        await fetcherHack<AddTeamMemberRequest, AddTeamMemberResponse>(`/teams/${id}/add-user`, {
-            method: 'PATCH',
-            body: {
-                ...data,
-            }
-        });
+        await fetcherHack<AddTeamMemberRequest, AddTeamMemberResponse>(
+            `/teams/${id}/add-user`,
+            {
+                method: 'PATCH',
+                body: {
+                    ...data,
+                },
+            },
+        );
 
         window.location.href = `/konto/druzyna/${id}`;
     };
@@ -33,7 +36,12 @@ export function AddTeamMemberForm() {
         FormData
     >(
         (prevState, payload) =>
-            formAction<AddTeamMemberDTO>(prevState, payload, AddTeamMEmberSchema, fetcher),
+            formAction<AddTeamMemberDTO>(
+                prevState,
+                payload,
+                AddTeamMEmberSchema,
+                fetcher,
+            ),
         {
             data: {
                 email: '',
@@ -71,5 +79,5 @@ export function AddTeamMemberForm() {
                 {state.errors?.server}
             </span>
         </form>
-    )
+    );
 }

@@ -119,7 +119,6 @@ export const registerUserFromInvitationSchema = z
         path: ['repeatPassword'],
     });
 
-export const AddTeamMEmberSchema = z
-    .object({
-        email: emailSchema
-    })
+export const AddTeamMEmberSchema = z.object({
+    email: emailSchema,
+});

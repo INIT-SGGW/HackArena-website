@@ -19,32 +19,31 @@ export function TeamsCard() {
 
     const { data, error, isLoading } = useSWR<GetTeamsResponse, Error>(
         `/users/${userId}/teams`,
-        (url: string) => fetcherHack<null, GetTeamsResponse>(url, {
-            method: "GET",
-        }))
+        (url: string) =>
+            fetcherHack<null, GetTeamsResponse>(url, {
+                method: 'GET',
+            }),
+    );
 
     return (
         <div className="flex flex-col page-width gap-10">
             <CrossedTitle title="Twoje drużyny" />
             <div className="flex flex-col gap-10 sm:p-4">
-                {
-                    isLoading && !error && (
-                        <p className='text-center'>Ładowanie...</p>
-                    )
-                }
-                {
-                    error && (
-                        <p className="text-error text-center">Wystąpił błąd podczas ładowania drużyn</p>
-                    )
-                }
-                {
-                    data && data.length !== 0 && (<TeamsCarousel teams={data} />)
-                }
-                {
-                    !data || data?.length === 0 && (
-                        <p className='text-center'>Nie należysz jeszcze do żadnej drużyny</p>
-                    )
-                }
+                {isLoading && !error && (
+                    <p className="text-center">Ładowanie...</p>
+                )}
+                {error && (
+                    <p className="text-error text-center">
+                        Wystąpił błąd podczas ładowania drużyn
+                    </p>
+                )}
+                {data && data.length !== 0 && <TeamsCarousel teams={data} />}
+                {!data ||
+                    (data?.length === 0 && (
+                        <p className="text-center">
+                            Nie należysz jeszcze do żadnej drużyny
+                        </p>
+                    ))}
                 <LinkButton href="/rejestracja/druzyna" fullWidth>
                     Stwórz drużynę
                 </LinkButton>

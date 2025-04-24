@@ -1,4 +1,4 @@
 export enum MemberStatus {
-    ACCEPTED = "accepted",
-    INVITED = "invited"
+    ACCEPTED = 'accepted',
+    INVITED = 'invited',
 }

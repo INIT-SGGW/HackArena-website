@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 export function useGetUserId() {
-    if (typeof window !== "undefined") {
-        const userId = localStorage.getItem("userId");
+    if (typeof window !== 'undefined') {
+        const userId = localStorage.getItem('userId');
 
         if (!userId) {
-            window.location.href = "/login";
+            window.location.href = '/login';
             return null;
         }
 

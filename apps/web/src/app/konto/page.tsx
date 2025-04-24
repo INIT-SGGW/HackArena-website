@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import { AccountCard } from '../../views/Account/AccountCard';
 import { EventsCard } from '../../views/Account/EventsCard';
 import { TeamsCard } from '../../views/Account/TeamsCard';
-import { EventLiveCard } from '../../views/Account/EventLiveCard';
 import { AccountTitle } from '../../views/Account/AccountTitle';
 
 export const metadata: Metadata = {

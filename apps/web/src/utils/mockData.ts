@@ -12,6 +12,7 @@ export enum EventComponents {
 export const mockData: { wydarzenia: EventData[] } = {
     wydarzenia: [
         {
+            _id: '12345678',
             name: {
                 url: 'hackarena_1_0',
                 text: 'HackArena 1.0',
@@ -109,6 +110,7 @@ export const mockData: { wydarzenia: EventData[] } = {
             ],
         },
         {
+            _id: '12345679',
             name: {
                 url: 'hackarena_2_0',
                 text: 'HackArena 2.0',
@@ -337,6 +339,7 @@ export const mockData: { wydarzenia: EventData[] } = {
             ],
         },
         {
+            _id: '323524',
             name: {
                 url: 'hackarena_2_5',
                 text: 'HackArena 2.5',
@@ -454,6 +457,7 @@ export const mockData: { wydarzenia: EventData[] } = {
             ],
         },
         {
+            _id: '12345680d',
             name: {
                 url: 'gamejam',
                 text: 'HackArena GameJam',
@@ -598,6 +602,7 @@ export type AgendaType = {
 };
 
 export type EventData = {
+    _id: string;
     name: {
         url: string;
         text: string;

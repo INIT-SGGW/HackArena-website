@@ -51,11 +51,12 @@ export function EventsCard() {
 
     const { data, error, isLoading } = useSWR<GetEventsResponse, Error>(
         `/users/${userId}/events`,
-        (url: string) => fetcherHack<null, GetEventsResponse>(url, {
-            method: "GET",
-        }))
+        (url: string) =>
+            fetcherHack<null, GetEventsResponse>(url, {
+                method: 'GET',
+            }),
+    );
 
-    console.log('data', data);
     return (
         <div className="flex flex-col page-width gap-5">
             <CrossedTitle title="Twoje wydarzenia" />
@@ -64,44 +65,42 @@ export function EventsCard() {
                     <div
                         className={`flex flex-col md:flex-row gap-5 md:gap-10 ${data && data?.incoming.length > 1 ? '!flex-col !gap-10' : ''}`}
                     >
-                        {
-                            isLoading && !error && (
-                                <p className='w-full text-center'>Ładowanie...</p>
-                            )
-                        }
-                        {
-                            error && (
-                                <p className="w-full text-error text-center">Wystąpił błąd podczas ładowania wydarzeń</p>
-                            )
-                        }
-                        {
-                            data?.incoming && data.incoming.length !== 0 && (
+                        {isLoading && !error && (
+                            <p className="w-full text-center">Ładowanie...</p>
+                        )}
+                        {error && (
+                            <p className="w-full text-error text-center">
+                                Wystąpił błąd podczas ładowania wydarzeń
+                            </p>
+                        )}
+                        {data?.incoming && data.incoming.length !== 0 && (
+                            <NoDescriptionEvents
+                                title="Nadchodzące"
+                                events={data.incoming}
+                                compact
+                            />
+                        )}
+                        {data?.ended && data.ended.length !== 0 && (
+                            <>
+                                <div
+                                    className={`w-[2px] bg-secondary-200 my-[70px] hidden md:block ${mockEvents.current.length > 1 ? '!hidden' : ''}`}
+                                />
                                 <NoDescriptionEvents
-                                    title="Nadchodzące"
-                                    events={data.incoming}
+                                    grow
+                                    title="Zakończone"
+                                    events={data.ended}
                                     compact
                                 />
-                            )
-                        }
-                        {
-                            data?.ended && data.ended.length !== 0 && (
-                                <>
-                                    <div
-                                        className={`w-[2px] bg-secondary-200 my-[70px] hidden md:block ${mockEvents.current.length > 1 ? '!hidden' : ''}`}
-                                    />
-                                    <NoDescriptionEvents
-                                        grow
-                                        title="Zakończone"
-                                        events={data.ended}
-                                        compact
-                                    />
-                                </>)
-                        }
-                        {
-                            !data || (data?.ended.length === 0 && data?.incoming.length === 0) && (
-                                <p className='w-full text-center'>Nie brałeś jeszcze udziału w żadnym wydarzeniu</p>
-                            )
-                        }
+                            </>
+                        )}
+                        {!data ||
+                            (data?.ended.length === 0 &&
+                                data?.incoming.length === 0 && (
+                                    <p className="w-full text-center">
+                                        Nie brałeś jeszcze udziału w żadnym
+                                        wydarzeniu
+                                    </p>
+                                ))}
                         {/* {mockEvents.current.length > 0 && (
                             <>
                                 <NoDescriptionEvents

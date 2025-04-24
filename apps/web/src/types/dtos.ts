@@ -47,7 +47,7 @@ export type RegisterUserFromInvitationDTO = {
 export type TeamInviteNotification = {
     teamId: string;
     teamName: string;
-}
+};
 
 export type Notification<T> = {
     _id: string;
@@ -55,17 +55,17 @@ export type Notification<T> = {
     type: string;
     status: string;
     args: T;
-}
+};
 
 export type AddTeamMemberDTO = {
     email: string;
-}
+};
 
 export type Event = {
     _id: string;
     name: {
         text: string;
         url: string;
-    },
+    };
     thumbnail: string;
-}
+};

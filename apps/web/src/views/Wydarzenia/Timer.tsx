@@ -34,7 +34,7 @@ export function Timer({ startDate, registration }: TimerProps) {
             </p>
             {isRegisterOpen && (
                 <LinkButton
-                    href={registration.url || '/rejestracja'}
+                    href={registration.url || '/rejestracja/druzyna'}
                     className="mt-8"
                 >
                     Zapisz się!

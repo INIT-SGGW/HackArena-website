@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Input, LinkButton } from '@repo/ui';
+import { Button, Input } from '@repo/ui';
 import { useActionState } from 'react';
 import { registerTeamSchema } from '../../utils/validation';
 import { fetcherHack } from '../../api/fetcher';
@@ -11,15 +11,15 @@ import { RegisterTeamRequest } from '../../types/requests';
 
 export function RegisterTeamForm() {
     const fetcher = async (data: RegisterTeamDTO) => {
-        const res = await fetcherHack<RegisterTeamRequest, RegisterTeamResponse>('/teams', {
+        await fetcherHack<RegisterTeamRequest, RegisterTeamResponse>('/teams', {
             method: 'POST',
             body: {
                 ...data,
-                eventTag: "ha_2.5"
+                eventTag: 'ha_2.5',
             },
         });
 
-        window.location.href += "/sukces";
+        window.location.href += '/sukces';
     };
 
     const [state, action, isLoading] = useActionState<

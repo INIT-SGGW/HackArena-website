@@ -9,7 +9,9 @@ import { DietPreference, Occupation, RegisterUserDTO } from '../../types/dtos';
 import { fetcherAuth } from '../../api/fetcher';
 import { RegisterUserRequest } from '../../types/requests';
 
-const eighteenYearsAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 18));
+const eighteenYearsAgo = new Date(
+    new Date().setFullYear(new Date().getFullYear() - 18),
+);
 
 const initialValue: RegisterUserDTO = {
     firstName: '',
@@ -27,13 +29,16 @@ export function RegisterUserForm() {
     const fetcher = async (data: RegisterUserDTO) => {
         delete data.repeatPassword;
 
-        await fetcherAuth<RegisterUserRequest, RegisterUserResponse>('/register/user', {
-            method: 'POST',
-            body: {
-                service: 'ha',
-                ...data,
+        await fetcherAuth<RegisterUserRequest, RegisterUserResponse>(
+            '/register/user',
+            {
+                method: 'POST',
+                body: {
+                    service: 'ha',
+                    ...data,
+                },
             },
-        });
+        );
 
         window.location.href = 'uzytkownik/sukces';
     };
