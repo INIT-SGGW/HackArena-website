@@ -1,5 +1,5 @@
 type FetcherOptions<RQ> = Omit<RequestInit, 'body'> & {
-    body?: RQ,
+    body?: RQ;
     authRedirect?: boolean;
 };
 
@@ -63,11 +63,12 @@ export async function fetcherAuth<RQ, RE>(
 
     switch (process.env.NEXT_PUBLIC_NODE_ENV) {
         case 'production':
-            authApiUrl = 'https://hackarena.pl';
+            authApiUrl = 'https://hackarena.pl/api/v1';
             break;
         case 'test':
-            authApiUrl = 'https://hackarena.pl:5000';
+            authApiUrl = 'https://hackarena.pl:5000/api/v1';
             break;
+
         default:
             authApiUrl = 'http://localhost:8080';
             break;
@@ -77,7 +78,7 @@ export async function fetcherAuth<RQ, RE>(
         throw new Error('Request domain is not defined');
     }
 
-    const fullUrl = new URL(url, authApiUrl).toString();
+    const fullUrl = authApiUrl + url;
 
     return fetcher<RQ, RE>(fullUrl, options);
 }
@@ -90,10 +91,10 @@ export async function fetcherHack<RQ, RE>(
 
     switch (process.env.NEXT_PUBLIC_NODE_ENV) {
         case 'production':
-            hackApiUrl = 'https://initcodingchallenge.pl/api/v1';
+            hackApiUrl = 'https://hackarena.pl/backend';
             break;
         case 'test':
-            hackApiUrl = 'https://initcodingchallenge.pl:5000/api/v1';
+            hackApiUrl = 'https://hackarena.pl:5000/backend';
             break;
         default:
             hackApiUrl = 'http://localhost:5500';
@@ -104,7 +105,7 @@ export async function fetcherHack<RQ, RE>(
         throw new Error('Request domain is not defined');
     }
 
-    const fullUrl = new URL(url, hackApiUrl).toString();
+    const fullUrl = hackApiUrl + url;
 
     return fetcher<RQ, RE>(fullUrl, options);
 }
