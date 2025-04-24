@@ -416,7 +416,7 @@ export const mockData: { wydarzenia: EventData[] } = {
                         },
                         {
                             question: 'Gdzie odbędzie się HackArena 2.5?',
-                            answer: 'HackArena odbędzie się w Centrum Wodnym na kampusie SGGW w Warszawie. Adres: <a href="https://maps.app.goo.gl/ryjtyzVDA79Hjubw8" target="noreferer;nofollow">Jana Ciszewskiego 6, 02-766 Warszawa</a>.',
+                            answer: 'HackArena odbędzie się w Centrum Wodnym na kampusie SGGW w Warszawie. Adres: <a href="https://maps.app.goo.gl/ryjtyzVDA79Hjubw8" target="_blank" rel="noreferer nofollow">Jana Ciszewskiego 6, 02-766 Warszawa</a>.',
                         },
                         {
                             question: 'Czy muszę przynieść własny komputer?',
