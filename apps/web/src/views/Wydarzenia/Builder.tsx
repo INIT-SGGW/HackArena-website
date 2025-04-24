@@ -4,6 +4,7 @@ import { notFound, useParams } from 'next/navigation';
 import {
     EventComponents,
     EventData,
+    FAQType,
     HeaderTextSectionType,
     HeaderType,
     HighlightsType,
@@ -21,6 +22,7 @@ import { PhotoGallery } from './PhotoGallery';
 import { Highlights } from './Highlights';
 import { Sponsors } from './Sponsors';
 import { Prizes } from './Prizes';
+import { FAQ } from './FAQ';
 
 export function Builder() {
     const { event } = useParams<{ event: string }>();
@@ -125,6 +127,10 @@ export function Builder() {
                                     color={eventData.color}
                                     data={item.data as HeaderTextSectionType}
                                 />
+                            );
+                        case EventComponents.FAQ:
+                            return (
+                                <FAQ key={index} data={item.data as FAQType} />
                             );
                         case EventComponents.RESULTS:
                             return (

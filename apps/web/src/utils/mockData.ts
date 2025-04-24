@@ -7,6 +7,7 @@ export enum EventComponents {
     PHOTOS = 'photos',
     PRIZES = 'prizes',
     AGENDA = 'agenda',
+    FAQ = 'faq',
 }
 
 export const mockData: { wydarzenia: EventData[] } = {
@@ -403,6 +404,35 @@ export const mockData: { wydarzenia: EventData[] } = {
                     },
                 },
                 {
+                    type: EventComponents.FAQ,
+                    data: [
+                        {
+                            question: 'Czym jest hackathon?',
+                            answer: 'Hackathon to wydarzenie, na którym w określonym czasie musisz wykonać podane zadanie programistyczne. W naszym przypadku będzie to stworzenie bota do gry.',
+                        },
+                        {
+                            question: 'Czy mogę przyjść sam/a?',
+                            answer: 'Nie, dopuszczamy jedynie zespoły składające się z 2 lub 3 osób (w przypadku dużej liczby zgłoszeń, zespoły 3 osobowe będą miały większą szansę dostania się na wydarzenie).',
+                        },
+                        {
+                            question: 'Gdzie odbędzie się HackArena 2.5?',
+                            answer: 'HackArena odbędzie się w Centrum Wodnym na kampusie SGGW w Warszawie. Adres: <a href="https://maps.app.goo.gl/ryjtyzVDA79Hjubw8" target="noreferer;nofollow">Jana Ciszewskiego 6, 02-766 Warszawa</a>.',
+                        },
+                        {
+                            question: 'Czy muszę przynieść własny komputer?',
+                            answer: 'Tak, każdy uczestnik musi przynieść własny komputer. Nie zapomnij również o ładowarce!',
+                        },
+                        {
+                            question: 'Czy będzie zapewnione wyżywienie?',
+                            answer: 'Tak, zapewniamy podstawowe wyżywienie. Przez cały czas trwania HackAreny będzie dostępna woda, drobne przekąski oraz pizza. Jeżeli jesteś wege, zaznacz odpowiednią opcję w formularzu rejestracyjnym.',
+                        },
+                        {
+                            question: 'Czy mogę przyjść z gotowym projektem?',
+                            answer: 'Nie, projekty muszą być tworzone od zera. Możesz jednak korzystać z ogólnodostępnych bibliotek i frameworków.',
+                        },
+                    ],
+                },
+                {
                     type: EventComponents.AGENDA,
                     data: {
                         days: [
@@ -601,6 +631,11 @@ export type AgendaType = {
     }[];
 };
 
+export type FAQType = {
+    question: string;
+    answer: string;
+}[];
+
 export type EventData = {
     _id: string;
     name: {
@@ -631,5 +666,6 @@ export type EventData = {
         | PhotosType
         | PrizesType
         | AgendaType
+        | FAQType
     >[];
 };
