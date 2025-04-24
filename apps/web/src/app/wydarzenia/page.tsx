@@ -24,9 +24,12 @@ export default function Events() {
     let pastEvents = sortedEvents.filter(
         (event) => event.timeDate.start < new Date(),
     );
-    let [highlightedEvent, ...restIncomingEvents] = incomingEvents.sort(
+    const sortedIncomingEvents = incomingEvents.sort(
         (a, b) => a.timeDate.start.getTime() - b.timeDate.start.getTime(),
     );
+    let highlightedEvent = sortedIncomingEvents[0];
+    const restIncomingEvents = sortedIncomingEvents.slice(1);
+
     if (!highlightedEvent) {
         highlightedEvent = pastEvents[0];
         pastEvents = pastEvents.slice(1);
