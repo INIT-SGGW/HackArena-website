@@ -4,6 +4,7 @@ import { TitleWithIcon, PageSection } from '@repo/ui';
 import { HeaderType } from '../../utils/mockData';
 import Image from 'next/image';
 import { Timer, TimerProps } from './Timer';
+import Link from 'next/link';
 
 type Props = TimerProps & {
     data: HeaderType;
@@ -43,7 +44,7 @@ export function Header({ data, startDate, registration }: Props) {
                         {data.description}
                     </p>
                     <div className="w-full h-[1px] bg-text my-2" />
-                    <div className="flex items-center gap-6 text-xl">
+                    <div className="flex items-center gap-6 text-md sm:text-xl">
                         <span>{eventDate(data.timeDate)}</span>
                         <Image
                             src={'/star.svg'}
@@ -51,7 +52,17 @@ export function Header({ data, startDate, registration }: Props) {
                             height={15}
                             alt="*"
                         />
-                        <span>{data.location}</span>
+                        {data.location.href ? (
+                            <Link
+                                href={data.location.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {data.location.text}
+                            </Link>
+                        ) : (
+                            <span>{data.location.text}</span>
+                        )}
                     </div>
                 </div>
             </div>

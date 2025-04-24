@@ -43,7 +43,7 @@ export const mockData: { wydarzenia: EventData[] } = {
                             start: new Date('2024-06-02T10:00:00'),
                             end: new Date('2024-06-02T18:00:00'),
                         },
-                        location: 'SGGW w Warszawie',
+                        location: { text: 'SGGW w Warszawie' },
                         thumbnail: '/photos/hackarena_1/thumbnail.jpg',
                     },
                 },
@@ -141,7 +141,7 @@ export const mockData: { wydarzenia: EventData[] } = {
                             start: new Date('2024-10-26T10:00:00'),
                             end: new Date('2024-10-27T18:00:00'),
                         },
-                        location: 'SGGW w Warszawie',
+                        location: { text: 'SGGW w Warszawie' },
                         thumbnail: '/photos/hackarena_2/thumbnail.jpg',
                     },
                 },
@@ -370,7 +370,10 @@ export const mockData: { wydarzenia: EventData[] } = {
                             start: new Date('2025-05-17T10:00:00'),
                             end: new Date('2025-05-17T18:00:00'),
                         },
-                        location: 'SGGW w Warszawie',
+                        location: {
+                            text: 'SGGW w Warszawie',
+                            href: 'https://maps.app.goo.gl/ryjtyzVDA79Hjubw8',
+                        },
                         thumbnail: '/photos/hackarena_2_5/thumbnail.jpg',
                     },
                 },
@@ -520,7 +523,7 @@ export const mockData: { wydarzenia: EventData[] } = {
                             start: new Date('2025-04-28T10:00:00'),
                             end: new Date('2025-05-04T23:59:00'),
                         },
-                        location: 'Online',
+                        location: { text: 'Online' },
                         thumbnail: '/photos/gamejam/thumbnail.png',
                     },
                 },
@@ -617,7 +620,10 @@ export type HeaderType = {
         start: Date;
         end: Date;
     };
-    location: string;
+    location: {
+        text: string;
+        href?: string;
+    };
     thumbnail: string;
 };
 
