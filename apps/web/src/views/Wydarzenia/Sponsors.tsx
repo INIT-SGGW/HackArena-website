@@ -8,65 +8,97 @@ type Props = {
 
 export function Sponsors({ data }: Props) {
     const allSponsors = [
-        ...data.sponsors,
-        ...data.partners,
-        ...data.patronage,
-        ...data.mediaPatronage,
+        ...(data.sponsors || []),
+        ...(data.partners || []),
+        ...(data.patronage || []),
+        ...(data.mediaPatronage || []),
     ].length;
+    const segments = [
+        data.sponsors,
+        data.partners,
+        data.patronage,
+        data.mediaPatronage,
+    ].filter((segment) => segment && segment.length > 0).length;
+
+    const scroll = allSponsors > 6;
 
     return (
-        <div className="flex flex-col gap-8 overflow-hidden">
+        <div
+            className={`flex flex-col ${scroll ? 'gap-8' : 'gap-4'} overflow-hidden`}
+        >
             <h3 className="w-full text-center text-2xl px-4">{data.text}</h3>
             <div
-                className="w-max flex gap-8 p-4 pb-6 bg-secondary-300 animate-sponsor-scroll"
+                className={`${scroll ? 'w-max animate-sponsor-scroll bg-secondary-300' : 'w-full justify-center flex-wrap text-center'} flex gap-8 p-4 ${segments > 1 ? 'pb-6' : ' '} `}
                 style={{ animationDuration: `${allSponsors * 2.5}s` }}
             >
-                {data.sponsors.length > 0 && (
-                    <SponsorsSegment title="Sponsorzy" data={data.sponsors} />
-                )}
-                {data.partners.length > 0 && (
-                    <SponsorsSegment title="Partnerzy" data={data.partners} />
-                )}
-                {data.patronage.length > 0 && (
-                    <SponsorsSegment title="Patronat" data={data.patronage} />
-                )}
-                {data.mediaPatronage.length > 0 && (
+                {data.sponsors && data.sponsors.length > 0 && (
                     <SponsorsSegment
-                        title="Patronat medialny"
+                        title={segments > 1 ? 'Sponsorzy' : undefined}
+                        data={data.sponsors}
+                    />
+                )}
+                {data.partners && data.partners.length > 0 && (
+                    <SponsorsSegment
+                        title={segments > 1 ? 'Partnerzy' : undefined}
+                        data={data.partners}
+                    />
+                )}
+                {data.patronage && data.patronage.length > 0 && (
+                    <SponsorsSegment
+                        title={segments > 1 ? 'Patronat' : undefined}
+                        data={data.patronage}
+                    />
+                )}
+                {data.mediaPatronage && data.mediaPatronage.length > 0 && (
+                    <SponsorsSegment
+                        title={segments > 1 ? 'Patronat medialny' : undefined}
                         data={data.mediaPatronage}
                     />
                 )}
-                {data.sponsors.length > 0 && (
-                    <SponsorsSegment title="Sponsorzy" data={data.sponsors} />
-                )}
-                {data.partners.length > 0 && (
-                    <SponsorsSegment title="Partnerzy" data={data.partners} />
-                )}
-                {data.patronage.length > 0 && (
-                    <SponsorsSegment title="Patronat" data={data.patronage} />
-                )}
-                {data.mediaPatronage.length > 0 && (
+                {scroll && data.sponsors && data.sponsors.length > 0 && (
                     <SponsorsSegment
-                        title="Patronat medialny"
-                        data={data.mediaPatronage}
+                        title={segments > 1 ? 'Sponsorzy' : undefined}
+                        data={data.sponsors}
                     />
                 )}
+                {scroll && data.partners && data.partners.length > 0 && (
+                    <SponsorsSegment
+                        title={segments > 1 ? 'Partnerzy' : undefined}
+                        data={data.partners}
+                    />
+                )}
+                {scroll && data.patronage && data.patronage.length > 0 && (
+                    <SponsorsSegment
+                        title={segments > 1 ? 'Patronat' : undefined}
+                        data={data.patronage}
+                    />
+                )}
+                {scroll &&
+                    data.mediaPatronage &&
+                    data.mediaPatronage.length > 0 && (
+                        <SponsorsSegment
+                            title={
+                                segments > 1 ? 'Patronat medialny' : undefined
+                            }
+                            data={data.mediaPatronage}
+                        />
+                    )}
             </div>
         </div>
     );
 }
 
 type SponsorsSegmentProps = {
-    title: string;
+    title?: string;
     data: SponsorsType['sponsors'];
 };
 
 function SponsorsSegment({ title, data }: SponsorsSegmentProps) {
     return (
-        <div className="w-full flex flex-col gap-2">
-            <h4 className="text-xl">{title}</h4>
-            <div className="w-full flex gap-4 items-center">
-                {data.map((sponsor, index) => (
+        <div className="flex flex-col gap-2">
+            {title && <h4 className="text-xl">{title}</h4>}
+            <div className="flex gap-4 items-center justify-center flex-wrap">
+                {data?.map((sponsor, index) => (
                     <Link
                         href={sponsor.href}
                         key={index}
