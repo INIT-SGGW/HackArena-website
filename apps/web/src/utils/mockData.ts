@@ -393,6 +393,31 @@ export const mockData: { wydarzenia: EventData[] } = {
                     },
                 },
                 {
+                    type: EventComponents.SPONSORS,
+                    data: {
+                        text: 'Dziękujemy naszym sponsorom za wsparcie',
+                        sponsors: [
+                            {
+                                name: 'MevSpace',
+                                logo: '/sponsors/mevspace.svg',
+                                href: 'https://mevspace.com/',
+                            },
+                        ],
+                        patronage: [
+                            {
+                                name: 'Patronat honorowy Burmistrza dzielnicy Ursynów',
+                                logo: '/sponsors/ursynow.png',
+                                href: 'https://ursynow.um.warszawa.pl/',
+                            },
+                            {
+                                name: 'Patronat honorowy Rektora Szkoły Głównej Gospodarstwa Wiejskiego',
+                                logo: '/sponsors/sggw.svg',
+                                href: 'https://www.sggw.edu.pl/',
+                            },
+                        ],
+                    },
+                },
+                {
                     type: EventComponents.HEADER_TEXT_SECTION,
                     data: {
                         title: 'Zadanie',
