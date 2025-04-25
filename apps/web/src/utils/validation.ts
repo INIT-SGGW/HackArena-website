@@ -32,7 +32,9 @@ const teamNameSchema = z
 
 const registerEmailsSchema = z
     .string()
-    .transform((text) => text.split(',').map((email) => email.trim().toLowerCase()))
+    .transform((text) =>
+        text.split(',').map((email) => email.trim().toLowerCase()),
+    )
     .refine((emails) => emails.length > 0, {
         message: 'Dodaj przynajmniej jeden email',
     })
