@@ -22,7 +22,8 @@ const registerPasaswordSchema = z
 const emailSchema = z
     .string()
     .nonempty({ message: 'Email jest wymagany' })
-    .email({ message: 'Email jest niepoprawny' });
+    .email({ message: 'Email jest niepoprawny' })
+    .transform((email) => email.toLowerCase());
 
 const teamNameSchema = z
     .string()
@@ -31,7 +32,7 @@ const teamNameSchema = z
 
 const registerEmailsSchema = z
     .string()
-    .transform((text) => text.split(',').map((email) => email.trim()))
+    .transform((text) => text.split(',').map((email) => email.trim().toLowerCase()))
     .refine((emails) => emails.length > 0, {
         message: 'Dodaj przynajmniej jeden email',
     })
