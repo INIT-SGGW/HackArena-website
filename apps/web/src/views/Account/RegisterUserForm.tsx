@@ -70,7 +70,7 @@ export function RegisterUserForm() {
             style={{ '--clip-size': '25px' } as React.CSSProperties}
         >
             <Input
-                autoComplete="name"
+                autoComplete="given-name"
                 placeholder="Imię"
                 label="Imię"
                 name="firstName"
