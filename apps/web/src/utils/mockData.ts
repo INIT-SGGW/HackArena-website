@@ -605,22 +605,22 @@ export type ResultsType = {
 
 export type SponsorsType = {
     text: string;
-    sponsors: {
+    sponsors?: {
         name: string;
         logo: string;
         href: string;
     }[];
-    partners: {
+    partners?: {
         name: string;
         logo: string;
         href: string;
     }[];
-    mediaPatronage: {
+    mediaPatronage?: {
         name: string;
         logo: string;
         href: string;
     }[];
-    patronage: {
+    patronage?: {
         name: string;
         logo: string;
         href: string;
