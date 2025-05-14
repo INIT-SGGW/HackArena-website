@@ -1,33 +1,43 @@
-import { LinkButton } from '@repo/ui';
+'use client';
 
-const mockEvent = {
-    id: 1,
-    name: {
-        url: 'hackarena_2_5',
-        text: 'HackArena 2.5',
-    },
-    description: 'This is a live event',
-    date: '2023-10-01',
-    time: '12:00 PM',
-    location: 'Online',
-};
+import { InfoBox } from '@repo/ui';
+import useSWR from 'swr';
+import { GetEventsResponse } from '../../types/responses';
+import { fetcherHack } from '../../api/fetcher';
+import { useGetUserId } from '../../utils/useGetUserId';
 
 export function EventLiveCard() {
-    return (
-        <div className="flex flex-col both-corners-clip bg-primary p-4">
-            <h2 className="subtitle text-background">Wydarzenie live</h2>
-            <p className="text-background">
-                {mockEvent.name.text} jest live! Wejdź na stronę wydarzenia po
-                więcej informacji.
-            </p>
-            <LinkButton
-                href={`/konto/wydarzenie/${mockEvent.name.url}`}
-                className="mt-4"
-                secondary
-                fullWidth
-            >
-                Wejdź
-            </LinkButton>
-        </div>
+    const userId = useGetUserId();
+
+    const { data } = useSWR<GetEventsResponse, Error>(
+        `/users/${userId}/events`,
+        (url: string) =>
+            fetcherHack<null, GetEventsResponse>(url, {
+                method: 'GET',
+            }),
     );
+
+    const liveEvent = data?.incoming.find((event) => event.isLive);
+    if (liveEvent) {
+        return (
+            <InfoBox
+                title={'Wydarzenie live'}
+                text={`${liveEvent.name.text} jest live! Wejdź na stronę wydarzenia po więcej informacji.`}
+                buttonText="Wejdź"
+                href={`/konto/wydarzenie/${liveEvent.name.url}`}
+            />
+        );
+    }
+
+    const taskEvent = data?.incoming.find((event) => event.isTaskActive);
+    if (taskEvent) {
+        return (
+            <InfoBox
+                title={'Zadanie otwarte'}
+                text={`Zadanie kwalifikacyjne do wydarzenia ${taskEvent.name.text} jest otwarte! Wejdź na stronę swojego zespołu po więcej informacji.`}
+            />
+        );
+    }
+
+    return null;
 }

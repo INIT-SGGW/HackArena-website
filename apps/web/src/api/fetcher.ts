@@ -1,4 +1,4 @@
-type FetcherOptions<RQ> = Omit<RequestInit, 'body'> & {
+export type FetcherOptions<RQ> = Omit<RequestInit, 'body'> & {
     body?: RQ;
     authRedirect?: boolean;
 };
