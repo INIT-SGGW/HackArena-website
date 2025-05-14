@@ -93,13 +93,13 @@ export default function Home() {
                                 key={event.name.text}
                                 className="grid grid-rows-auto sm:grid-cols-[.4fr_1fr] gap-4 md:gap-6"
                             >
-                                <div className="p-2 ribbon relative min-w-[250px]">
+                                <div className="p-2 ribbon relative min-w-[250px] min-h-[200px]">
                                     <Link
                                         href={`/wydarzenia/${event.name.url}`}
                                     >
                                         <Image
                                             src={event.thumbnail}
-                                            className="ribbon-photo-clip w-full"
+                                            className="ribbon-photo-clip h-full object-cover"
                                             width={400}
                                             height={200}
                                             alt="HackArena 2"
