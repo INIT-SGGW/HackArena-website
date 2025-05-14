@@ -10,3 +10,4 @@ export { ArrowLink } from './components/arrowLink';
 export { SuccessPage } from './components/successPage';
 export { Select } from './components/select';
 export { CrossedTitle } from './components/crossedTitle';
+export { InfoBox } from './components/infoBox';
