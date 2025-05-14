@@ -384,7 +384,7 @@ export const mockData: { wydarzenia: EventData[] } = {
                         prizes: [
                             {
                                 prizeList: [
-                                    'SteelSeries Rival 5',
+                                    'SteelSeries Aerox 3 Wireless',
                                     'SteelSeries QcK Edge Large',
                                 ],
                                 position: 1,
