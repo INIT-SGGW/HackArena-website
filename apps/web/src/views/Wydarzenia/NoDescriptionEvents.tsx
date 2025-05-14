@@ -9,10 +9,11 @@ import {
     useState,
     MouseEvent as ReactMouseEvent,
 } from 'react';
+import { EventData } from '../../utils/mockData';
 import { Event } from '../../types/dtos';
 
 type NoDescriptionEventProps = {
-    events: Event[];
+    events: Event[] | EventData[];
     title?: string;
     grow?: boolean;
     compact?: boolean;

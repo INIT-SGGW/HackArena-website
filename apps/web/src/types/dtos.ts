@@ -68,4 +68,7 @@ export type Event = {
         url: string;
     };
     thumbnail: string;
+    isLive: boolean;
+    isTaskActive: boolean;
+    taskId: string | null;
 };
