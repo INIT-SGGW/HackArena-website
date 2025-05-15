@@ -63,3 +63,10 @@ export type GetUserByIdResponse = {
     occupation: Occupation;
     dietPreference: DietPreference;
 };
+
+export type GetTeamFileInfoResponse = {
+    teamId: string;
+    teamName: string;
+    dateCreated: string;
+    fileSize: number;
+}

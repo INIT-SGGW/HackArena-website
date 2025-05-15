@@ -5,9 +5,10 @@ type Props = {
     text: string;
     buttonText?: string;
     href?: string;
+    newTab?: boolean;
 }
 
-export function InfoBox({ title, text, buttonText, href }: Props) {
+export function InfoBox({ title, text, buttonText, href, newTab = false }: Props) {
     return (
         <div className="flex flex-col both-corners-clip bg-primary p-4">
             <h2 className="subtitle text-background">{title}</h2>
@@ -19,6 +20,8 @@ export function InfoBox({ title, text, buttonText, href }: Props) {
                         className="mt-4"
                         secondary
                         fullWidth
+                        target={newTab ? "_blank" : undefined}
+                        rel={newTab ? "noopener noreferrer" : undefined}
                     >
                         {buttonText}
                     </LinkButton>

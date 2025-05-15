@@ -22,9 +22,7 @@ export function EventLiveCard() {
         return (
             <InfoBox
                 title={'Wydarzenie live'}
-                text={`${liveEvent.name.text} jest live! Wejdź na stronę wydarzenia po więcej informacji.`}
-                buttonText="Wejdź"
-                href={`/konto/wydarzenie/${liveEvent.name.url}`}
+                text={`${liveEvent.name.text} jest live! Wejdź na stronę swojego zespołu po więcej informacji.`}
             />
         );
     }

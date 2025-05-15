@@ -7,18 +7,20 @@ export async function fetcher<RQ, RE>(
     url: string,
     options: FetcherOptions<RQ>,
 ): Promise<RE> {
+    const isFormData = options.body instanceof FormData;
+
     const res = await fetch(url, {
         ...options,
         credentials: 'include',
         headers: {
-            'Content-Type': 'application/json',
+            ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
             ...(options?.headers || {}),
         },
-        body: options?.body ? JSON.stringify(options.body) : undefined,
+        body: isFormData ? options.body as BodyInit : JSON.stringify(options.body),
     });
 
     if (!res.ok) {
-        const isAuthError = res.status === 401 || res.status === 403;
+        const isAuthError = res.status === 401;
 
         if (isAuthError && options?.authRedirect) {
             if (typeof window !== 'undefined') {
@@ -52,7 +54,15 @@ export async function fetcher<RQ, RE>(
         }
     }
 
-    return res.json();
+    try {
+        const response = await res.json();
+        return response;
+    } catch (e) {
+        if (process.env.NODE_ENV !== 'production') {
+            console.error('Error response when parsing response:', e);
+        }
+        return null as RE;
+    }
 }
 
 export async function fetcherAuth<RQ, RE>(
