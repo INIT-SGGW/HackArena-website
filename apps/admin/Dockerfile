@@ -16,6 +16,8 @@ COPY --from=installer /app .
 # Set build environment (BUILD_ENV is overwritten by docker-compose)
 ARG BUILD_ENV=test
 ENV NEXT_PUBLIC_NODE_ENV=${BUILD_ENV}
+ARG NEXT_PUBLIC_ADMIN_API_KEY=test
+ENV NEXT_PUBLIC_ADMIN_API_KEY=${NEXT_PUBLIC_ADMIN_API_KEY}
 
 # Enforce allowed values
 RUN if [ "$BUILD_ENV" != "test" ] && [ "$BUILD_ENV" != "production" ]; then echo "❌ Error: Invalid BUILD_ENV value '$BUILD_ENV'"; exit 1; fi
