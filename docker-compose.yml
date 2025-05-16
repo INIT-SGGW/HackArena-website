@@ -10,7 +10,7 @@ services:
         image: ghcr.io/init-sggw/ha-admin:${BUILD_ENV:-production}
         build:
             context: .
-            dockerfile: apps/web/Dockerfile
+            dockerfile: apps/admin/Dockerfile
             args:
                 - BUILD_ENV=${BUILD_ENV:-production}
                 - NEXT_PUBLIC_ADMIN_API_KEY=${NEXT_PUBLIC_ADMIN_API_KEY}
