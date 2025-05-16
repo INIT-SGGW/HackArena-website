@@ -4,7 +4,7 @@ import { jwtVerify } from 'jose';
 export async function middleware(req: NextRequest) {
     const token = req.cookies.get('jwt-init-admin')?.value;
     const jwtSecret = process.env.JWT_SECRET;
-    console.log("Running middleware");
+    console.log('Running middleware');
     if (!jwtSecret) {
         throw new Error('JWT_SECRET is not defined');
     }
@@ -26,5 +26,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/']
+    matcher: ['/'],
 };

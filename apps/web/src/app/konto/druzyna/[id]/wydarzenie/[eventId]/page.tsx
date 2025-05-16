@@ -1,36 +1,36 @@
-import { Button, CrossedTitle, InfoBox, Input, LinkButton, Page } from "@repo/ui";
-import { SendSolution } from "../../../../../../views/Account/Event/SendSolution";
+import { CrossedTitle, InfoBox, LinkButton, Page } from '@repo/ui';
+import { SendSolution } from '../../../../../../views/Account/Event/SendSolution';
 
 const apiWrappery = [
     {
-        name: "Python",
-        href: "",
+        name: 'Python',
+        href: '',
     },
     {
-        name: "Java",
-        href: "https://github.com/INIT-SGGW/HackArena2.5-MonoTanks-Java",
+        name: 'Java',
+        href: 'https://github.com/INIT-SGGW/HackArena2.5-MonoTanks-Java',
     },
     {
-        name: "C#",
-        href: "https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-CSharp",
+        name: 'C#',
+        href: 'https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-CSharp',
     },
     {
-        name: "C++",
-        href: "https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-Cxx",
+        name: 'C++',
+        href: 'https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-Cxx',
     },
     {
-        name: "JavaScript",
-        href: "https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-JS",
+        name: 'JavaScript',
+        href: 'https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-JS',
     },
     {
-        name: "Typescript",
-        href: "https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-TS",
+        name: 'Typescript',
+        href: 'https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-TS',
     },
     {
-        name: "Rust",
-        href: "https://github.com/INIT-SGGW/HackArena2.0-MonoTanks-Rust",
+        name: 'Rust',
+        href: 'https://github.com/INIT-SGGW/HackArena2.0-MonoTanks-Rust',
     },
-]
+];
 
 export default function EventPage() {
     return (
@@ -47,8 +47,12 @@ export default function EventPage() {
                 <section className="flex flex-col gap-10">
                     <CrossedTitle title="Gra" />
                     <p>
-                        Grę na HackArena 2.5 możecie pobrać z repozytoriów GitHub. Pobierzcie najnowszą wersję z zakładki "Releases" i rozpakujcie ją na swoim komputerze.
-                        Pamiętajcie żeby wybrać wersję zgodną z waszym systemem operacyjnym (Windows, Linux, MacOS) i architekturą (x64, arm64).
+                        Grę na HackArena 2.5 możecie pobrać z repozytoriów
+                        GitHub. Pobierzcie najnowszą wersję z zakładki
+                        "Releases" i rozpakujcie ją na swoim komputerze.
+                        Pamiętajcie żeby wybrać wersję zgodną z waszym systemem
+                        operacyjnym (Windows, Linux, MacOS) i architekturą (x64,
+                        arm64).
                     </p>
                     <LinkButton
                         href="https://github.com/INIT-SGGW/HackArena2.5-StereoTanks/tags"
@@ -63,7 +67,10 @@ export default function EventPage() {
                     <CrossedTitle title="API Wrappery" />
                     <div className="flex flex-col gap-5">
                         <p>
-                            Boty będziecie pisali za pomocą przygotowanych przez nas API wrapperów. Wybierzcie swój język programowania, pobierzcie wrappera i zacznijcie pisać swojego bota!
+                            Boty będziecie pisali za pomocą przygotowanych przez
+                            nas API wrapperów. Wybierzcie swój język
+                            programowania, pobierzcie wrappera i zacznijcie
+                            pisać swojego bota!
                         </p>
                         <ul className="flex flex-col gap-2 list-disc list-inside marker:text-primary ml-6">
                             {apiWrappery.map((api, index) => (
@@ -83,7 +90,9 @@ export default function EventPage() {
                 <section className="flex flex-col gap-10">
                     <CrossedTitle title="Przesyłanie rozwiązań" />
                     <p>
-                        Poniżej możecie przesłać swoje rozwiązania. Pamiętajcie, że możecie przesyłać rozwiązania tylko w formacie .zip. Wybierzcie plik i kliknijcie "Prześlij".
+                        Poniżej możecie przesłać swoje rozwiązania. Pamiętajcie,
+                        że możecie przesyłać rozwiązania tylko w formacie .zip.
+                        Wybierzcie plik i kliknijcie "Prześlij".
                     </p>
                     <SendSolution />
                 </section>

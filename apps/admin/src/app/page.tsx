@@ -1,5 +1,5 @@
-import { Page } from "@repo/ui";
-import { SolutionsTable } from "../views/Solutions/SolutionsTable";
+import { Page } from '@repo/ui';
+import { SolutionsTable } from '../views/Solutions/SolutionsTable';
 
 export default function Home() {
     return (

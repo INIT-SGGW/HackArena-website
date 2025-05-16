@@ -4,12 +4,9 @@ import {
     type Dispatch,
     type SetStateAction,
     useEffect,
-    useRef,
     useState,
 } from 'react';
 import { Button, Input } from '@repo/ui';
-import Image from 'next/image';
-import Link from 'next/link';
 import { fetcherHack, FetcherOptions } from '../../../api/fetcher';
 import useSWRMutation from 'swr/mutation';
 import useSWR, { Key } from 'swr';

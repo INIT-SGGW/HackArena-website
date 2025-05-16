@@ -14,11 +14,13 @@ export async function fetcher<RQ, RE>(
         ...options,
         credentials: 'include',
         headers: {
-            "X-INIT-ADMIN-API-KEY": process.env.NEXT_PUBLIC_ADMIN_API_KEY || '',
+            'X-INIT-ADMIN-API-KEY': process.env.NEXT_PUBLIC_ADMIN_API_KEY || '',
             ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
             ...(options?.headers || {}),
         },
-        body: isFormData ? options.body as BodyInit : JSON.stringify(options.body),
+        body: isFormData
+            ? (options.body as BodyInit)
+            : JSON.stringify(options.body),
     });
 
     if (!res.ok) {
@@ -30,7 +32,10 @@ export async function fetcher<RQ, RE>(
             }
         }
 
-        if (process.env.NODE_ENV !== 'production' && options.responseType !== 'blob') {
+        if (
+            process.env.NODE_ENV !== 'production' &&
+            options.responseType !== 'blob'
+        ) {
             try {
                 const response = await res.json();
                 console.error('Error response:', response);

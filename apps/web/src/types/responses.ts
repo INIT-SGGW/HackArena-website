@@ -69,4 +69,4 @@ export type GetTeamFileInfoResponse = {
     teamName: string;
     dateCreated: string;
     fileSize: number;
-}
+};

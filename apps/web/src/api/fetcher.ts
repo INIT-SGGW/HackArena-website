@@ -16,7 +16,9 @@ export async function fetcher<RQ, RE>(
             ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
             ...(options?.headers || {}),
         },
-        body: isFormData ? options.body as BodyInit : JSON.stringify(options.body),
+        body: isFormData
+            ? (options.body as BodyInit)
+            : JSON.stringify(options.body),
     });
 
     if (!res.ok) {

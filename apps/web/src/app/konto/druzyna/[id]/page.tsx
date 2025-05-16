@@ -47,7 +47,8 @@ export default function TeamPage() {
                         text="Zadanie kwalifikacyjne jest dostępne i będzie otwarte do 11.05.2025 23:59. Ilość prób nie jest ograniczona, ale pamiętajcie, macie tylko jedną szansę na godzinę, potem dostaniecie cooldown. Więcej informacji po wejściu w zadanie."
                         buttonText="Rozpocznij"
                         href={`/konto/druzyna/${teamId}/zadanie/${taskEvent.taskId}/${taskEvent._id}`}
-                    />)}
+                    />
+                )}
                 {eventLive && (
                     <InfoBox
                         title="Wydarzenie live"
