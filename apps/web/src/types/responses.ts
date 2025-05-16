@@ -70,3 +70,8 @@ export type GetTeamFileInfoResponse = {
     dateCreated: string;
     fileSize: number;
 };
+
+export type GetTeamCredentialsResponse = {
+    login: string;
+    password: string;
+}

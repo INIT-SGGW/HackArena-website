@@ -1,5 +1,6 @@
 import { CrossedTitle, InfoBox, LinkButton, Page } from '@repo/ui';
 import { SendSolution } from '../../../../../../views/Account/Event/SendSolution';
+import { Credentials } from '../../../../../../views/Account/Event/Credentials';
 
 const apiWrappery = [
     {
@@ -86,6 +87,17 @@ export default function EventPage() {
                             ))}
                         </ul>
                     </div>
+                </section>
+                <section className="flex flex-col gap-10">
+                    <CrossedTitle title="Serwer" />
+                    <p>
+                        Udostępniliśmy Wam możliwość uruchomienia własnego serwera gry online.
+                        Aby go uruchomić, wystarczy połączyć się przez SSH z naszym serwerem pod adresem <span className='text-primary text-bold'>game.hackarena.pl</span>, korzystając z poniższych danych logowania.
+
+                        Po zalogowaniu serwer zostanie automatycznie uruchomiony, a w konsoli pojawi się numer portu, pod którym będziecie mogli połączyć się z grą.
+                    </p>
+                    <Credentials />
+
                 </section>
                 <section className="flex flex-col gap-10">
                     <CrossedTitle title="Przesyłanie rozwiązań" />
