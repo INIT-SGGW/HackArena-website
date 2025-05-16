@@ -64,9 +64,9 @@ export function SolutionsTable() {
                 <p className="text-primary text-xl font-bold">Ładowanie...</p>
             )}
             {!fileInfoError && data && (
-                <table className="w-full">
+                <table className="w-full text-md border-separate border-spacing-y-2">
                     <thead>
-                        <tr>
+                        <tr className='text-secondary-100'>
                             <th className="text-left">Nazwa zespołu</th>
                             <th className="text-left">Data przesłania</th>
                             <th className="text-left">Rozmiar pliku</th>
@@ -75,7 +75,7 @@ export function SolutionsTable() {
                     </thead>
                     <tbody>
                         {data.map((file) => (
-                            <tr key={file.teamId}>
+                            <tr key={file.teamId} className='text-xl'>
                                 <td>{file.teamName}</td>
                                 <td>
                                     {toDateString(new Date(file.dateCreated))}
