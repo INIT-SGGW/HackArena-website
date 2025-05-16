@@ -4,7 +4,7 @@ import { SendSolution } from '../../../../../../views/Account/Event/SendSolution
 const apiWrappery = [
     {
         name: 'Python',
-        href: '',
+        href: 'https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-Python',
     },
     {
         name: 'Java',
@@ -28,7 +28,7 @@ const apiWrappery = [
     },
     {
         name: 'Rust',
-        href: 'https://github.com/INIT-SGGW/HackArena2.0-MonoTanks-Rust',
+        href: 'https://github.com/INIT-SGGW/HackArena2.5-StereoTanks-Rust',
     },
 ];
 
