@@ -3,6 +3,7 @@ import { Content } from '../../../../../../../views/Account/Task/Content';
 import type { Metadata } from 'next/types';
 import { use } from 'react';
 import { Page } from '@repo/ui';
+import { notFound } from 'next/navigation';
 
 type Props = {
     params: Promise<{ id: string; taskId: string; eventId: string }>;
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function TaskPage({ params }: Props): React.JSX.Element {
+    notFound();
     const { id, taskId, eventId } = use(params);
 
     return (

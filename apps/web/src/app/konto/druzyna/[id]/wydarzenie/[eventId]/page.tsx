@@ -1,6 +1,7 @@
 import { CrossedTitle, InfoBox, LinkButton, Page } from '@repo/ui';
 import { SendSolution } from '../../../../../../views/Account/Event/SendSolution';
 import { Credentials } from '../../../../../../views/Account/Event/Credentials';
+import { notFound } from 'next/navigation';
 
 const apiWrappery = [
     {
@@ -34,6 +35,8 @@ const apiWrappery = [
 ];
 
 export default function EventPage() {
+    notFound();
+
     return (
         <Page>
             <div className="flex flex-col gap-15 page-width mx-auto">
