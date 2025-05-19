@@ -79,7 +79,7 @@ const HighlightedEvent = ({ event }: HighlightedEventProps) => {
     } else if (event.timeDate.end > now) {
         title = 'W trakcie!';
     } else {
-        title = 'Ostatnia HackArena!';
+        title = 'Ostatnie wydarzenie!';
     }
 
     return (
