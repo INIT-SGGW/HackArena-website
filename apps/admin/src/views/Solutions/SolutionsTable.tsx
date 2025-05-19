@@ -4,6 +4,7 @@ import { fetcherHack } from '../../api/fetcher';
 import useSWR from 'swr';
 import { GetTeamFileInfoResponse } from '../../types/responses';
 import { Button } from '@repo/ui';
+import { useEffect, useState } from 'react';
 
 const toDateString = (date: Date) => {
     const options: Intl.DateTimeFormatOptions = {
@@ -19,6 +20,8 @@ const toDateString = (date: Date) => {
 };
 
 export function SolutionsTable() {
+    const [sortedData, setSortedData] = useState<GetTeamFileInfoResponse[] | null>(null);
+
     const {
         data,
         error: fileInfoError,
@@ -28,6 +31,15 @@ export function SolutionsTable() {
             method: 'GET',
         }),
     );
+
+    useEffect(() => {
+        if (data) {
+            const sorted = [...data].sort((a, b) => {
+                return new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime();
+            });
+            setSortedData(sorted);
+        }
+    }, [data]);
 
     const downloadFile = async (teamName: string, teamId: string) => {
         const blob = await fetcherHack<null, Blob>(
@@ -63,7 +75,7 @@ export function SolutionsTable() {
             {!fileInfoError && !data && isLoading && (
                 <p className="text-primary text-xl font-bold">Ładowanie...</p>
             )}
-            {!fileInfoError && data && (
+            {!fileInfoError && sortedData && (
                 <table className="w-full text-md border-separate border-spacing-y-2">
                     <thead>
                         <tr className='text-secondary-100'>
@@ -74,7 +86,7 @@ export function SolutionsTable() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((file) => (
+                        {sortedData.map((file) => (
                             <tr key={file.teamId} className='text-xl'>
                                 <td>{file.teamName}</td>
                                 <td>
