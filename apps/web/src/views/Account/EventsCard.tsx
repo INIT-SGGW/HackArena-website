@@ -83,7 +83,7 @@ export function EventsCard() {
                         {data?.ended && data.ended.length !== 0 && (
                             <>
                                 <div
-                                    className={`w-[2px] bg-secondary-200 my-[70px] hidden md:block ${mockEvents.current.length > 1 ? '!hidden' : ''}`}
+                                    className={`w-[2px] bg-secondary-200 my-[70px] hidden md:block ${data.incoming.length > 0 ? '' : '!hidden'}`}
                                 />
                                 <NoDescriptionEvents
                                     grow
