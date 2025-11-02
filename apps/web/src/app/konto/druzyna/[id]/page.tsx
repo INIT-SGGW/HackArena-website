@@ -57,6 +57,12 @@ export default function TeamPage() {
                         href={`/konto/druzyna/${teamId}/wydarzenie/${eventLive._id}`}
                     />
                 )}
+                <InfoBox
+                    title="Powtorki i zadanie kwalifikacyjne"
+                    text="HackArena 2.5 już za nami! Wejdź w poniższy link, aby zobaczyć powtórki z wydarzenia oraz wyniki zadania kwalifikacyjnego."
+                    buttonText="Otwórz"
+                    href={`/konto/druzyna/${teamId}/hackarena_2_5`}
+                />
                 <div className="flex flex-col gap-10">
                     <CrossedTitle title="Członkowie drużyny" />
                     <MembersCard

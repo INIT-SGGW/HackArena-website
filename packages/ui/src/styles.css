@@ -3,87 +3,87 @@
 @source "./";
 
 @layer utilities {
-  .cut-corner {
-    --cut-size: 60px;
-    --cut-displacement: 10px;
-    clip-path: polygon(
-      100% 0,
-      100% 100%,
-      calc(var(--cut-size) + var(--cut-displacement)) 100%,
-      var(--cut-displacement) 0
-    );
-  }
+    .cut-corner {
+        --cut-size: 60px;
+        --cut-displacement: 10px;
+        clip-path: polygon(
+            100% 0,
+            100% 100%,
+            calc(var(--cut-size) + var(--cut-displacement)) 100%,
+            var(--cut-displacement) 0
+        );
+    }
 
-  .both-corners-clip {
-    --clip-size: 14px;
-    clip-path: polygon(
-      0 0,
-      calc(100% - var(--clip-size)) 0,
-      100% var(--clip-size),
-      100% 100%,
-      var(--clip-size) 100%,
-      0 calc(100% - var(--clip-size)),
-      0% 100%
-    );
-  }
+    .both-corners-clip {
+        --clip-size: 14px;
+        clip-path: polygon(
+            0 0,
+            calc(100% - var(--clip-size)) 0,
+            100% var(--clip-size),
+            100% 100%,
+            var(--clip-size) 100%,
+            0 calc(100% - var(--clip-size)),
+            0% 100%
+        );
+    }
 
-  .ribbon {
-    --ribbon-color: var(--color-primary);
-    @apply relative after:absolute after:inset-0;
-  }
+    .ribbon {
+        --ribbon-color: var(--color-primary);
+        @apply relative after:absolute after:inset-0;
+    }
 
-  .ribbon::after {
-    --cut-size: 20px;
-    --ribbon-width: 35px;
+    .ribbon::after {
+        --cut-size: 20px;
+        --ribbon-width: 35px;
 
-    background-color: var(--ribbon-color);
-    clip-path: polygon(
-      calc(100% - var(--ribbon-width) - var(--cut-size)) 0,
-      calc(100% - var(--cut-size)) 0,
-      100% var(--cut-size),
-      100% calc(var(--ribbon-width) + var(--cut-size)),
-      calc(100% - var(--ribbon-width) - var(--cut-size)) 0,
+        background-color: var(--ribbon-color);
+        clip-path: polygon(
+            calc(100% - var(--ribbon-width) - var(--cut-size)) 0,
+            calc(100% - var(--cut-size)) 0,
+            100% var(--cut-size),
+            100% calc(var(--ribbon-width) + var(--cut-size)),
+            calc(100% - var(--ribbon-width) - var(--cut-size)) 0,
 
-      0 calc(100% - var(--ribbon-width) - var(--cut-size)),
-      0 calc(100% - var(--cut-size)),
-      var(--cut-size) 100%,
-      calc(var(--ribbon-width) + var(--cut-size)) 100%,
-      0 calc(100% - var(--ribbon-width) - var(--cut-size))
-    );
-  }
+            0 calc(100% - var(--ribbon-width) - var(--cut-size)),
+            0 calc(100% - var(--cut-size)),
+            var(--cut-size) 100%,
+            calc(var(--ribbon-width) + var(--cut-size)) 100%,
+            0 calc(100% - var(--ribbon-width) - var(--cut-size))
+        );
+    }
 
-  .ribbon-photo-clip {
-    --cut-size: 20px;
-    clip-path: polygon(
-      0 0,
-      calc(100% - var(--cut-size)) 0,
-      100% var(--cut-size),
-      100% 100%,
-      var(--cut-size) 100%,
-      0 calc(100% - var(--cut-size)),
-      0% 100%
-    );
-  }
+    .ribbon-photo-clip {
+        --cut-size: 20px;
+        clip-path: polygon(
+            0 0,
+            calc(100% - var(--cut-size)) 0,
+            100% var(--cut-size),
+            100% 100%,
+            var(--cut-size) 100%,
+            0 calc(100% - var(--cut-size)),
+            0% 100%
+        );
+    }
 
-  .page-width {
-    @apply max-w-[1100px] w-full;
-  }
+    .page-width {
+        @apply max-w-[1100px] w-full;
+    }
 
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
 
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
 }
