@@ -4,13 +4,12 @@ import { jwtVerify } from 'jose';
 export async function middleware(req: NextRequest) {
     const token = req.cookies.get('jwt-init-admin')?.value;
     const jwtSecret = process.env.JWT_SECRET;
-    console.log('Running middleware');
+
     if (!jwtSecret) {
         throw new Error('JWT_SECRET is not defined');
     }
 
     if (!token) {
-        console.log('No token found, redirecting to login');
         return NextResponse.redirect(new URL('/admin/login', req.url));
     }
 
